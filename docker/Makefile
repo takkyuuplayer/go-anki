@@ -19,9 +19,8 @@ stop:
 rm:
 	$(DOCKER_COMPOSE) rm -f
 
-go:
-	@$(DOCKER) exec -i $(CONTAINER_NAME) go run $(SRC)
+run:
+	@$(DOCKER) exec -i $(CONTAINER_NAME) go $(SRC)
 
-go-test:
-	@$(DOCKER) exec -i $(CONTAINER_NAME) go test $(SRC)
-
+run-test:
+	@$(DOCKER) exec -i $(CONTAINER_NAME) go test ./$(shell dirname $(SRC))
