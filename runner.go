@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/csv"
 	"fmt"
 	"golang.org/x/net/proxy"
 	"io/ioutil"
@@ -14,6 +15,7 @@ import (
 
 var client *http.Client
 var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>(?:.+?)</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
+var stdout = csv.NewWriter(os.Stdout)
 
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
@@ -43,6 +45,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, "reading standard input:", err)
 	}
 
+	stdout.Flush()
+
 }
 
 func searchDefinition(client *http.Client, word string) {
@@ -61,7 +65,7 @@ func searchDefinition(client *http.Client, word string) {
 
 	definition := findDefinition(string(body))
 
-	fmt.Printf("%s\t%s\n", word, definition)
+	stdout.Write([]string{word, definition})
 }
 
 func findDefinition(html string) string {
