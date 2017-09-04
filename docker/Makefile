@@ -20,7 +20,7 @@ rm:
 	$(DOCKER_COMPOSE) rm -f
 
 run:
-	@$(DOCKER) exec -i $(CONTAINER_NAME) go $(SRC)
+	@$(DOCKER) exec -i $(CONTAINER_NAME) go run $(SRC)
 
 run-test:
 	@$(DOCKER) exec -i $(CONTAINER_NAME) go test ./$(shell dirname $(SRC))

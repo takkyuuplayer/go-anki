@@ -8,10 +8,11 @@ import (
 	"net/url"
 	"os"
 	"regexp"
+	"strings"
 )
 
 var client *http.Client
-var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>(?:.+?)</h2>\n+(.+?)\n<hr />`)
+var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>(?:.+?)</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
 
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
@@ -43,20 +44,18 @@ func main() {
 
 	// Example: Fetch something.  Real code will probably want to use
 	// client.Do() so they can change the User-Agent.
-	resp, err := client.Get("http://en.wiktionary.org/wiki/put")
+	resp, err := client.Get(getWiktionaryUrl("put up with"))
 	if err != nil {
 		fatalf("Failed to issue GET request: %v\n", err)
 	}
 	defer resp.Body.Close()
 
-	fmt.Printf("GET returned: %v\n", resp.Status)
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		fatalf("Failed to read the body: %v\n", err)
 	}
 
-	text := fmt.Sprintf("%s", body)
-	fmt.Println(text)
+	fmt.Println(string(body))
 }
 
 func findDefinition(html string) string {
@@ -64,4 +63,8 @@ func findDefinition(html string) string {
 	group := defReg.FindStringSubmatch(html)
 
 	return group[1]
+}
+
+func getWiktionaryUrl(word string) string {
+	return fmt.Sprintf("http://en.wiktionary.org/wiki/%s", strings.Replace(word, " ", "_", -1))
 }
