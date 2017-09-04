@@ -65,7 +65,12 @@ func searchDefinition(client *http.Client, word string) {
 
 	definition := findDefinition(string(body))
 
-	stdout.Write([]string{word, definition})
+	if definition == "Not Found" {
+		fmt.Fprintf(os.Stderr, "%s,%s\n", word, definition)
+	} else {
+		stdout.Write([]string{word, definition})
+	}
+
 }
 
 func findDefinition(html string) string {
