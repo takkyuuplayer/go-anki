@@ -62,7 +62,11 @@ func findDefinition(html string) string {
 
 	group := defReg.FindStringSubmatch(html)
 
-	return group[1]
+	if len(group) == 2 {
+		return group[1]
+	}
+
+	return "Not Found"
 }
 
 func getWiktionaryUrl(word string) string {
