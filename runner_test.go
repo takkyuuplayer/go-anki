@@ -16,7 +16,7 @@ func TestFindDefinitionForWord(t *testing.T) {
 
 	matched := findDefinition(string(data))
 
-	if !strings.HasPrefix(matched, "<h3") {
+	if !strings.HasPrefix(matched, "<h4") {
 		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true value`, strings.HasPrefix(matched, "<div"))
 	}
 

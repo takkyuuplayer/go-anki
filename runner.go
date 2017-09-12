@@ -17,12 +17,28 @@ var client *http.Client
 var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>(?:.+?)</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
 var stdout = csv.NewWriter(os.Stdout)
 
+var ignoreParagraphs = []string{
+	"Etymology",
+	"Derived_terms",
+	"Translations",
+	"Further_reading",
+	"References",
+	"Anagrams",
+}
+
+var ignoreRegexps = make([]*regexp.Regexp, len(ignoreParagraphs))
+var deleteReg = regexp.MustCompile(`<span class="mw-editsection">.+</span></span>`)
+
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
 	os.Exit(-1)
 }
 
 func main() {
+	for idx, val := range ignoreParagraphs {
+		ignoreRegexps[idx] = regexp.MustCompile(`(?s)<h[3-5]><span class="mw-headline" id="` + val + `(?:.+?)(<h.>|\z)`)
+	}
+
 	tbProxyURL, err := url.Parse("socks5://proxy:9050")
 
 	if err != nil {
@@ -77,11 +93,18 @@ func findDefinition(html string) string {
 
 	group := defReg.FindStringSubmatch(html)
 
-	if len(group) == 2 {
-		return group[1]
+	if len(group) != 2 {
+		return "Not Found"
 	}
 
-	return "Not Found"
+	definition := group[1]
+
+	for _, reg := range ignoreRegexps {
+		definition = reg.ReplaceAllString(definition, "$1")
+	}
+	definition = deleteReg.ReplaceAllString(definition, "")
+
+	return definition
 }
 
 func getWiktionaryUrl(word string) string {
