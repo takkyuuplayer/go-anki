@@ -1,12 +1,10 @@
-RESULT=$(shell date '+%s')
-
 .PHONY: test
 
 setup:
-	mkdir -p data result
+	mkdir -p data
 
 generate:
-	find ./data -type f | xargs cat | go run runner.go > result/${RESULT}.tsv
+	find ./data -type f | xargs cat | go run runner.go > result.csv
 
 test:
 	go test ./...
