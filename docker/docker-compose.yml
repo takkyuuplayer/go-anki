@@ -2,14 +2,14 @@ version: '3'
 services:
   app:
     container_name: go-anki
-    image: golang
+    image: library/golang:1.8
     volumes:
       - ../:/srv/
       - ~/go:/go
     environment:
       - TZ=Asia/Tokyo
     tty: true
-    command: bash
+    #command: bash
     working_dir: /srv
     links:
       - proxy
