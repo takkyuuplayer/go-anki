@@ -10,6 +10,8 @@ import (
 func TestFindDefinitionForWord(t *testing.T) {
 	data, err := ioutil.ReadFile("testdata/put.html")
 
+	initialize()
+
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -17,16 +19,30 @@ func TestFindDefinitionForWord(t *testing.T) {
 	matched := findDefinition(string(data))
 
 	if !strings.HasPrefix(matched, "<h4") {
-		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true value`, strings.HasPrefix(matched, "<div"))
+		t.Errorf(`strings.HasPrefix(matched, "<h4") = %#v, want true`, strings.HasPrefix(matched, "<div"))
+	}
+}
+
+func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
+	data, err := ioutil.ReadFile("testdata/subtle.html")
+
+	initialize()
+
+	if err != nil {
+		t.Fatal(err)
 	}
 
-	if !strings.HasSuffix(matched, "</ul>") {
-		t.Errorf(`string.HasSuffix(matched, "</ul>") = %#v, want true value`, strings.HasSuffix(matched, "</ul>"))
+	matched := findDefinition(string(data))
+
+	if !strings.HasPrefix(matched, "<h3") {
+		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true`, strings.HasPrefix(matched, "<h3"))
 	}
 }
 
 func TestFindDefinitionForIdiom(t *testing.T) {
 	data, err := ioutil.ReadFile("testdata/put_up_with.html")
+
+	initialize()
 
 	if err != nil {
 		t.Fatal(err)
@@ -46,6 +62,8 @@ func TestFindDefinitionForIdiom(t *testing.T) {
 func TestFindDefinitionNotFound(t *testing.T) {
 	data, err := ioutil.ReadFile("testdata/put_up_on.html")
 
+	initialize()
+
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -60,11 +78,11 @@ func TestFindDefinitionNotFound(t *testing.T) {
 
 func TestGetWiktionaryUrl(t *testing.T) {
 
-	if getWiktionaryUrl("put") != "http://en.wiktionary.org/wiki/put" {
-		t.Errorf(`getWiktionaryUrl('put') = %#v, want %#v`, getWiktionaryUrl("put"), "http://en.wiktionary.org/wiki/put")
+	if getWiktionaryUrl("put") != "https://en.wiktionary.org/wiki/put" {
+		t.Errorf(`getWiktionaryUrl('put') = %#v, want %#v`, getWiktionaryUrl("put"), "https://en.wiktionary.org/wiki/put")
 	}
 
-	if getWiktionaryUrl("put up with") != "http://en.wiktionary.org/wiki/put_up_with" {
-		t.Errorf(`getWiktionaryUrl("put up with") = %#v, want %#v`, getWiktionaryUrl("put up with"), "http://en.wiktionary.org/wiki/put_up_with")
+	if getWiktionaryUrl("put up with") != "https://en.wiktionary.org/wiki/put_up_with" {
+		t.Errorf(`getWiktionaryUrl("put up with") = %#v, want %#v`, getWiktionaryUrl("put up with"), "https://en.wiktionary.org/wiki/put_up_with")
 	}
 }

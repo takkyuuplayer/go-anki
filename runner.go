@@ -14,7 +14,7 @@ import (
 )
 
 var client *http.Client
-var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>(?:.+?)</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
+var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>.*?</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
 var stdout = csv.NewWriter(os.Stdout)
 
 var ignoreParagraphs = []string{
@@ -40,9 +40,7 @@ func fatalf(fmtStr string, args interface{}) {
 }
 
 func main() {
-	for idx, val := range ignoreParagraphs {
-		ignoreRegexps[idx] = regexp.MustCompile(`(?s)<h[3-5]><span class="mw-headline" id="` + val + `(?:.+?)(<h.>|\z)`)
-	}
+	initialize()
 
 	tbProxyURL, err := url.Parse("socks5://proxy:9050")
 
@@ -57,7 +55,6 @@ func main() {
 
 	tbTransport := &http.Transport{Dial: tbDialer.Dial}
 	client = &http.Client{Transport: tbTransport}
-
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		searchDefinition(client, scanner.Text())
@@ -68,6 +65,12 @@ func main() {
 
 	stdout.Flush()
 
+}
+
+func initialize() {
+	for idx, val := range ignoreParagraphs {
+		ignoreRegexps[idx] = regexp.MustCompile(`(?s)<h[3-5]><span class="mw-headline" id="` + val + `(?:.+?)(<h.>|\z)`)
+	}
 }
 
 func searchDefinition(client *http.Client, word string) {
@@ -115,5 +118,5 @@ func findDefinition(html string) string {
 }
 
 func getWiktionaryUrl(word string) string {
-	return fmt.Sprintf("http://en.wiktionary.org/wiki/%s", strings.Replace(word, " ", "_", -1))
+	return fmt.Sprintf("https://en.wiktionary.org/wiki/%s", strings.Replace(word, " ", "_", -1))
 }
