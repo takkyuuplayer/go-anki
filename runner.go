@@ -24,10 +24,15 @@ var ignoreParagraphs = []string{
 	"Further_reading",
 	"References",
 	"Anagrams",
+	"Descendants",
+	"Hyponyms",
 }
 
 var ignoreRegexps = make([]*regexp.Regexp, len(ignoreParagraphs))
-var deleteReg = regexp.MustCompile(`<span class="mw-editsection">.+</span></span>`)
+var deleteReg = []*regexp.Regexp{
+	regexp.MustCompile(`<span class="mw-editsection">.+</span></span>`),
+	regexp.MustCompile(`</?a ?[^>]*>`),
+}
 
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
@@ -102,7 +107,9 @@ func findDefinition(html string) string {
 	for _, reg := range ignoreRegexps {
 		definition = reg.ReplaceAllString(definition, "$1")
 	}
-	definition = deleteReg.ReplaceAllString(definition, "")
+	for _, reg := range deleteReg {
+		definition = reg.ReplaceAllString(definition, "")
+	}
 
 	return definition
 }
