@@ -10,6 +10,6 @@ test:
 	go test ./...
 
 run:
-	make -C docker $@
+	$(MAKE) -C docker $@
 run-test:
-	make -C docker $@
+	$(MAKE) -C docker $@
