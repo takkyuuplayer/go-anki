@@ -1,22 +1,23 @@
-package main
+package wiktionary_test
 
 import (
-	"fmt"
 	"io/ioutil"
 	"strings"
 	"testing"
+
+	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
 func TestFindDefinitionForWord(t *testing.T) {
-	data, err := ioutil.ReadFile("testdata/put.html")
+	data, err := ioutil.ReadFile("../testdata/put.html")
 
-	initialize()
+	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	matched := findDefinition(string(data))
+	matched := wiktionary.FindDefinition(string(data))
 
 	if !strings.HasPrefix(matched, "<h4") {
 		t.Errorf(`strings.HasPrefix(matched, "<h4") = %#v, want true`, strings.HasPrefix(matched, "<div"))
@@ -24,15 +25,15 @@ func TestFindDefinitionForWord(t *testing.T) {
 }
 
 func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
-	data, err := ioutil.ReadFile("testdata/subtle.html")
+	data, err := ioutil.ReadFile("../testdata/subtle.html")
 
-	initialize()
+	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	matched := findDefinition(string(data))
+	matched := wiktionary.FindDefinition(string(data))
 
 	if !strings.HasPrefix(matched, "<h3") {
 		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true`, strings.HasPrefix(matched, "<h3"))
@@ -40,15 +41,15 @@ func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
 }
 
 func TestFindDefinitionForIdiom(t *testing.T) {
-	data, err := ioutil.ReadFile("testdata/put_up_with.html")
+	data, err := ioutil.ReadFile("../testdata/put_up_with.html")
 
-	initialize()
+	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	matched := findDefinition(string(data))
+	matched := wiktionary.FindDefinition(string(data))
 
 	if !strings.HasPrefix(matched, "<h3") {
 		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true value`, strings.HasPrefix(matched, "<div"))
@@ -60,29 +61,28 @@ func TestFindDefinitionForIdiom(t *testing.T) {
 }
 
 func TestFindDefinitionNotFound(t *testing.T) {
-	data, err := ioutil.ReadFile("testdata/put_up_on.html")
+	data, err := ioutil.ReadFile("../testdata/put_up_on.html")
 
-	initialize()
+	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	matched := findDefinition(string(data))
+	matched := wiktionary.FindDefinition(string(data))
 
 	if matched != "Not Found" {
 		t.Errorf(`matched = %#v, want %#v`, matched, "Not Found")
 	}
-	fmt.Println(matched)
 }
 
 func TestGetWiktionaryUrl(t *testing.T) {
 
-	if getWiktionaryUrl("put") != "https://en.wiktionary.org/wiki/put" {
-		t.Errorf(`getWiktionaryUrl('put') = %#v, want %#v`, getWiktionaryUrl("put"), "https://en.wiktionary.org/wiki/put")
+	if wiktionary.GetWiktionaryUrl("put") != "https://en.wiktionary.org/wiki/put" {
+		t.Errorf(`GetWiktionaryUrl('put') = %#v, want %#v`, wiktionary.GetWiktionaryUrl("put"), "https://en.wiktionary.org/wiki/put")
 	}
 
-	if getWiktionaryUrl("put up with") != "https://en.wiktionary.org/wiki/put_up_with" {
-		t.Errorf(`getWiktionaryUrl("put up with") = %#v, want %#v`, getWiktionaryUrl("put up with"), "https://en.wiktionary.org/wiki/put_up_with")
+	if wiktionary.GetWiktionaryUrl("put up with") != "https://en.wiktionary.org/wiki/put_up_with" {
+		t.Errorf(`GetWiktionaryUrl("put up with") = %#v, want %#v`, wiktionary.GetWiktionaryUrl("put up with"), "https://en.wiktionary.org/wiki/put_up_with")
 	}
 }
