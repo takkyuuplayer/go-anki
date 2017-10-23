@@ -34,8 +34,6 @@ func main() {
 		fatalf("Failed to obtain proxy dialer: %v\n", err)
 	}
 
-	wiktionary.Init()
-
 	counter := 0
 	scanner := bufio.NewScanner(os.Stdin)
 	tbTransport := &http.Transport{Dial: tbDialer.Dial}

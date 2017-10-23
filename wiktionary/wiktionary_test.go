@@ -11,8 +11,6 @@ import (
 func TestFindDefinitionForWord(t *testing.T) {
 	data, err := ioutil.ReadFile("../testdata/put.html")
 
-	wiktionary.Init()
-
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -27,8 +25,6 @@ func TestFindDefinitionForWord(t *testing.T) {
 func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
 	data, err := ioutil.ReadFile("../testdata/subtle.html")
 
-	wiktionary.Init()
-
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -42,8 +38,6 @@ func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
 
 func TestFindDefinitionForIdiom(t *testing.T) {
 	data, err := ioutil.ReadFile("../testdata/put_up_with.html")
-
-	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)
@@ -62,8 +56,6 @@ func TestFindDefinitionForIdiom(t *testing.T) {
 
 func TestFindDefinitionNotFound(t *testing.T) {
 	data, err := ioutil.ReadFile("../testdata/put_up_on.html")
-
-	wiktionary.Init()
 
 	if err != nil {
 		t.Fatal(err)

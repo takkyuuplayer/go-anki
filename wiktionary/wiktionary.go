@@ -31,7 +31,7 @@ type Client struct {
 	HttpClient *http.Client
 }
 
-func Init() {
+func init() {
 	for idx, val := range ignoreParagraphs {
 		ignoreRegexps[idx] = regexp.MustCompile(`(?s)<h[3-5]><span class="mw-headline" id="` + val + `(?:.+?)(<h.>|\z)`)
 	}
