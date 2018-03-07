@@ -15,6 +15,6 @@ test:
 	go test ./...
 
 run:
-	@cd docker && $(MAKE) run
+	$(MAKE) -C docker $@
 run-test:
-	@cd docker && $(MAKE) run-test
+	$(MAKE) -C docker $@

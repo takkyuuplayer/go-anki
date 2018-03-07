@@ -23,4 +23,4 @@ run:
 	@$(DOCKER) exec -i $(CONTAINER_NAME) go run $(SRC)
 
 run-test:
-	@$(DOCKER) exec -i $(CONTAINER_NAME) go test ./$(shell dirname $(SRC))
+	@$(DOCKER) exec -i $(CONTAINER_NAME) go test ./$(dir $(SRC))
