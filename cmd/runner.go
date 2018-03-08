@@ -23,30 +23,21 @@ func fatalf(fmtStr string, args interface{}) {
 }
 
 func main() {
-	tbProxyURL, err := url.Parse("socks5://proxy:9050")
-
-	if err != nil {
-		fatalf("Failed to parse proxy URL: %v\n", err)
+    wc := &wiktionary.Client{
+		HttpClient: httpClient(),
 	}
 
-	tbDialer, err := proxy.FromURL(tbProxyURL, proxy.Direct)
-	if err != nil {
-		fatalf("Failed to obtain proxy dialer: %v\n", err)
-	}
+    run(wc)
+}
 
+func run(dc anki.DictionaryClient) {
 	counter := 0
 	scanner := bufio.NewScanner(os.Stdin)
-	tbTransport := &http.Transport{Dial: tbDialer.Dial}
-	client := &http.Client{Transport: tbTransport}
-
 	ch := make(chan *anki.Result)
-	wc := wiktionary.Client{
-		HttpClient: client,
-	}
 
 	for ; counter < parallel; counter++ {
 		if scanner.Scan() {
-			go wc.SearchDefinition(ch, scanner.Text())
+			go dc.SearchDefinition(ch, scanner.Text())
 		} else {
 			break
 		}
@@ -61,7 +52,7 @@ func main() {
 		}
 
 		if scanner.Scan() {
-			go wc.SearchDefinition(ch, scanner.Text())
+			go dc.SearchDefinition(ch, scanner.Text())
 			counter++
 		}
 	}
@@ -71,4 +62,21 @@ func main() {
 	}
 
 	stdout.Flush()
+}
+
+func httpClient() *http.Client {
+	tbProxyURL, err := url.Parse("socks5://proxy:9050")
+
+	if err != nil {
+		fatalf("Failed to parse proxy URL: %v\n", err)
+	}
+
+	tbDialer, err := proxy.FromURL(tbProxyURL, proxy.Direct)
+	if err != nil {
+		fatalf("Failed to obtain proxy dialer: %v\n", err)
+	}
+
+	tbTransport := &http.Transport{Dial: tbDialer.Dial}
+
+	return &http.Client{Transport: tbTransport}
 }
