@@ -37,7 +37,12 @@ type Definition struct {
 
 type DefinitionText struct {
 	VerbalIllustrations []VerbalIllustration `xml:"vi"`
+	Synonyms            []Synonym            `xml:"sx"`
 	InnerXML            string               `xml:",innerxml"`
+}
+
+type Synonym struct {
+	InnerXML string `xml:",innerxml"`
 }
 
 type VerbalIllustration struct {

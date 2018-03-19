@@ -21,6 +21,14 @@
     ({{index . $idx}})
   {{end}}
   {{.Def}}
+  {{ with .Synonyms }}
+    <h5>Synonym(s)</h5>
+    <ul>
+    {{ range $k, $v := . }}
+      <li>{{.InnerXML}}</li>
+    {{end}}
+    </ul>
+  {{end}}
   <ul>
   {{ range $key2, $vi := .VerbalIllustrations }}
     <li>{{.Text}}</li>
