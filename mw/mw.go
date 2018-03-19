@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"net/url"
 )
 
 type MerriamWebster struct {
@@ -18,9 +19,9 @@ func New(key, dictionary string) *MerriamWebster {
 func (m *MerriamWebster) GetSearchUrl(word string) string {
 	return fmt.Sprintf(
 		"https://www.dictionaryapi.com/api/v1/references/%s/xml/%s?key=%s",
-		m.dictionary,
-		word,
-		m.apiKey,
+		url.PathEscape(m.dictionary),
+		url.PathEscape(word),
+		url.PathEscape(m.apiKey),
 	)
 }
 

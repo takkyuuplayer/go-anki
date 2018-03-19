@@ -76,7 +76,9 @@ func (el *EntryList) AnkiCard(headWord string) string {
 	ret := ""
 
 	for _, entry := range el.Entries {
-		if strings.Replace(entry.HeadWord, "*", "", -1) == headWord {
+		if len(el.Entries) == 1 {
+			ret += entry.AnkiCard()
+		} else if strings.Replace(entry.HeadWord, "*", "", -1) == headWord {
 			ret += entry.AnkiCard()
 		}
 	}
