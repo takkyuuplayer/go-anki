@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
-	"golang.org/x/net/proxy"
 	"net/http"
 	"net/url"
 	"os"
+
+	"golang.org/x/net/proxy"
 
 	"github.com/takkyuuplayer/go-anki"
 	"github.com/takkyuuplayer/go-anki/wiktionary"
@@ -23,14 +24,15 @@ func fatalf(fmtStr string, args interface{}) {
 }
 
 func main() {
-    wc := &wiktionary.Client{
+	wc := &anki.Client{
+		Dictionary: wiktionary.New(),
 		HttpClient: httpClient(),
 	}
 
-    run(wc)
+	run(wc)
 }
 
-func run(dc anki.DictionaryClient) {
+func run(dc *anki.Client) {
 	counter := 0
 	scanner := bufio.NewScanner(os.Stdin)
 	ch := make(chan *anki.Result)
