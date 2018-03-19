@@ -32,5 +32,11 @@ func (c *MerriamWebster) AnkiCard(body, word string) (string, error) {
 		return "", errors.New("Not Found")
 	}
 
-	return el.AnkiCard(word), nil
+	ret := el.AnkiCard(word)
+
+	if ret == "" {
+		return "", errors.New("Not Found")
+	}
+
+	return ret, nil
 }
