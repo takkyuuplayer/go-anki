@@ -54,5 +54,6 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 	ch <- &Result{
 		Word:       word,
 		Definition: definition,
+		IsSuccess:  true,
 	}
 }
