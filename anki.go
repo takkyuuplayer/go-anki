@@ -37,8 +37,9 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:      word,
-			IsSuccess: false,
+			Word:       word,
+			Definition: err.Error(),
+			IsSuccess:  false,
 		}
 	}
 
@@ -46,8 +47,9 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:      word,
-			IsSuccess: false,
+			Word:       word,
+			Definition: err.Error(),
+			IsSuccess:  false,
 		}
 	}
 

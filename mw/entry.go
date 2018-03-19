@@ -60,8 +60,9 @@ func (dt DefinitionText) Def() string {
 	return dt.InnerXML[from+1 : to]
 }
 
+var tmpl = template.Must(template.ParseFiles("mw/anki.tmpl.html"))
+
 func (e *Entry) AnkiCard() string {
-	tmpl := template.Must(template.ParseFiles("anki.tmpl.html"))
 	buf := bytes.NewBufferString("")
 
 	if err := tmpl.Execute(buf, e); err != nil {
@@ -75,7 +76,7 @@ func (el *EntryList) AnkiCard(headWord string) string {
 	ret := ""
 
 	for _, entry := range el.Entries {
-		if entry.HeadWord == headWord {
+		if strings.Replace(entry.HeadWord, "*", "", -1) == headWord {
 			ret += entry.AnkiCard()
 		}
 	}

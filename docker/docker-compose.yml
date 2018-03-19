@@ -6,10 +6,8 @@ services:
     volumes:
       - ../:/srv/
       - ~/go:/go
-    environment:
-      - TZ=Asia/Tokyo
+    env_file: .env
     tty: true
-    #command: bash
     working_dir: /srv
     links:
       - proxy
