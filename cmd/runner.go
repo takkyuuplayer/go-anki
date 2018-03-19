@@ -11,7 +11,7 @@ import (
 	"golang.org/x/net/proxy"
 
 	"github.com/takkyuuplayer/go-anki"
-	"github.com/takkyuuplayer/go-anki/wiktionary"
+	"github.com/takkyuuplayer/go-anki/mw"
 )
 
 var stdout = csv.NewWriter(os.Stdout)
@@ -25,7 +25,7 @@ func fatalf(fmtStr string, args interface{}) {
 
 func main() {
 	wc := &anki.Client{
-		Dictionary: wiktionary.New(),
+		Dictionary: mw.New(os.Getenv("MW_API_KEY"), "learners"),
 		HttpClient: httpClient(),
 	}
 
