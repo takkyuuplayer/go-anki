@@ -1,0 +1,30 @@
+<h3>{{.FunctionalLabel}}</h3>
+
+{{with .Pronunciation }}
+<h4>Pronunciation</h4>
+<ul>
+  <li>IPA: {{.}}</li>
+</ul>
+{{end}}
+
+{{with .Inflection }}
+  {{ range $index, $val := . }}
+    {{if $index}}/{{end}}
+    {{ .InnerXML }}
+  {{end}}
+{{end}}
+
+<h4>Definition</h4>
+{{ range $idx, $dt := .Definition.DefinitionTexts }}
+<p>
+  {{with $.Definition.SenseNumber }}
+    ({{index . $idx}})
+  {{end}}
+  {{.Def}}
+  <ul>
+  {{ range $key2, $vi := .VerbalIllustrations }}
+    <li>{{.Text}}</li>
+  {{end}}
+  </ul>
+</p>
+{{end}}
