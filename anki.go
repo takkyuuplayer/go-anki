@@ -29,6 +29,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 			Word:      word,
 			IsSuccess: false,
 		}
+		return
 	}
 
 	defer resp.Body.Close()
@@ -41,6 +42,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
+		return
 	}
 
 	definition, err := ac.Dictionary.AnkiCard(string(body), word)
@@ -51,6 +53,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
+		return
 	}
 
 	ch <- &Result{
