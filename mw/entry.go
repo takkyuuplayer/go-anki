@@ -16,13 +16,19 @@ type EntryList struct {
 }
 
 type Entry struct {
-	XMLName         xml.Name     `xml:"entry"`
-	ID              string       `xml:"id,attr"`
-	HeadWord        string       `xml:"hw"`
-	Inflection      []Inflection `xml:"in"`
-	Pronunciation   string       `xml:"pr"`
-	FunctionalLabel string       `xml:"fl"`
-	Definition      Definition   `xml:"def"`
+	XMLName         xml.Name       `xml:"entry"`
+	ID              string         `xml:"id,attr"`
+	HeadWord        string         `xml:"hw"`
+	Inflection      []Inflection   `xml:"in"`
+	Pronunciation   string         `xml:"pr"`
+	FunctionalLabel string         `xml:"fl"`
+	DefinedRunOn    []DefinedRunOn `xml:"dro"`
+	Definition      Definition     `xml:"def"`
+}
+
+type DefinedRunOn struct {
+	Phrase     string     `xml:"dre"`
+	Definition Definition `xml:"def"`
 }
 
 type Inflection struct {
@@ -60,12 +66,13 @@ func (dt DefinitionText) Def() string {
 	return dt.InnerXML[from+1 : to]
 }
 
-var tmpl = template.Must(template.ParseFiles("mw/anki.tmpl.html"))
+var word = template.Must(template.ParseFiles("mw/word.tmpl.html", "mw/definition.tmpl.html"))
+var phrase = template.Must(template.ParseFiles("mw/phrase.tmpl.html", "mw/definition.tmpl.html"))
 
 func (e *Entry) AnkiCard() string {
 	buf := bytes.NewBufferString("")
 
-	if err := tmpl.Execute(buf, e); err != nil {
+	if err := word.Execute(buf, e); err != nil {
 		log.Fatalf("execution failed: %s", err)
 	}
 

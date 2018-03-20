@@ -1,0 +1,15 @@
+<h3>{{.FunctionalLabel}}</h3>
+
+{{with .Pronunciation }}
+<h4>Pronunciation</h4>
+<ul>
+  <li>IPA: {{.}}</li>
+</ul>
+{{end}}
+
+{{with .Inflection }}
+  {{ range $index, $val := . }}
+    {{if $index}}/{{end}}
+    {{ .InnerXML }}
+  {{end}}
+{{end}}
