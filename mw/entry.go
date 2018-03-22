@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"log"
+	"regexp"
 	"strings"
 	"text/template"
 )
@@ -28,6 +29,7 @@ type Entry struct {
 
 type DefinedRunOn struct {
 	Phrase     string     `xml:"dre"`
+	Gram       string     `xml:"gram"`
 	Definition Definition `xml:"def"`
 }
 
@@ -37,7 +39,7 @@ type Inflection struct {
 
 type Definition struct {
 	Gram            string           `xml:"gram"`
-	SenseNumber     []string         `xml:"sn"`
+	PhrasalVerbForm []string         `xml:"phrasev>pva"`
 	DefinitionTexts []DefinitionText `xml:"dt"`
 }
 
@@ -55,39 +57,53 @@ type VerbalIllustration struct {
 	Text string `xml:",innerxml"`
 }
 
-func (dt DefinitionText) Def() string {
-	from := strings.Index(dt.InnerXML, ":")
-	to := strings.Index(dt.InnerXML, "<")
+var extractDef = regexp.MustCompile(`<vi>(.+)?</vi>`)
 
-	if to == -1 {
-		return dt.InnerXML[from+1:]
+func (dt DefinitionText) Def() string {
+	ret := extractDef.ReplaceAllString(dt.InnerXML, "")
+
+	if strings.HasPrefix(ret, ":") {
+		return ret[1:]
 	}
 
-	return dt.InnerXML[from+1 : to]
+	return ret
 }
 
 var word = template.Must(template.ParseFiles("mw/word.tmpl.html", "mw/definition.tmpl.html"))
 var phrase = template.Must(template.ParseFiles("mw/phrase.tmpl.html", "mw/definition.tmpl.html"))
 
-func (e *Entry) AnkiCard() string {
+func render(tpl *template.Template, e interface{}) string {
 	buf := bytes.NewBufferString("")
 
-	if err := word.Execute(buf, e); err != nil {
+	if err := tpl.Execute(buf, e); err != nil {
 		log.Fatalf("execution failed: %s", err)
 	}
 
-	return strings.Replace(buf.String(), "\n", "", -1)
+	return buf.String()
+}
+
+func (e *Entry) AnkiCard(headWord string) string {
+
+	if strings.Replace(e.HeadWord, "*", "", -1) == headWord {
+		return strings.Replace(render(word, e), "\n", "", -1)
+	}
+
+	if e.DefinedRunOn != nil {
+		for _, dro := range e.DefinedRunOn {
+			if dro.Phrase == headWord {
+				return strings.Replace(render(phrase, dro), "\n", "", -1)
+			}
+		}
+	}
+
+	return ""
 }
 
 func (el *EntryList) AnkiCard(headWord string) string {
 	ret := ""
 
 	for _, entry := range el.Entries {
-		if len(el.Entries) == 1 {
-			ret += entry.AnkiCard()
-		} else if strings.Replace(entry.HeadWord, "*", "", -1) == headWord {
-			ret += entry.AnkiCard()
-		}
+		ret += entry.AnkiCard(headWord)
 	}
 
 	return ret

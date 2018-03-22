@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -36,6 +37,8 @@ func run(dc *anki.Client) {
 	counter := 0
 	scanner := bufio.NewScanner(os.Stdin)
 	ch := make(chan *anki.Result)
+	out := csv.NewWriter(os.Stdout)
+	out.Comma = '\t'
 
 	for ; counter < parallel; counter++ {
 		if scanner.Scan() {
@@ -48,7 +51,9 @@ func run(dc *anki.Client) {
 	for i := 0; i < counter; i++ {
 		result := <-ch
 		if result.IsSuccess {
-			stdout.Write([]string{result.Word, result.Definition})
+			if err := out.Write([]string{result.Word, result.Definition}); err != nil {
+				log.Fatalln("Error writing record to csv:", err)
+			}
 		} else {
 			fmt.Fprintf(os.Stderr, "%s,%s\n", result.Word, result.Definition)
 		}
@@ -63,7 +68,7 @@ func run(dc *anki.Client) {
 		fmt.Fprintln(os.Stderr, "reading standard input:", err)
 	}
 
-	stdout.Flush()
+	out.Flush()
 }
 
 func httpClient() *http.Client {
