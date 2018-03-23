@@ -17,20 +17,29 @@ type EntryList struct {
 }
 
 type Entry struct {
-	XMLName         xml.Name       `xml:"entry"`
-	ID              string         `xml:"id,attr"`
-	HeadWord        string         `xml:"hw"`
-	Inflection      []Inflection   `xml:"in"`
-	Pronunciation   string         `xml:"pr"`
-	FunctionalLabel string         `xml:"fl"`
-	DefinedRunOn    []DefinedRunOn `xml:"dro"`
-	Definition      Definition     `xml:"def"`
+	XMLName         xml.Name         `xml:"entry"`
+	ID              string           `xml:"id,attr"`
+	HeadWord        string           `xml:"hw"`
+	Inflection      []Inflection     `xml:"in"`
+	Pronunciation   string           `xml:"pr"`
+	FunctionalLabel string           `xml:"fl"`
+	Definition      Definition       `xml:"def"`
+	DefinedRunOn    []DefinedRunOn   `xml:"dro"`
+	UndefinedRunOn  []UndefinedRunOn `xml:"uro"`
 }
 
 type DefinedRunOn struct {
 	Phrase     string     `xml:"dre"`
 	Gram       string     `xml:"gram"`
 	Definition Definition `xml:"def"`
+}
+
+type UndefinedRunOn struct {
+	HeadWord            string               `xml:"ure"`
+	Pronunciation       string               `xml:"pr"`
+	FunctionalLabel     string               `xml:"fl"`
+	Gram                string               `xml:"gram"`
+	VerbalIllustrations []VerbalIllustration `xml:"utxt>vi"`
 }
 
 type Inflection struct {
@@ -86,6 +95,12 @@ func (e *Entry) AnkiCard(headWord string) string {
 
 	if strings.Replace(e.HeadWord, "*", "", -1) == headWord {
 		return strings.Replace(render(word, e), "\n", "", -1)
+	}
+
+	for _, uro := range e.UndefinedRunOn {
+		if strings.Replace(uro.HeadWord, "*", "", -1) == headWord {
+			return strings.Replace(render(word, e), "\n", "", -1)
+		}
 	}
 
 	if e.DefinedRunOn != nil {

@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     container_name: go-anki
-    image: library/golang:1.8
+    image: library/golang:1.10
     volumes:
       - ../:/srv/
       - ~/go:/go

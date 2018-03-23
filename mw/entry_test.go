@@ -2,7 +2,6 @@ package mw_test
 
 import (
 	"encoding/xml"
-	"fmt"
 	"io/ioutil"
 	"strings"
 	"testing"
@@ -38,11 +37,6 @@ func TestEntryListToParseDefinition(t *testing.T) {
 		string(definitionText.VerbalIllustrations[0].Text),
 	)
 	assert.NotNil(t, definitionText.InnerXML)
-
-	senseNumber := entry.Definition.SenseNumber
-
-	assert.Equal(t, 6, len(senseNumber))
-	assert.Equal(t, "1", senseNumber[0])
 }
 
 func TestEntryListToParseSuggestion(t *testing.T) {
@@ -65,24 +59,32 @@ func TestDefinitionText(t *testing.T) {
 	entry := ret.Entries[0]
 	definitionText := entry.Definition.DefinitionTexts[0]
 
-	assert.Equal(t, "a set of questions or problems that are designed to measure a person's knowledge, skills, or abilities ", definitionText.Def())
+	assert.Equal(t, true, strings.Contains(definitionText.Def(), "a set of questions or problems that are designed to measure a person's knowledge, skills, or abilities "))
 }
 
-func TestEntryToAnkiCard(t *testing.T) {
+func TestWordToAnkiCard(t *testing.T) {
 	data, _ := ioutil.ReadFile("../testdata/merriam-webster/test.xml")
 	ret := mw.EntryList{}
 	xml.Unmarshal([]byte(data), &ret)
 
-	assert.Equal(t, true, strings.Contains(ret.Entries[0].AnkiCard(), "<h3>noun</h3>"))
-}
-
-func TestEntryListToAnkiCard(t *testing.T) {
-	data, _ := ioutil.ReadFile("../testdata/merriam-webster/test.xml")
-	ret := mw.EntryList{}
-	xml.Unmarshal([]byte(data), &ret)
-
-	fmt.Println(ret.AnkiCard("test"))
-
-	assert.Equal(t, false, strings.Contains(ret.AnkiCard("test"), "<h3>noun</h3>"))
+	assert.Equal(t, true, strings.Contains(ret.AnkiCard("test"), "<h3>noun</h3>"))
 	assert.Equal(t, false, strings.Contains(ret.AnkiCard("wrong"), "<h3>noun</h3>"))
+}
+
+func TestPhrasalVerbToAnkiCard(t *testing.T) {
+	data, _ := ioutil.ReadFile("../testdata/merriam-webster/go_through.xml")
+	ret := mw.EntryList{}
+	xml.Unmarshal([]byte(data), &ret)
+
+	assert.Equal(t, true, strings.Contains(ret.AnkiCard("go through"), "<h3>phrasal verb</h3>"))
+	assert.Equal(t, false, strings.Contains(ret.AnkiCard("put up"), "<h3>phrasal verb</h3>"))
+}
+
+func TestAnkiCard(t *testing.T) {
+	data, _ := ioutil.ReadFile("../testdata/merriam-webster/go_through.xml")
+	ret := mw.EntryList{}
+	xml.Unmarshal([]byte(data), &ret)
+
+	assert.Equal(t, true, strings.Contains(ret.AnkiCard("go through"), "<h3>phrasal verb</h3>"))
+	assert.Equal(t, false, strings.Contains(ret.AnkiCard("put up"), "<h3>phrasal verb</h3>"))
 }
