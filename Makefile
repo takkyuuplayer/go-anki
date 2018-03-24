@@ -1,6 +1,6 @@
 .PHONY: test
 
-setup: dep
+setup: dep generate
 	mkdir -p data
 
 dep:
@@ -9,6 +9,9 @@ dep:
 	dep ensure -update
 
 generate:
+	go generate ./...
+
+anki:
 	find ./data -type f | xargs cat | go run cmd/runner.go > result.csv
 
 test:

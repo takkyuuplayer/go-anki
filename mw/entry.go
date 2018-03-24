@@ -1,14 +1,39 @@
 package mw
 
+//go:generate go-assets-builder -p mw -s=/assets -o assets.go assets
+
 import (
 	"bytes"
 	"encoding/xml"
 	"log"
-	"os"
 	"regexp"
 	"strings"
 	"text/template"
 )
+
+func parseAssets(tmpl *template.Template, path string) (*template.Template, error) {
+	f, err := Assets.Open(path)
+
+	if err != nil {
+		return nil, err
+	}
+
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(f)
+
+	return tmpl.Parse(buf.String())
+}
+
+var word = template.New("word")
+var phrase = template.New("phrase")
+
+func init() {
+	parseAssets(word, "/word.tmpl.html")
+	parseAssets(word, "/definition.tmpl.html")
+
+	parseAssets(phrase, "/phrase.tmpl.html")
+	parseAssets(phrase, "/definition.tmpl.html")
+}
 
 type EntryList struct {
 	XMLName     xml.Name `xml:"entry_list"`
@@ -78,10 +103,6 @@ func (dt DefinitionText) Def() string {
 
 	return ret
 }
-
-var basePath = os.Getenv("GOPATH") + "/src/github.com/takkyuuplayer/go-anki/mw"
-var word = template.Must(template.ParseFiles(basePath+"/word.tmpl.html", basePath+"/definition.tmpl.html"))
-var phrase = template.Must(template.ParseFiles(basePath+"/phrase.tmpl.html", basePath+"/definition.tmpl.html"))
 
 func render(tpl *template.Template, e interface{}) string {
 	buf := bytes.NewBufferString("")

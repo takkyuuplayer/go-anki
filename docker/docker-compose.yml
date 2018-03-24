@@ -3,10 +3,9 @@ services:
   app:
     container_name: go-anki
     build: .
-    working_dir: /go/src/go-anki
+    working_dir: /go/src/github.com/takkyuuplayer/go-anki
     volumes:
-      - ../:/go/src/go-anki
-      - ~/go:/go
+      - ../:/go/src/github.com/takkyuuplayer/go-anki
     env_file: .env
     tty: true
     links:
