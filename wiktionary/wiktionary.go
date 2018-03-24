@@ -1,13 +1,10 @@
 package wiktionary
 
 import (
+	"errors"
 	"fmt"
-	"io/ioutil"
-	"net/http"
 	"regexp"
 	"strings"
-
-	"github.com/takkyuuplayer/go-anki"
 )
 
 var defReg = regexp.MustCompile(`(?s)<h2><span class="mw-headline" id="English">English</span>.*?</h2>.*?(<h3>.+?)\n+(?:<hr />|<!-- \nNewPP limit report)`)
@@ -27,21 +24,27 @@ var deleteReg = []*regexp.Regexp{
 }
 var ignoreRegexps = make([]*regexp.Regexp, len(ignoreParagraphs))
 
-type Client struct {
-	HttpClient *http.Client
-}
-
 func init() {
 	for idx, val := range ignoreParagraphs {
 		ignoreRegexps[idx] = regexp.MustCompile(`(?s)<h[3-5]><span class="mw-headline" id="` + val + `(?:.+?)(<h.>|\z)`)
 	}
 }
 
-func FindDefinition(html string) string {
-	group := defReg.FindStringSubmatch(html)
+type Wiktionary struct{}
+
+func New() *Wiktionary {
+	return &Wiktionary{}
+}
+
+func (w *Wiktionary) GetSearchUrl(word string) string {
+	return fmt.Sprintf("https://en.wiktionary.org/wiki/%s", strings.Replace(word, " ", "_", -1))
+}
+
+func (w *Wiktionary) AnkiCard(body, word string) (string, error) {
+	group := defReg.FindStringSubmatch(body)
 
 	if len(group) != 2 {
-		return "Not Found"
+		return "", errors.New("Not Found")
 	}
 
 	definition := group[1]
@@ -53,39 +56,5 @@ func FindDefinition(html string) string {
 		definition = reg.ReplaceAllString(definition, "")
 	}
 
-	return definition
-}
-
-func GetWiktionaryUrl(word string) string {
-	return fmt.Sprintf("https://en.wiktionary.org/wiki/%s", strings.Replace(word, " ", "_", -1))
-}
-
-func (client *Client) SearchDefinition(ch chan<- *anki.Result, word string) {
-	resp, err := client.HttpClient.Get(GetWiktionaryUrl(word))
-
-	if err != nil {
-		ch <- &anki.Result{
-			Word:      word,
-			IsSuccess: false,
-		}
-	}
-
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-
-	if err != nil {
-		ch <- &anki.Result{
-			Word:      word,
-			IsSuccess: false,
-		}
-	}
-
-	definition := FindDefinition(string(body))
-
-	ch <- &anki.Result{
-		Word:       word,
-		Definition: definition,
-		IsSuccess:  definition != "Not Found",
-	}
+	return definition, nil
 }

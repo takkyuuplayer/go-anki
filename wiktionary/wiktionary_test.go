@@ -5,76 +5,48 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
+var dictionary = wiktionary.New()
+
 func TestFindDefinitionForWord(t *testing.T) {
-	data, err := ioutil.ReadFile("../testdata/wiktionary/put.html")
+	data, _ := ioutil.ReadFile("../testdata/wiktionary/put.html")
+	definition, err := dictionary.AnkiCard(string(data), "put")
 
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	matched := wiktionary.FindDefinition(string(data))
-
-	if !strings.HasPrefix(matched, "<h4") {
-		t.Errorf(`strings.HasPrefix(matched, "<h4") = %#v, want true`, strings.HasPrefix(matched, "<div"))
-	}
+	assert.Equal(t, true, strings.HasPrefix(definition, "<h4"))
+	assert.Nil(t, err)
 }
 
 func TestFindDefinitionForWordHittingOnlyEnglish(t *testing.T) {
-	data, err := ioutil.ReadFile("../testdata/wiktionary/subtle.html")
+	data, _ := ioutil.ReadFile("../testdata/wiktionary/subtle.html")
+	definition, err := dictionary.AnkiCard(string(data), "subtle")
 
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	matched := wiktionary.FindDefinition(string(data))
-
-	if !strings.HasPrefix(matched, "<h3") {
-		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true`, strings.HasPrefix(matched, "<h3"))
-	}
+	assert.Equal(t, true, strings.HasPrefix(definition, "<h3"))
+	assert.Nil(t, err)
 }
 
 func TestFindDefinitionForIdiom(t *testing.T) {
-	data, err := ioutil.ReadFile("../testdata/wiktionary/put_up_with.html")
+	data, _ := ioutil.ReadFile("../testdata/wiktionary/put_up_with.html")
 
-	if err != nil {
-		t.Fatal(err)
-	}
+	definition, err := dictionary.AnkiCard(string(data), "put up on")
 
-	matched := wiktionary.FindDefinition(string(data))
-
-	if !strings.HasPrefix(matched, "<h3") {
-		t.Errorf(`strings.HasPrefix(matched, "<h3") = %#v, want true value`, strings.HasPrefix(matched, "<div"))
-	}
-
-	if !strings.HasSuffix(matched, "</ul>") {
-		t.Errorf(`string.HasSuffix(matched, "</ul>") = %#v, want true value`, strings.HasSuffix(matched, "</ul>"))
-	}
+	assert.Equal(t, true, strings.HasPrefix(definition, "<h3"))
+	assert.Equal(t, true, strings.HasSuffix(definition, "</ul>"))
+	assert.Nil(t, err)
 }
 
 func TestFindDefinitionNotFound(t *testing.T) {
-	data, err := ioutil.ReadFile("../testdata/wiktionary/put_up_on.html")
+	data, _ := ioutil.ReadFile("../testdata/wiktionary/put_up_on.html")
 
-	if err != nil {
-		t.Fatal(err)
-	}
+	definition, err := dictionary.AnkiCard(string(data), "put up on")
 
-	matched := wiktionary.FindDefinition(string(data))
-
-	if matched != "Not Found" {
-		t.Errorf(`matched = %#v, want %#v`, matched, "Not Found")
-	}
+	assert.Equal(t, "", definition)
+	assert.NotNil(t, err)
 }
 
-func TestGetWiktionaryUrl(t *testing.T) {
-
-	if wiktionary.GetWiktionaryUrl("put") != "https://en.wiktionary.org/wiki/put" {
-		t.Errorf(`GetWiktionaryUrl('put') = %#v, want %#v`, wiktionary.GetWiktionaryUrl("put"), "https://en.wiktionary.org/wiki/put")
-	}
-
-	if wiktionary.GetWiktionaryUrl("put up with") != "https://en.wiktionary.org/wiki/put_up_with" {
-		t.Errorf(`GetWiktionaryUrl("put up with") = %#v, want %#v`, wiktionary.GetWiktionaryUrl("put up with"), "https://en.wiktionary.org/wiki/put_up_with")
-	}
+func TestGetSearchUrl(t *testing.T) {
+	assert.Equal(t, dictionary.GetSearchUrl("put"), "https://en.wiktionary.org/wiki/put")
+	assert.Equal(t, dictionary.GetSearchUrl("put up with"), "https://en.wiktionary.org/wiki/put_up_with")
 }

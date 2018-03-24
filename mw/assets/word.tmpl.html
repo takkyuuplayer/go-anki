@@ -1,0 +1,36 @@
+<h2>{{.HeadWord}}</h2>
+<h3>{{.FunctionalLabel}}</h3>
+
+{{with .Pronunciation }}
+<h4>Pronunciation</h4>
+<ul>
+  <li>IPA: {{.}}</li>
+</ul>
+{{end}}
+
+{{with .Inflection }}
+  {{ range $index, $val := . }}
+    {{if $index}}/{{end}}
+    {{ .InnerXML }}
+  {{end}}
+{{end}}
+
+{{ template "definition" .Definition }}
+
+{{ range $uro_i, $uro := .UndefinedRunOn }}
+  <h2>{{.HeadWord}}</h2>
+  <h3>{{.FunctionalLabel}}</h3>
+
+  {{with .Pronunciation }}
+  <h4>Pronunciation</h4>
+  <ul>
+    <li>IPA: {{.}}</li>
+  </ul>
+  {{end}}
+
+  <ul>
+  {{ range $vi_k, $vi := .VerbalIllustrations }}
+    <li>{{ .Text }}</li>
+  {{ end }}
+  </ul>
+{{ end }}

@@ -1,6 +1,8 @@
+assets.go
 /data
 /result.csv
 /Gopkg.lock
+/docker/.env
 
 # Created by https://www.gitignore.io/api/go
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entry_list version="1.0">
+  <entry id="accountable">
+    <hw>ac*count*able</hw>
+    <sound>
+      <wav>accoun03.wav</wav>
+    </sound>
+    <pr>əˈkaʊntəbəl</pr>
+    <fl>adjective</fl>
+    <lb>not used before a noun</lb>
+    <def>
+      <sn>1</sn>
+      <dt>:required to explain actions or decisions to someone <un>usually + <it>to</it> <vi>Political leaders need to be <it>accountable to</it> the people they represent.</vi> <vi>a powerful businessman who seems to think that he's <it>accountable</it> [=<it>answerable</it>] <it>to</it> no one</vi></un></dt>
+      <sn>2</sn>
+      <dt>:required to be responsible for something <vi>If anything goes wrong I will hold you personally <it>accountable</it>!</vi> <un>often + <it>for</it> <vi>They hold you <it>accountable for</it> your mistakes.</vi> <vi>Each child is <it>accountable</it> [=<it>responsible</it>] <it>for</it> his or her own behavior.</vi></un></dt>
+    </def>
+    <uro>
+      <ure>ac*count*abil*i*ty</ure>
+      <sound>
+        <wav>accoun02.wav</wav>
+      </sound>
+      <pr>əˌkʰæʊntəˈbɪləɾi</pr>
+      <fl>noun</fl>
+      <gram>noncount</gram>
+      <utxt>
+        <vi>We now have greater <it>accountability</it> in the department. [=people in the department can now be held more responsible for what happens]</vi>
+        <vi>corporate <it>accountability</it></vi>
+      </utxt>
+    </uro>
+  </entry>
+</entry_list>
