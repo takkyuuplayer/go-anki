@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -13,11 +14,15 @@ import (
 
 	"github.com/takkyuuplayer/go-anki"
 	"github.com/takkyuuplayer/go-anki/mw"
+	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
-var stdout = csv.NewWriter(os.Stdout)
-
 const parallel = 10
+
+var dictionaries = map[string]anki.Dictionary{
+	"mw":         mw.New(os.Getenv("MW_API_KEY"), "learners"),
+	"wiktionary": wiktionary.New(),
+}
 
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
@@ -25,8 +30,13 @@ func fatalf(fmtStr string, args interface{}) {
 }
 
 func main() {
+	var (
+		dictionary = flag.String("dictionary", "mw", "dictionary to use. (mw|wiktionary)")
+	)
+	flag.Parse()
+
 	wc := &anki.Client{
-		Dictionary: mw.New(os.Getenv("MW_API_KEY"), "learners"),
+		Dictionary: dictionaries[*dictionary],
 		HttpClient: httpClient(),
 	}
 
