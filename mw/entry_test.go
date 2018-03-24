@@ -79,12 +79,3 @@ func TestPhrasalVerbToAnkiCard(t *testing.T) {
 	assert.Equal(t, true, strings.Contains(ret.AnkiCard("go through"), "<h3>phrasal verb</h3>"))
 	assert.Equal(t, false, strings.Contains(ret.AnkiCard("put up"), "<h3>phrasal verb</h3>"))
 }
-
-func TestAnkiCard(t *testing.T) {
-	data, _ := ioutil.ReadFile("../testdata/merriam-webster/go_through.xml")
-	ret := mw.EntryList{}
-	xml.Unmarshal([]byte(data), &ret)
-
-	assert.Equal(t, true, strings.Contains(ret.AnkiCard("go through"), "<h3>phrasal verb</h3>"))
-	assert.Equal(t, false, strings.Contains(ret.AnkiCard("put up"), "<h3>phrasal verb</h3>"))
-}

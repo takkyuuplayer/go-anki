@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"log"
+	"os"
 	"regexp"
 	"strings"
 	"text/template"
@@ -78,8 +79,9 @@ func (dt DefinitionText) Def() string {
 	return ret
 }
 
-var word = template.Must(template.ParseFiles("mw/word.tmpl.html", "mw/definition.tmpl.html"))
-var phrase = template.Must(template.ParseFiles("mw/phrase.tmpl.html", "mw/definition.tmpl.html"))
+var basePath = os.Getenv("GOPATH") + "/src/github.com/takkyuuplayer/go-anki/mw"
+var word = template.Must(template.ParseFiles(basePath+"/word.tmpl.html", basePath+"/definition.tmpl.html"))
+var phrase = template.Must(template.ParseFiles(basePath+"/phrase.tmpl.html", basePath+"/definition.tmpl.html"))
 
 func render(tpl *template.Template, e interface{}) string {
 	buf := bytes.NewBufferString("")
