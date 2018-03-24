@@ -2,13 +2,13 @@ version: '3'
 services:
   app:
     container_name: go-anki
-    image: library/golang:1.10
+    build: .
+    working_dir: /go/src/go-anki
     volumes:
-      - ../:/srv/
+      - ../:/go/src/go-anki
       - ~/go:/go
     env_file: .env
     tty: true
-    working_dir: /srv
     links:
       - proxy
   proxy:
