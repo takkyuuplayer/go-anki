@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Anki Card Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>Anki Card Generator</h1>
+      </div>
+      <div class="row">
+        <form class="col s12" action="/" method="POST">
+          <div class="row">
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">library_books</i>
+              <select name="dictionary">
+                <option value="" disabled selected></option>
+                <option value="mw">Merriam-Webster's Learner's Dictionary</option>
+                <option value="wiktionary">Wiktionary</option>
+              </select>
+              <label>Dictionary</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">wrap_text</i>
+              <textarea id="textarea1" name="words" class="materialize-textarea"></textarea>
+              <label for="textarea1">words</label>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+    var elem = document.querySelector('select');
+    var instance = M.FormSelect.init(elem);
+    </script>
+  </body>
+</html>

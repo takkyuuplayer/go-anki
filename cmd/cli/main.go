@@ -15,8 +15,6 @@ import (
 	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
-const parallel = 10
-
 var dictionaries = map[string]anki.Dictionary{
 	"mw":         mw.New(os.Getenv("MW_API_KEY"), "learners"),
 	"wiktionary": wiktionary.New(),
