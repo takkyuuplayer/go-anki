@@ -1,0 +1,13 @@
+{
+  "name": "go-anki",
+  "description": "Anki Card Generator",
+  "website": "https://github.com/takkyuuplayer/go-anki",
+  "repository": "https://github.com/takkyuuplayer/go-anki",
+  "env": {
+    "MW_API_KEY": {
+      "description": "Learner's key on https://www.dictionaryapi.com/account/my-keys.htm",
+      "value": "replace.me"
+    }
+  },
+  "stack": "container"
+}

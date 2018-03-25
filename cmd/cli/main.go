@@ -6,10 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
-
-	"golang.org/x/net/proxy"
 
 	"github.com/takkyuuplayer/go-anki"
 	"github.com/takkyuuplayer/go-anki/mw"
@@ -29,7 +26,7 @@ func main() {
 
 	wc := &anki.Client{
 		Dictionary: dictionaries[*dictionary],
-		HttpClient: httpClient(),
+		HttpClient: &http.Client{},
 	}
 
 	if wc.Dictionary == nil {
@@ -49,21 +46,4 @@ func main() {
 func fatalf(fmtStr string, args interface{}) {
 	fmt.Fprintf(os.Stderr, fmtStr, args)
 	os.Exit(-1)
-}
-
-func httpClient() *http.Client {
-	tbProxyURL, err := url.Parse("socks5://proxy:9050")
-
-	if err != nil {
-		fatalf("Failed to parse proxy URL: %v\n", err)
-	}
-
-	tbDialer, err := proxy.FromURL(tbProxyURL, proxy.Direct)
-	if err != nil {
-		fatalf("Failed to obtain proxy dialer: %v\n", err)
-	}
-
-	tbTransport := &http.Transport{Dial: tbDialer.Dial}
-
-	return &http.Client{Transport: tbTransport}
 }
