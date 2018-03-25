@@ -20,6 +20,9 @@ anki:
 test:
 	go test ./...
 
+heroku: tools dep generate
+	go run ./cmd/server/main.go --port=${PORT}
+
 run:
 	$(MAKE) -C docker $@
 run-test:
