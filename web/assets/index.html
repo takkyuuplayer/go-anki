@@ -6,19 +6,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style type="text/css" media="all">
+.social-icon {
+  font-size: xx-large;
+  color: #444;
+}
+.social-icon:hover {
+  color: #4dadf7;
+}
+    </style>
     <title>Anki Card Generator</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <h1>Anki Card Generator</h1>
+        <h1>
+          Anki Card Generator
+          <img src="https://ankiweb.net/static/anki-logo2.png">
+        </h1>
       </div>
       <div class="row">
         <form class="col s12" action="/" method="POST">
           <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="input-field col s12">
               <i class="material-icons prefix">library_books</i>
-              <select name="dictionary">
+              <select id="dictionary" name="dictionary">
                 <option value="" disabled selected></option>
                 <option value="mw">Merriam-Webster's Learner's Dictionary</option>
                 <option value="wiktionary">Wiktionary</option>
@@ -29,19 +42,62 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">wrap_text</i>
-              <textarea id="textarea1" name="words" class="materialize-textarea"></textarea>
+              <textarea id="textarea1" name="words" style="min-height: 5em" class="materialize-textarea"></textarea>
               <label for="textarea1">words</label>
             </div>
           </div>
           <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-              <i class="material-icons right">send</i>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Download
+              <i class="material-icons right">file_download</i>
             </button>
           </div>
         </form>
       </div>
+      <div class="row">
+        <h6>Powered By</h6>
+      </div>
+      <div class="row">
+        <div class="col s2">
+          <a href="https://www.dictionaryapi.com/products/api-learners-dictionary.htm" target="_blank">
+            <img class="hoverable" height="125px" src="https://www.dictionaryapi.com/images/info/branding-guidelines/mw-logo-light-background-125x125.png" alt="Merriam-Webster's Learner's Dictionary with Audio">
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="https://en.wiktionary.org/wiki/Wiktionary:Main_Page">
+            <img class="hoverable" height="125px" src="https://en.wiktionary.org/static/images/project-logos/enwiktionary-2x.png" alt="Wiktionary, the free dictionary">
+          </a>
+        </div>
+      </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <hr>
+          <div class="footer-copyright">
+            &copy;
+            <script type="text/javascript">
+            var begin = 2018;
+            var year = new Date().getFullYear();
+            document.write(year === begin ? year : begin + " - " + year);
+            </script>
+            卓球Player All Rights Reserved.
+            <span class="grey-text text-darken-1 right" >
+              <a href="https://github.com/takkyuuplayer/go-anki" target="_blank">
+                <i class="fa fa-github social-icon"></i>
+              </a>
+              <a href="https://twitter.com/takkyuuplayer" target="_blank">
+                <i class="fa fa-twitter social-icon"></i>
+              </a>
+              <a href="https://www.takkyuuplayer.com/" target="_blank">
+                <i class="fa fa-home social-icon"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script type="text/javascript">
+    M.AutoInit();
     var elem = document.querySelector('select');
     var instance = M.FormSelect.init(elem);
     </script>
