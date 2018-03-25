@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -29,6 +30,11 @@ func main() {
 	wc := &anki.Client{
 		Dictionary: dictionaries[*dictionary],
 		HttpClient: httpClient(),
+	}
+
+	if wc.Dictionary == nil {
+		log.Printf("Unknown Dictionary: %s", *dictionary)
+		return
 	}
 
 	out := csv.NewWriter(os.Stdout)
