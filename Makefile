@@ -15,7 +15,7 @@ generate:
 	go generate ./...
 
 anki:
-	find ./data -type f | xargs cat | go run cmd/runner.go > result.csv
+	find ./data -type f | xargs cat | go run cmd/cli/main.go --dictionary=wiktionary > result.csv
 
 test:
 	go test ./...
