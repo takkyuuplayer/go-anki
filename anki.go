@@ -3,8 +3,10 @@ package anki
 import (
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -25,10 +27,12 @@ type Client struct {
 }
 
 const parallel = 10
+const generator_error_message = "anki_card_generator_error"
 
 func (ac *Client) Run(in io.Reader, out, outErr *csv.Writer) {
 	counter := 0
 	ch := make(chan *Result)
+	defer close(ch)
 	scanner := bufio.NewScanner(in)
 
 	for ; counter < parallel; counter++ {
@@ -39,18 +43,37 @@ func (ac *Client) Run(in io.Reader, out, outErr *csv.Writer) {
 		}
 	}
 
-	for i := 0; i < counter; i++ {
+	failures := 0
+	forceStop := false
+
+	for ; counter > 0; counter-- {
 		result := <-ch
 		if result.IsSuccess {
 			out.Write([]string{result.Word, result.Definition})
+
+			if failures > 0 {
+				failures--
+			}
+
 		} else {
-			outErr.Write([]string{result.Word, result.Definition})
+			errMsg := fmt.Sprintf("%s: %s", result.Word, result.Definition)
+			outErr.Write([]string{generator_error_message, errMsg})
+			log.Print(errMsg)
+			failures++
 		}
 
-		if scanner.Scan() {
+		if failures > 3 {
+			forceStop = true
+		}
+
+		if !forceStop && scanner.Scan() {
 			go ac.SearchDefinition(ch, scanner.Text())
 			counter++
 		}
+	}
+
+	if forceStop {
+		outErr.Write([]string{generator_error_message, "Too many failures. Force Stopped"})
 	}
 
 	out.Flush()
@@ -74,7 +97,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       "anki card generator error",
+			Word:       word,
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
@@ -85,7 +108,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       "anki card generator error",
+			Word:       word,
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
