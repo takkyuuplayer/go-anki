@@ -21,9 +21,10 @@ test:
 	go test ./...
 
 heroku: tools dep generate
-	go run ./cmd/server/main.go --port=${PORT}
+	go build ./cmd/server/main.go
 
 run:
 	$(MAKE) -C docker $@
+
 run-test:
 	$(MAKE) -C docker $@
