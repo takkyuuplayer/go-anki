@@ -26,6 +26,12 @@ func post(w http.ResponseWriter, r *http.Request) {
 		HttpClient: &http.Client{},
 	}
 
+	if wc.Dictionary == nil {
+		log.Printf("Unknown Dictionary: %s", r.PostFormValue("dictionary"))
+		http.Redirect(w, r, "/", 301)
+		return
+	}
+
 	w.Header().Set("Content-Disposition", "attachment; filename=anki.tsv")
 
 	in := strings.NewReader(r.PostFormValue("words"))
@@ -55,5 +61,9 @@ func main() {
 
 	log.Printf("start listening on %s", *addr)
 
-	http.ListenAndServe(*addr, nil)
+	err := http.ListenAndServe(*addr, nil)
+
+	if err != nil {
+		log.Print(err)
+	}
 }
