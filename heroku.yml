@@ -1,0 +1,7 @@
+build:
+  languages:
+    - go
+  pre:
+    - make heroku
+run:
+  web: main --port $PORT
