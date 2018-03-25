@@ -67,8 +67,8 @@ func TestWordToAnkiCard(t *testing.T) {
 	ret := mw.EntryList{}
 	xml.Unmarshal([]byte(data), &ret)
 
-	assert.Equal(t, true, strings.Contains(ret.AnkiCard("test"), "<h3>noun</h3>"))
-	assert.Equal(t, false, strings.Contains(ret.AnkiCard("wrong"), "<h3>noun</h3>"))
+	assert.NotEqual(t, "", ret.AnkiCard("test"))
+	assert.Equal(t, "", ret.AnkiCard("wrong"))
 }
 
 func TestPhrasalVerbToAnkiCard(t *testing.T) {
@@ -76,6 +76,6 @@ func TestPhrasalVerbToAnkiCard(t *testing.T) {
 	ret := mw.EntryList{}
 	xml.Unmarshal([]byte(data), &ret)
 
-	assert.Equal(t, true, strings.Contains(ret.AnkiCard("go through"), "<h3>phrasal verb</h3>"))
-	assert.Equal(t, false, strings.Contains(ret.AnkiCard("put up"), "<h3>phrasal verb</h3>"))
+	assert.NotEqual(t, "", ret.AnkiCard("go through"))
+	assert.Equal(t, "", ret.AnkiCard("put up"))
 }
