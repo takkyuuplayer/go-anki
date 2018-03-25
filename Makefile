@@ -1,6 +1,6 @@
 .PHONY: test
 
-setup: tools dep generate
+setup: tools generate dep
 	mkdir -p data
 
 tools:
@@ -20,7 +20,7 @@ anki:
 test:
 	go test ./...
 
-heroku: tools dep generate
+heroku: setup
 	go build ./cmd/server/main.go
 
 run:

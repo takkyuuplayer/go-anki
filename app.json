@@ -9,12 +9,5 @@
       "value": "replace.me"
     }
   },
-  "buildpacks": [
-    {
-      "url": "heroku/go"
-    }
-  ],
-  "scripts": {
-    "postdeploy": "make heroku"
-  }
+  "stack": "container"
 }
