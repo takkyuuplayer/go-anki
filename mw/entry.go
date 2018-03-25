@@ -69,7 +69,10 @@ type UndefinedRunOn struct {
 }
 
 type Inflection struct {
-	InnerXML string `xml:",innerxml"`
+	FormLabel     string `xml:"il"`
+	InflectedForm string `xml:"if"`
+	Pronunciation string `xml:"pr"`
+	InnerXML      string `xml:",innerxml"`
 }
 
 type Definition struct {

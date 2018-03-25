@@ -8,6 +8,8 @@ services:
       - ../:/go/src/github.com/takkyuuplayer/go-anki
     env_file: .env
     tty: true
+    ports:
+      - 8080:8080
     links:
       - proxy
   proxy:

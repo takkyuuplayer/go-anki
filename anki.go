@@ -1,6 +1,9 @@
 package anki
 
 import (
+	"bufio"
+	"encoding/csv"
+	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -21,6 +24,39 @@ type Client struct {
 	HttpClient *http.Client
 }
 
+const parallel = 10
+
+func (ac *Client) Run(in io.Reader, out, outErr *csv.Writer) {
+	counter := 0
+	ch := make(chan *Result)
+	scanner := bufio.NewScanner(in)
+
+	for ; counter < parallel; counter++ {
+		if scanner.Scan() {
+			go ac.SearchDefinition(ch, scanner.Text())
+		} else {
+			break
+		}
+	}
+
+	for i := 0; i < counter; i++ {
+		result := <-ch
+		if result.IsSuccess {
+			out.Write([]string{result.Word, result.Definition})
+		} else {
+			outErr.Write([]string{result.Word, result.Definition})
+		}
+
+		if scanner.Scan() {
+			go ac.SearchDefinition(ch, scanner.Text())
+			counter++
+		}
+	}
+
+	out.Flush()
+	outErr.Flush()
+}
+
 func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 	resp, err := ac.HttpClient.Get(ac.Dictionary.GetSearchUrl(word))
 
@@ -38,7 +74,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       word,
+			Word:       "anki card generator error",
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
@@ -49,7 +85,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       word,
+			Word:       "anki card generator error",
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
