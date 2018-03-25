@@ -4,7 +4,7 @@
 
 # go-anki
 
-Generate frashcards for [Anki](https://apps.ankiweb.net/)
+Generate frashcards for [Anki](https://apps.ankiweb.net/) with online English-English dictionaries.
 
 ## Demo
 
