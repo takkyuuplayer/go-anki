@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/csv"
+	"flag"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -45,6 +47,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	var (
+		addr = flag.String("addr", ":10080", "addr to bind")
+	)
+
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":10080", nil)
+
+	log.Printf("start listening on %s", *addr)
+
+	http.ListenAndServe(*addr, nil)
 }
