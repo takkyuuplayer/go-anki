@@ -74,7 +74,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       word,
+			Word:       "anki card generator error",
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
@@ -85,7 +85,7 @@ func (ac *Client) SearchDefinition(ch chan<- *Result, word string) {
 
 	if err != nil {
 		ch <- &Result{
-			Word:       word,
+			Word:       "anki card generator error",
 			Definition: err.Error(),
 			IsSuccess:  false,
 		}
