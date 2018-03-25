@@ -48,7 +48,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var (
-		addr = flag.String("addr", ":10080", "addr to bind")
+		addr = flag.String("addr", ":8080", "addr to bind")
 	)
 
 	http.HandleFunc("/", handler)
