@@ -9,6 +9,8 @@ Generate frashcards for [Anki](https://apps.ankiweb.net/) with online English-En
 
 [Anki Card Generator](https://tp-go-anki.herokuapp.com/)
 
+![Demo](demo/demo.gif)
+
 ## How To Use
 
 ### Requirements
