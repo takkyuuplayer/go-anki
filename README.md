@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/takkyuuplayer/go-anki.svg?branch=master)](https://travis-ci.org/takkyuuplayer/go-anki)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=tp-go-anki&style=flat)](https://tp-go-anki.herokuapp.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # go-anki
@@ -8,7 +7,7 @@ Generate frashcards for [Anki](https://apps.ankiweb.net/) with online English-En
 
 ## Demo
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=tp-go-anki&style=flat)](https://tp-go-anki.herokuapp.com/)
+[Anki Card Generator](https://tp-go-anki.herokuapp.com/)
 
 ## How To Use
 
