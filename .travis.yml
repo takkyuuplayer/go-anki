@@ -1,8 +1,13 @@
 language: go
 go:
-    - 1.x
-    - master
+- 1.x
+- master
 before_install:
-  - make
+- make
 script:
-  - make test
+- make test
+deploy:
+  provider: heroku
+  app: tp-go-anki
+  api_key:
+    secure: GbGqvauKAf4mOaOzoGvOWGfE8xi6zGJ2tRLhrDU20Tw8LCiREDDQS+OZul3YFG+skwcWJs3RCEbzN94MnE7qaVpHjh7RnN77qwezp1He+afdMTsf74dHNaDyKDSLAwt7Ro8giEe+fQl8/sfeqciWiHyRXuxjh6y57S/sDrzJqpsBjRWKlpg/vLVHaQ+axNfm6KuzDSV6lYd/4p9SGgaxKhE3L4Z6QJEW/nkTVz+DdWj7OtERHFyuKsTpw+OlkpZ1XCmGl3kz+ctZP5PDbOKQpf1OYdd8kKKqoWlaKuyW/pvaSfzEtR/xfFQ8Weyc7NuFMaN21PcAL+N65BFcxii2D6MvmyG0podF95TaIXxFzmeTlIPEhWMs3tDzcdDHG1I8+YZYu74dkFPtEdZE0T0Uz22+V+GknnwaZ65zVxYUaAHuICQaxx1RHLTZJZ8b1MTjkSMSdRN+IHtVWbuJtFl0nY3T/wY2jiqv5bAoOj21sPbALX7aCFuA+7yaXHzOIcjGxJ9zG+My8nv15eqmPAklJ3zUeS5bCE5mGVIYXnrEALeucgVXO2d+ICOXSOXB2NWS9ykWCFG0h+iXB5U39SU0Qoe50hk4tmohdhBIVYQ2FG2W4p2cmaaxENXa5nUCSlrq43azItp9Y4DNHLpUjWIoa0VQbY+JRTabZ4+akBwWksk=
