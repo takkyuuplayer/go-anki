@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <style type="text/css" media="all">
 .social-icon {
   font-size: xx-large;
@@ -33,12 +34,12 @@
       <div class="row">
         <div class="col s8">
           <div class="row">
-            <form class="col s12" action="/" method="POST">
+            <form id="form" class="col s12" action="/" method="POST">
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">library_books</i>
-                  <select id="dictionary" name="dictionary">
-                    <option value="" disabled selected></option>
+                  <select id="dictionary" name="dictionary" ref="dictionary" v-model="dictionary">
+                    <option value="" disabled></option>
                     <option value="mw">Merriam-Webster's Learner's Dictionary</option>
                     <option value="wiktionary">Wiktionary</option>
                   </select>
@@ -48,12 +49,14 @@
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">wrap_text</i>
-                  <textarea id="textarea1" name="words" style="min-height: 5em" class="materialize-textarea"></textarea>
+                  <textarea id="textarea1" name="words" style="min-height: 5em" class="materialize-textarea" v-model="words"></textarea>
                   <label for="textarea1">Word(s)</label>
                 </div>
               </div>
               <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Download
+                <button class="btn waves-effect waves-light"
+                        v-bind:class="{disabled: (dictionary === '' || words.trim().length === 0) }" type="submit" name="action"
+                  >Download
                   <i class="material-icons right">file_download</i>
                 </button>
               </div>
@@ -107,9 +110,19 @@
       </div>
     </footer>
     <script type="text/javascript">
-    M.AutoInit();
-    var elem = document.querySelector('select');
-    var instance = M.FormSelect.init(elem);
+    var form = new Vue({
+      el: '#form',
+      data: {
+        dictionary: '',
+        words: ''
+      },
+      mounted: function () {
+        this.$nextTick(function () {
+          M.AutoInit();
+          M.FormSelect.init(this.$refs.myInput)
+        });
+      }
+    });
     </script>
   </body>
 </html>
