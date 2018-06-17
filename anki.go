@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 type Result struct {
@@ -37,7 +38,12 @@ func (ac *Client) Run(in io.Reader, out, outErr *csv.Writer) {
 
 	for ; counter < parallel; counter++ {
 		if scanner.Scan() {
-			go ac.SearchDefinition(ch, scanner.Text())
+			word := strings.Trim(scanner.Text(), " ")
+			if word == "" {
+				counter--
+				continue
+			}
+			go ac.SearchDefinition(ch, word)
 		} else {
 			break
 		}
