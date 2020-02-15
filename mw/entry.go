@@ -1,6 +1,6 @@
 package mw
 
-//go:generate go-assets-builder -p mw -s=/assets -o assets.go assets
+//go:generate statik -src assets -f
 
 import (
 	"bytes"
@@ -9,17 +9,25 @@ import (
 	"regexp"
 	"strings"
 	"text/template"
+
+	"github.com/rakyll/statik/fs"
+	_ "github.com/takkyuuplayer/go-anki/mw/statik"
 )
 
 func parseAssets(tmpl *template.Template, path string) (*template.Template, error) {
-	f, err := Assets.Open(path)
-
+	statikFS, err := fs.New()
 	if err != nil {
 		return nil, err
 	}
 
+	r, err := statikFS.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer r.Close()
+
 	buf := new(bytes.Buffer)
-	buf.ReadFrom(f)
+	buf.ReadFrom(r)
 
 	return tmpl.Parse(buf.String())
 }

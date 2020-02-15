@@ -9,9 +9,10 @@ import (
 	"os"
 	"strings"
 
+	"github.com/rakyll/statik/fs"
 	anki "github.com/takkyuuplayer/go-anki"
 	"github.com/takkyuuplayer/go-anki/mw"
-	"github.com/takkyuuplayer/go-anki/web"
+	_ "github.com/takkyuuplayer/go-anki/web/statik"
 	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
@@ -48,7 +49,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res, _ := web.Assets.Open("/index.html")
+	statikFS, err := fs.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := statikFS.Open("/index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	io.Copy(w, res)
 }
 

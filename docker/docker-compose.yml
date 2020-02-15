@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     container_name: go-anki
-    build: .
+    image: golang
     working_dir: /go/src/github.com/takkyuuplayer/go-anki
     volumes:
       - ../:/go/src/github.com/takkyuuplayer/go-anki
