@@ -1,15 +1,13 @@
 .PHONY: test
 
-setup: tools generate dep
+setup: tools mod generate
 	mkdir -p data
 
 tools:
-	which dep || go get -u github.com/golang/dep/cmd/dep
 	which go-assets-builder || go get -u github.com/jessevdk/go-assets-builder
 
-dep:
-	dep ensure
-	dep ensure -update
+mod:
+	go mod download
 
 generate:
 	go generate ./...
