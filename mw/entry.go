@@ -1,6 +1,6 @@
 package mw
 
-//go:generate statik -src assets
+//go:generate statik -src assets -f
 
 import (
 	"bytes"
