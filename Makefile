@@ -4,7 +4,7 @@ setup: tools mod generate
 	mkdir -p data
 
 tools:
-	which go-assets-builder || go get -u github.com/jessevdk/go-assets-builder
+	@which statik || go get github.com/rakyll/statik
 
 mod:
 	go mod download
