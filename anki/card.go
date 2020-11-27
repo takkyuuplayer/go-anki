@@ -7,7 +7,7 @@ import (
 
 type Card struct {
 	Headword string
-	Entries  []*Entry
+	Entries  []Entry
 }
 
 func (card Card) Front() string {

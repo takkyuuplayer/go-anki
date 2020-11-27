@@ -24,7 +24,7 @@ type Definition struct {
 type Inflection struct {
 	FormLabel     string
 	InflectedForm string
-	Pronunciation *Pronunciation
+	Pronunciation Pronunciation
 }
 
 type Pronunciation struct {
@@ -38,7 +38,7 @@ type Accent struct {
 	Audio       template.URL
 }
 
-func (entry *Entry) AnkiCard() (string, error) {
+func (entry Entry) AnkiCard() (string, error) {
 	buf := bytes.NewBufferString("")
 
 	if err := tmpl.Lookup("entry").Execute(buf, entry); err != nil {

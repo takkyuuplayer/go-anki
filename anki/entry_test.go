@@ -25,7 +25,7 @@ var testEntry = Entry{
 		{
 			"plural",
 			"tests",
-			nil,
+			Pronunciation{},
 		},
 	},
 	[]Definition{
@@ -42,12 +42,12 @@ var testEntry = Entry{
 func TestEntry_AnkiCard(t *testing.T) {
 	tests := []struct {
 		name   string
-		fields *Entry
+		fields Entry
 		want   string
 	}{
 		{
 			"test",
-			&testEntry,
+			testEntry,
 			"<h2>test (noun)</h2> <h4>Pronunciation (IPA)</h4> US ˈtɛst <h4>Inflection</h4> (plural) tests <h4>Definition</h4> <ol> <li>a set of questions or problems</li> <ul> <li>She is studying for her math/spelling/history test</li> <li>I passed/failed/flunked my biology test</li> </ul> </ol>",
 		},
 	}

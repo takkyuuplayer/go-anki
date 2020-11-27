@@ -17,9 +17,9 @@ func TestCard_Back(t *testing.T) {
 			"test",
 			Card{
 				"test",
-				[]*Entry{
-					&testEntry,
-					&testEntry,
+				[]Entry{
+					testEntry,
+					testEntry,
 				},
 			},
 			"<h2>test (noun)</h2> <h4>Pronunciation (IPA)</h4> US ˈtɛst <h4>Inflection</h4> (plural) tests <h4>Definition</h4> <ol> <li>a set of questions or problems</li> <ul> <li>She is studying for her math/spelling/history test</li> <li>I passed/failed/flunked my biology test</li> </ul> </ol> <h2>test (noun)</h2> <h4>Pronunciation (IPA)</h4> US ˈtɛst <h4>Inflection</h4> (plural) tests <h4>Definition</h4> <ol> <li>a set of questions or problems</li> <ul> <li>She is studying for her math/spelling/history test</li> <li>I passed/failed/flunked my biology test</li> </ul> </ol>",

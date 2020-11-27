@@ -19,8 +19,8 @@
       ({{ . }})
     {{end}}
     {{ .InflectedForm }}
-    {{with .Pronunciation }}
-      ({{ (index .Accents 0).Spelling }})
+    {{with .Pronunciation.Accents }}
+      ({{ (index . 0).Spelling }})
     {{end}}
   {{end}}
 {{end}}
