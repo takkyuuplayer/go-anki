@@ -1,23 +1,23 @@
 package anki_test
 
 import (
+	"github.com/takkyuuplayer/go-anki/anki"
+	"github.com/takkyuuplayer/go-anki/dictionary"
 	"testing"
-
-	. "github.com/takkyuuplayer/go-anki/anki"
 )
 
 func TestCard_Back(t *testing.T) {
 	tests := []struct {
 		name    string
-		fields  Card
+		fields  anki.Card
 		want    string
 		wantErr bool
 	}{
 		{
 			"test",
-			Card{
+			anki.Card{
 				"test",
-				[]Entry{
+				[]dictionary.Entry{
 					testEntry,
 					testEntry,
 				},
@@ -38,4 +38,36 @@ func TestCard_Back(t *testing.T) {
 			}
 		})
 	}
+}
+
+var testEntry = dictionary.Entry{
+	"test:1",
+	"test",
+	"noun",
+	dictionary.Pronunciation{
+		"IPA",
+		[]dictionary.Accent{
+			{
+				"US",
+				"ˈtɛst",
+				"https://example.com/test.mp3",
+			},
+		},
+	},
+	[]dictionary.Inflection{
+		{
+			"plural",
+			"tests",
+			dictionary.Pronunciation{},
+		},
+	},
+	[]dictionary.Definition{
+		{
+			"a set of questions or problems",
+			[]string{
+				"She is studying for her math/spelling/history test",
+				"I passed/failed/flunked my biology test",
+			},
+		},
+	},
 }

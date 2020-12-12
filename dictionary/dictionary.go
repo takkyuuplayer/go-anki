@@ -1,11 +1,16 @@
-package anki
+package dictionary
 
 import (
-	"bytes"
+	"errors"
 	"html/template"
-	"log"
-	"strings"
 )
+
+var NotFoundError = errors.New("Not Found")
+
+type Dictionary interface {
+	LookUp(string) (body string, err error)
+	Parse(string) (entries []Entry, err error)
+}
 
 type Entry struct {
 	ID              string
@@ -36,15 +41,4 @@ type Accent struct {
 	AccentLabel string
 	Spelling    string
 	Audio       template.URL
-}
-
-func (entry Entry) AnkiCard() (string, error) {
-	buf := bytes.NewBufferString("")
-
-	if err := tmpl.Lookup("entry").Execute(buf, entry); err != nil {
-		log.Fatalf("execution failed: %s", err)
-		return "", err
-	}
-
-	return strings.Join(strings.Fields(buf.String()), " "), nil
 }
