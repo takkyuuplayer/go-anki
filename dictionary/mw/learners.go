@@ -25,14 +25,17 @@ func NewLearners(apiKey string, httpClient *http.Client) *learners {
 }
 
 func (dic *learners) Search(word string) (string, error) {
-	url := fmt.Sprintf(searchUrl, url.PathEscape(word), url.PathEscape(dic.apiKey))
+	urlToSearch := fmt.Sprintf(searchUrl, url.PathEscape(word), url.PathEscape(dic.apiKey))
 
-	response, err := dic.httpClient.Get(url)
+	response, err := dic.httpClient.Get(urlToSearch)
 	if err != nil {
 		return "", err
 	}
 	body, err := ioutil.ReadAll(response.Body)
-	response.Body.Close()
+	if err != nil {
+		return "", err
+	}
+	_ = response.Body.Close()
 
 	bodyText := string(body)
 	if response.StatusCode != http.StatusOK {
@@ -98,7 +101,7 @@ func lookUpForPhrase(searchWord string, entry Entry) []dictionary.Entry {
 			ID:              "mw-" + definedOnRun.Drp,
 			Headword:        definedOnRun.Drp,
 			FunctionalLabel: definedOnRun.Gram,
-			Definitions: definitions,
+			Definitions:     definitions,
 		}
 		de = append(de, dictEntry)
 	}
