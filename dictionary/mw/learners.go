@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 const searchUrl = "https://www.dictionaryapi.com/api/v3/references/learners/json/%s?key=%s"
@@ -58,12 +59,21 @@ func (dic *learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 		return nil, fmt.Errorf("unknown structure: %v", err)
 	}
 
+	isPhrasalVerb := len(strings.Fields(searchWord)) > 1
+
 	var dictEntries []dictionary.Entry
 	for _, entry := range entries {
+		var de []dictionary.Entry
+		var matched bool
+
+		if entry.Hwi.Hw.Clean() == searchWord {
+			matched = true
+		}
+
 		definitions, _ := entry.Def.convert()
 		dictEntry := dictionary.Entry{
 			ID:              "mw-" + entry.Meta.ID,
-			Headword:        entry.Hwi.Hw,
+			Headword:        entry.Hwi.Hw.Clean(),
 			FunctionalLabel: entry.Fl,
 			Pronunciation: dictionary.Pronunciation{
 				Notation: "IPA",
@@ -72,7 +82,31 @@ func (dic *learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 			Inflections: entry.Ins.convert(),
 			Definitions: definitions,
 		}
-		dictEntries = append(dictEntries, dictEntry)
+		de = append(de, dictEntry)
+
+		for _, uro := range entry.Uros {
+			if uro.Ure.Clean() == searchWord {
+				matched = true
+			}
+
+			definition, _ := convertDefiningText(uro.Utxt)
+			dictEntry := dictionary.Entry{
+				ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.Clean(),
+				Headword:        uro.Ure.Clean(),
+				FunctionalLabel: uro.Fl,
+				Pronunciation: dictionary.Pronunciation{
+					Notation: "IPA",
+					Accents:  uro.Prs.convert(),
+				},
+				Inflections: nil,
+				Definitions: []dictionary.Definition{definition},
+			}
+			de = append(de, dictEntry)
+		}
+
+		if matched {
+			dictEntries = append(dictEntries, de...)
+		}
 	}
 
 	return &dictionary.Result{

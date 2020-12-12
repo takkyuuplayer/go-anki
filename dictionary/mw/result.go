@@ -22,11 +22,11 @@ type Entry struct {
 	Gram string             `json:"gram,omitempty"`
 	Def  DefinitionSections `json:"def"`
 	Uros []struct {
-		Ure  string          `json:"ure"`
-		Prs  Prs             `json:"prs"`
-		Fl   string          `json:"fl"`
-		Gram string          `json:"gram"`
-		Utxt [][]interface{} `json:"utxt"`
+		Ure  Hw            `json:"ure"`
+		Prs  Prs           `json:"prs"`
+		Fl   string        `json:"fl"`
+		Gram string        `json:"gram"`
+		Utxt []interface{} `json:"utxt"`
 	} `json:"uros,omitempty"`
 	Dros []struct {
 		Drp  string             `json:"drp"`
@@ -53,7 +53,7 @@ type Meta struct {
 	Highlight   string   `json:"highlight,omitempty"`
 	Stems       []string `json:"stems"`
 	AppShortdef struct {
-		Hw  string   `json:"hw"`
+		Hw  Hw       `json:"hw"`
 		Fl  string   `json:"fl"`
 		Def []string `json:"def"`
 	} `json:"app-shortdef"`
@@ -61,8 +61,8 @@ type Meta struct {
 }
 
 type Hwi struct {
-	Hw  string `json:"hw"`
-	Prs Prs    `json:"prs"`
+	Hw  Hw  `json:"hw"`
+	Prs Prs `json:"prs"`
 }
 
 type Prs []struct {
@@ -71,6 +71,8 @@ type Prs []struct {
 		Audio Audio `json:"audio"`
 	} `json:"sound"`
 }
+
+type Hw string
 
 type Audio string
 
@@ -191,4 +193,8 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 
 func format(text string) string {
 	return text
+}
+
+func (hw Hw) Clean() string {
+	return strings.ReplaceAll(string(hw), "*", "")
 }

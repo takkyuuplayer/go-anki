@@ -13,15 +13,39 @@ func Test_learners_Parse(t *testing.T) {
 
 	learners := NewLearners("", nil)
 
-	t.Run("When finding definition under uros", func(t *testing.T) {
+	t.Run("Returning for a word", func(t *testing.T) {
 		t.Parallel()
-		result, _:= learners.Parse("accountability", load(t, "accountability.json"))
+		result, err := learners.Parse("test", load(t, "test.json"))
 
-		t.Logf("%#v", result)
-		//assert.Len(t, result.Entries, 2)
-		//assert.Nil(t, err)
+		assert.Len(t, result.Entries, 3)
+		assert.Equal(t, "test", result.Entries[0].Headword)
+		assert.Equal(t, "test", result.Entries[1].Headword)
+		assert.Equal(t, "testable", result.Entries[2].Headword)
+		assert.Nil(t, err)
 	})
-	t.Run("Returns suggestions when available", func(t *testing.T) {
+
+	t.Run("Returning for a word under uros", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("accountability", load(t, "accountability.json"))
+
+		assert.Len(t, result.Entries, 2)
+		assert.Equal(t, "ac*count*able", result.Entries[0].Headword)
+		assert.Equal(t, "ac*count*abil*i*ty", result.Entries[1].Headword)
+		assert.Nil(t, err)
+	})
+
+	t.Run("Returning for a phrasal verb", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("go through", load(t, "go_through.json"))
+
+		assert.Len(t, result.Entries, 3)
+		assert.Equal(t, "test", result.Entries[0].Headword)
+		assert.Equal(t, "test", result.Entries[1].Headword)
+		assert.Equal(t, "testable", result.Entries[2].Headword)
+		assert.Nil(t, err)
+	})
+
+	t.Run("Returning suggestions", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("furnitura", load(t, "furnitura.json"))
 
