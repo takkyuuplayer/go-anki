@@ -63,50 +63,19 @@ func (dic *learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 
 	var dictEntries []dictionary.Entry
 	for _, entry := range entries {
-		var de []dictionary.Entry
-		var matched bool
-
-		if entry.Hwi.Hw.Clean() == searchWord {
-			matched = true
+		var lookedUp []dictionary.Entry
+		if isPhrasalVerb {
+			lookedUp = lookUpForPhrase(searchWord, entry)
+		} else {
+			lookedUp = lookUpForWord(searchWord, entry)
 		}
-
-		definitions, _ := entry.Def.convert()
-		dictEntry := dictionary.Entry{
-			ID:              "mw-" + entry.Meta.ID,
-			Headword:        entry.Hwi.Hw.Clean(),
-			FunctionalLabel: entry.Fl,
-			Pronunciation: dictionary.Pronunciation{
-				Notation: "IPA",
-				Accents:  entry.Hwi.Prs.convert(),
-			},
-			Inflections: entry.Ins.convert(),
-			Definitions: definitions,
+		if lookedUp != nil {
+			dictEntries = append(dictEntries, lookedUp...)
 		}
-		de = append(de, dictEntry)
+	}
 
-		for _, uro := range entry.Uros {
-			if uro.Ure.Clean() == searchWord {
-				matched = true
-			}
-
-			definition, _ := convertDefiningText(uro.Utxt)
-			dictEntry := dictionary.Entry{
-				ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.Clean(),
-				Headword:        uro.Ure.Clean(),
-				FunctionalLabel: uro.Fl,
-				Pronunciation: dictionary.Pronunciation{
-					Notation: "IPA",
-					Accents:  uro.Prs.convert(),
-				},
-				Inflections: nil,
-				Definitions: []dictionary.Definition{definition},
-			}
-			de = append(de, dictEntry)
-		}
-
-		if matched {
-			dictEntries = append(dictEntries, de...)
-		}
+	if len(dictEntries) == 0 {
+		return nil, dictionary.NotFoundError
 	}
 
 	return &dictionary.Result{
@@ -114,4 +83,74 @@ func (dic *learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 		Entries:     dictEntries,
 		Suggestions: nil,
 	}, nil
+}
+
+func lookUpForPhrase(searchWord string, entry Entry) []dictionary.Entry {
+	var de []dictionary.Entry
+
+	for _, definedOnRun := range entry.Dros {
+		if definedOnRun.Drp != searchWord {
+			continue
+		}
+
+		definitions, _ := definedOnRun.Def.convert()
+		dictEntry := dictionary.Entry{
+			ID:              "mw-" + definedOnRun.Drp,
+			Headword:        definedOnRun.Drp,
+			FunctionalLabel: definedOnRun.Gram,
+			Definitions: definitions,
+		}
+		de = append(de, dictEntry)
+	}
+
+	return de
+}
+
+func lookUpForWord(searchWord string, entry Entry) []dictionary.Entry {
+	var de []dictionary.Entry
+	var matched bool
+
+	if entry.Hwi.Hw.Clean() == searchWord {
+		matched = true
+	}
+
+	definitions, _ := entry.Def.convert()
+	dictEntry := dictionary.Entry{
+		ID:              "mw-" + entry.Meta.ID,
+		Headword:        entry.Hwi.Hw.Clean(),
+		FunctionalLabel: entry.Fl,
+		Pronunciation: dictionary.Pronunciation{
+			Notation: "IPA",
+			Accents:  entry.Hwi.Prs.convert(),
+		},
+		Inflections: entry.Ins.convert(),
+		Definitions: definitions,
+	}
+	de = append(de, dictEntry)
+
+	for _, uro := range entry.Uros {
+		if uro.Ure.Clean() == searchWord {
+			matched = true
+		}
+
+		definition, _ := convertDefiningText(uro.Utxt)
+		dictEntry := dictionary.Entry{
+			ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.Clean(),
+			Headword:        uro.Ure.Clean(),
+			FunctionalLabel: uro.Fl,
+			Pronunciation: dictionary.Pronunciation{
+				Notation: "IPA",
+				Accents:  uro.Prs.convert(),
+			},
+			Inflections: nil,
+			Definitions: []dictionary.Definition{definition},
+		}
+		de = append(de, dictEntry)
+	}
+
+	if matched {
+		return de
+	} else {
+		return nil
+	}
 }

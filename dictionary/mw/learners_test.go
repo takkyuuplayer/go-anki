@@ -2,6 +2,7 @@ package mw
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -38,11 +39,17 @@ func Test_learners_Parse(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("go through", load(t, "go_through.json"))
 
-		assert.Len(t, result.Entries, 3)
-		assert.Equal(t, "test", result.Entries[0].Headword)
-		assert.Equal(t, "test", result.Entries[1].Headword)
-		assert.Equal(t, "testable", result.Entries[2].Headword)
+		assert.Len(t, result.Entries, 1)
+		assert.Equal(t, "go through", result.Entries[0].Headword)
 		assert.Nil(t, err)
+	})
+
+	t.Run("Returning NotFoundError for a phrasal verb", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("put up with", load(t, "put_up_with.json"))
+
+		assert.Nil(t, result)
+		assert.Equal(t, dictionary.NotFoundError, err)
 	})
 
 	t.Run("Returning suggestions", func(t *testing.T) {
