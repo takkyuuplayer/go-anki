@@ -40,31 +40,30 @@ func TestCard_Back(t *testing.T) {
 	}
 }
 
-var testEntry = dictionary.Entry{
-	"test:1",
-	"test",
-	"noun",
-	dictionary.Pronunciation{
-		"IPA",
-		[]dictionary.Accent{
+var testEntry dictionary.Entry = dictionary.Entry{
+	ID:              "test:1",
+	Headword:        "test",
+	FunctionalLabel: "noun",
+	Pronunciation: dictionary.Pronunciation{
+		Notation: "IPA",
+		Accents: []dictionary.Accent{
 			{
-				"US",
-				"ˈtɛst",
-				"https://example.com/test.mp3",
+				AccentLabel: "US",
+				Spelling:    "ˈtɛst",
+				Audio:       "https://example.com/test.mp3",
 			},
 		},
 	},
-	[]dictionary.Inflection{
+	Inflections: []dictionary.Inflection{
 		{
-			"plural",
-			"tests",
-			dictionary.Pronunciation{},
+			FormLabel:     "plural",
+			InflectedForm: "tests",
 		},
 	},
-	[]dictionary.Definition{
+	Definitions: []dictionary.Definition{
 		{
-			"a set of questions or problems",
-			[]string{
+			Sense: "a set of questions or problems",
+			Examples: []string{
 				"She is studying for her math/spelling/history test",
 				"I passed/failed/flunked my biology test",
 			},
