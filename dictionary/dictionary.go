@@ -7,9 +7,15 @@ import (
 
 var NotFoundError = errors.New("Not Found")
 
+type Result struct {
+	SearchWord  string
+	Entries     []Entry
+	Suggestions []string
+}
+
 type Dictionary interface {
 	LookUp(string) (body string, err error)
-	Parse(string) (entries []Entry, err error)
+	Parse(searchWord, body string) (*Result, error)
 }
 
 type Entry struct {
