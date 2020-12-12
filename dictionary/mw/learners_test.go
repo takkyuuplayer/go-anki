@@ -1,9 +1,11 @@
 package mw
 
 import (
+	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path/filepath"
 	"testing"
@@ -90,4 +92,61 @@ func load(t *testing.T, testfile string) string {
 	}
 
 	return string(body)
+}
+
+func Test_learners_Search(t *testing.T) {
+	t.Parallel()
+
+	learners := NewLearners("dummy", &http.Client{})
+
+	t.Run("Returning response body", func(t *testing.T) {
+		t.Parallel()
+
+		httpmock.Activate()
+		defer httpmock.DeactivateAndReset()
+
+		resBody := load(t, "test.json")
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+			httpmock.NewStringResponder(200, resBody),
+		)
+
+		body, err := learners.Search("test")
+
+		assert.Equal(t, resBody, body)
+		assert.Nil(t, err)
+	})
+
+	t.Run("Returning error when status code != 200", func(t *testing.T) {
+		t.Parallel()
+
+		httpmock.Activate()
+		defer httpmock.DeactivateAndReset()
+
+		resBody := load(t, "test.json")
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+			httpmock.NewStringResponder(404, resBody),
+		)
+
+		body, err := learners.Search("test")
+
+		assert.Equal(t, "", body)
+		assert.NotNil(t, err)
+		assert.NotEqual(t, dictionary.NotFoundError, err)
+	})
+
+	t.Run("Returning NotFoundError when response is empty array i.e. no suggestions", func(t *testing.T) {
+		t.Parallel()
+
+		httpmock.Activate()
+		defer httpmock.DeactivateAndReset()
+
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+			httpmock.NewStringResponder(200, `[]`),
+		)
+
+		body, err := learners.Search("test")
+
+		assert.Equal(t, "", body)
+		assert.Equal(t, dictionary.NotFoundError, err)
+	})
 }
