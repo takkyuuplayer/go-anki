@@ -24,7 +24,7 @@ jobs:
       - run: make
       - run: go build cmd/server/main.go
   deploy:
-    if: github.ref == 'refs/heads/master'
+    #if: github.ref == 'refs/heads/master'
     needs: [test, build]
     runs-on: ubuntu-latest
     steps:
