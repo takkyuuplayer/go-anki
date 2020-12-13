@@ -1,10 +1,11 @@
 package mw_test
 
 import (
-	"github.com/takkyuuplayer/go-anki/dictionary/mw"
 	"io/ioutil"
 	"net/http"
 	"testing"
+
+	"github.com/takkyuuplayer/go-anki/dictionary/mw"
 
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"

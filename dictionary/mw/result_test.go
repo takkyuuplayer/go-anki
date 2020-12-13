@@ -1,8 +1,9 @@
 package mw_test
 
 import (
-	"github.com/takkyuuplayer/go-anki/dictionary/mw"
 	"testing"
+
+	"github.com/takkyuuplayer/go-anki/dictionary/mw"
 )
 
 func TestFormat(t *testing.T) {
