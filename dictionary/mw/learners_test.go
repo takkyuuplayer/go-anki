@@ -104,7 +104,7 @@ func Test_learners_LookUp(t *testing.T) {
 		defer httpmock.DeactivateAndReset()
 
 		resBody := load(t, "test.json")
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
 			httpmock.NewStringResponder(200, resBody),
 		)
 
@@ -118,7 +118,7 @@ func Test_learners_LookUp(t *testing.T) {
 		defer httpmock.DeactivateAndReset()
 
 		resBody := load(t, "test.json")
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
 			httpmock.NewStringResponder(404, resBody),
 		)
 
@@ -133,7 +133,7 @@ func Test_learners_LookUp(t *testing.T) {
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
 			httpmock.NewStringResponder(200, `[]`),
 		)
 
