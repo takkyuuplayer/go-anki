@@ -211,6 +211,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 
 var formatter = regexp.MustCompile("{.+}(.+)?{/.+}")
 
+// Format markup text with html
 func Format(text string) string {
 	text = strings.ReplaceAll(text, "{bc}", "")
 	text = formatter.ReplaceAllString(text, "<i>$1</i>")
