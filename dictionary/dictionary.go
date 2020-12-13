@@ -28,8 +28,8 @@ type Entry struct {
 }
 
 type Definition struct {
-	Sense    string
-	Examples []string
+	Sense    template.HTML
+	Examples []template.HTML
 }
 
 type Inflection struct {

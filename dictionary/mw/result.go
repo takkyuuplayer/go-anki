@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/takkyuuplayer/go-anki/dictionary"
 	"html/template"
+	"regexp"
 	"strings"
 )
 
@@ -163,7 +164,7 @@ func (sections DefinitionSections) convert() ([]dictionary.Definition, error) {
 
 func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 	var dicSenses []string
-	var dicExample []string
+	var dicExample []template.HTML
 
 	for _, tuple := range dt.([]interface{}) {
 		tuple := tuple.([]interface{})
@@ -175,7 +176,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 		case "vis":
 			for _, example := range tuple[1].([]interface{}) {
-				dicExample = append(dicExample, Format(example.(map[string]interface{})["t"].(string)))
+				dicExample = append(dicExample, template.HTML(Format(example.(map[string]interface{})["t"].(string))))
 			}
 		case "uns":
 			for _, dt2 := range tuple[1].([]interface{}) {
@@ -184,7 +185,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 		case "snote":
 			if len(dicSenses) == 0 {
-				dicSenses = append(dicSenses, tuple[1].([]interface{})[0].([]interface{})[1].(string))
+				dicSenses = append(dicSenses, Format(tuple[1].([]interface{})[0].([]interface{})[1].(string)))
 			}
 			res, _ := convertDefiningText(tuple[1].([]interface{})[1:])
 			dicExample = append(dicExample, res.Examples...)
@@ -195,11 +196,15 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 		}
 	}
 
-	return dictionary.Definition{Sense: strings.Join(dicSenses, " / "), Examples: dicExample}, nil
+	return dictionary.Definition{Sense: template.HTML(strings.Join(dicSenses, " / ")), Examples: dicExample}, nil
 }
 
+var formatter = regexp.MustCompile("{.+}(.+)?{/.+}")
+
 func Format(text string) string {
-	return text
+	text = strings.ReplaceAll(text, "{bc}", "")
+	text = formatter.ReplaceAllString(text, "<i>$1</i>")
+	return strings.Trim(text, " ")
 }
 
 func (hw Hw) Clean() string {
