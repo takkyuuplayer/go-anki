@@ -32,7 +32,7 @@ func (card Card) Back() (string, error) {
 	return ret, nil
 }
 
-func ankiCard (entry *dictionary.Entry) (string, error) {
+func ankiCard(entry *dictionary.Entry) (string, error) {
 	buf := bytes.NewBufferString("")
 
 	if err := tmpl.Lookup("entry").Execute(buf, entry); err != nil {

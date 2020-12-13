@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
 const searchUrl = "https://www.dictionaryapi.com/api/v3/references/learners/json/%s?key=%s"

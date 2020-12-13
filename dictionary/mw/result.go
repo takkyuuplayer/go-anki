@@ -2,10 +2,11 @@ package mw
 
 import (
 	"fmt"
-	"github.com/takkyuuplayer/go-anki/dictionary"
 	"html/template"
 	"regexp"
 	"strings"
+
+	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
 const audioUrl = "https://media.merriam-webster.com/audio/prons/en/us/mp3/%s/%s.mp3"

@@ -3,10 +3,11 @@ package anki
 import (
 	"bufio"
 	"encoding/csv"
-	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io"
 	"strings"
 	"sync"
+
+	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
 const concurrency = 10

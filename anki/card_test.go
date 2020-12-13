@@ -1,9 +1,10 @@
 package anki_test
 
 import (
+	"testing"
+
 	"github.com/takkyuuplayer/go-anki/anki"
 	"github.com/takkyuuplayer/go-anki/dictionary"
-	"testing"
 )
 
 func TestCard_Back(t *testing.T) {

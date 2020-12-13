@@ -3,16 +3,18 @@ package main
 import (
 	"encoding/csv"
 	"flag"
-	"github.com/takkyuuplayer/go-anki/anki"
-	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 
+	"github.com/takkyuuplayer/go-anki/anki"
+	"github.com/takkyuuplayer/go-anki/dictionary"
+
 	"github.com/rakyll/statik/fs"
 	"github.com/takkyuuplayer/go-anki/dictionary/mw"
+
 	// https://github.com/rakyll/statik#usage
 	_ "github.com/takkyuuplayer/go-anki/web/statik"
 )

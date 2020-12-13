@@ -1,12 +1,13 @@
 package mw
 
 import (
-	"github.com/jarcoal/httpmock"
-	"github.com/stretchr/testify/assert"
-	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io/ioutil"
 	"net/http"
 	"testing"
+
+	"github.com/jarcoal/httpmock"
+	"github.com/stretchr/testify/assert"
+	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
 func Test_learners_Parse(t *testing.T) {
