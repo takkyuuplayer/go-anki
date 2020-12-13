@@ -39,9 +39,8 @@
                 <div class="input-field col s12">
                   <i class="material-icons prefix">library_books</i>
                   <select id="dictionary" name="dictionary" ref="dictionary" v-model="dictionary">
-                    <option value="" disabled></option>
                     <option value="mw">Merriam-Webster's Learner's Dictionary</option>
-                    <option value="wiktionary">Wiktionary</option>
+                    <option value="" disabled>More options coming soon...</option>
                   </select>
                   <label>Dictionary</label>
                 </div>
@@ -113,7 +112,7 @@
     var form = new Vue({
       el: '#form',
       data: {
-        dictionary: '',
+        dictionary: 'mw',
         words: ''
       },
       mounted: function () {

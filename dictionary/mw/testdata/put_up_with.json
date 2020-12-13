@@ -1,0 +1,327 @@
+[
+  {
+    "meta": {
+      "id": "crap:1",
+      "uuid": "8343baa7-d37b-4cff-be21-981a5cec2f5f",
+      "src": "learners",
+      "section": "alpha",
+      "stems": [
+        "crap",
+        "craps",
+        "give a crap",
+        "like crap",
+        "full of crap",
+        "load/pile of crap",
+        "load of crap",
+        "pile of crap",
+        "bunch of crap",
+        "cut the crap",
+        "give me any crap",
+        "take crap",
+        "stand for your crap",
+        "put up with your crap",
+        "take a crap",
+        "have a crap",
+        "scared the crap out of",
+        "beat the crap out of",
+        "feel like crap"
+      ],
+      "app-shortdef": {
+        "hw": "crap:1",
+        "fl": "noun",
+        "def": [
+          "{bc} something that is worthless, unimportant, or of poor quality",
+          "{bc} foolish or untrue words or ideas",
+          "{bc} bad or unfair behavior or treatment"
+        ]
+      },
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "crap",
+      "prs": [
+        {
+          "ipa": "ˈkræp",
+          "sound": {
+            "audio": "crap0001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "def": [
+      {
+        "sls": [
+          "informal + impolite"
+        ],
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "sgram": "noncount",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}something that is worthless, unimportant, or of poor quality "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She treats him like (a piece of) {it}crap{/it}."
+                      },
+                      {
+                        "t": "We have a lot of {it}crap{/it} [={it}junk{/it}] in the garage."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "sgram": "noncount",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}foolish or untrue words or ideas {bc}{sx|nonsense||} "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "You don't believe all that {it}crap{/it}, do you?"
+                      },
+                      {
+                        "t": "{ldquo}Do you think they're telling the truth?{rdquo} {ldquo}No, I think they're {phrase}full of crap{/phrase}.{rdquo}"
+                      },
+                      {
+                        "t": "I heard what they said to you, and I think it's a {phrase}load/pile of crap{/phrase}."
+                      },
+                      {
+                        "t": "({it}US{/it}) It's all a {phrase}bunch of crap{/phrase}."
+                      },
+                      {
+                        "t": "{phrase}Cut the crap{/phrase} [=stop lying] and tell me what really happened."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "sgram": "noncount",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}bad or unfair behavior or treatment "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Do what I say, and don't {phrase}give me any crap{/phrase}."
+                      },
+                      {
+                        "t": "He's a tough teacher who won't {phrase}take crap{/phrase} from anyone."
+                      },
+                      {
+                        "t": "I won't {phrase}stand for your crap{/phrase} any longer. = I won't {phrase}put up with your crap{/phrase} any longer."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4 a",
+                "sgram": "noncount",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}solid waste passed out of the body {bc}{sx|feces||}"
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "sgram": "singular",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the act of passing solid waste from the body"
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used in the phrases {phrase}take a crap{/phrase} and ({it}Brit{/it}) {phrase}have a crap{/phrase}"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used for emphasis after words like {it}scare, frighten{/it}, and {it}beat{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "That movie {phrase}scared the crap out of{/phrase} me. [=scared me very badly]"
+                            },
+                            {
+                              "t": "The boxer {phrase}beat the crap out of{/phrase} his opponent."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "give a crap",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to care at all about someone or something "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "Who {it}gives a crap{/it}? [=who cares?]"
+                          }
+                        ]
+                      ],
+                      [
+                        "uns",
+                        [
+                          [
+                            [
+                              "text",
+                              "usually used in negative statements "
+                            ],
+                            [
+                              "vis",
+                              [
+                                {
+                                  "t": "She doesn't {it}give a crap{/it} about us."
+                                }
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "like crap",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}very badly "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I sing {it}like crap{/it}. [=I am a terrible singer]"
+                          }
+                        ]
+                      ],
+                      [
+                        "snote",
+                        [
+                          [
+                            "t",
+                            "If you {phrase}feel like crap{/phrase}, you feel very sick, unhappy, etc."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "I got drunk at the party, and the next morning I {it}felt like crap{/it}. [=I felt sick]"
+                              }
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "shortdef": [
+      "something that is worthless, unimportant, or of poor quality",
+      "foolish or untrue words or ideas : nonsense",
+      "bad or unfair behavior or treatment"
+    ]
+  }
+]

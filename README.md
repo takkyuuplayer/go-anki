@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/takkyuuplayer/go-anki.svg?branch=master)](https://travis-ci.org/takkyuuplayer/go-anki)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 # go-anki
 
-Generate frashcards for [Anki](https://apps.ankiweb.net/) with online English-English dictionaries.
+![Build Status](https://github.com/takkyuuplayer/go-anki/workflows/CI/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Generate flashcards for [Anki](https://apps.ankiweb.net/) with online English-English dictionaries.
 
 ## Demo
 

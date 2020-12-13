@@ -9,38 +9,30 @@ import (
 	"os"
 	"strings"
 
+	"github.com/takkyuuplayer/go-anki/anki"
+	"github.com/takkyuuplayer/go-anki/dictionary"
+
 	"github.com/rakyll/statik/fs"
-	anki "github.com/takkyuuplayer/go-anki"
-	"github.com/takkyuuplayer/go-anki/mw"
+	"github.com/takkyuuplayer/go-anki/dictionary/mw"
+
+	// https://github.com/rakyll/statik#usage
 	_ "github.com/takkyuuplayer/go-anki/web/statik"
-	"github.com/takkyuuplayer/go-anki/wiktionary"
 )
 
-var dictionaries = map[string]anki.Dictionary{
-	"mw":         mw.New(os.Getenv("MW_API_KEY"), "learners"),
-	"wiktionary": wiktionary.New(),
+var dictionaries = map[string]dictionary.Dictionary{
+	"mw": mw.NewLearners(os.Getenv("MW_LEARNERS_KEY"), &http.Client{}),
 }
 
 func post(w http.ResponseWriter, r *http.Request) {
-	wc := &anki.Client{
-		Dictionary: dictionaries[r.PostFormValue("dictionary")],
-		HttpClient: &http.Client{},
-	}
-
-	if wc.Dictionary == nil {
-		log.Printf("Unknown Dictionary: %s", r.PostFormValue("dictionary"))
-		http.Redirect(w, r, "/", 301)
-		return
-	}
+	dic := dictionaries[r.PostFormValue("dictionary")]
 
 	w.Header().Set("Content-Disposition", "attachment; filename=anki.tsv")
-
 	in := strings.NewReader(r.PostFormValue("words"))
 
 	out := csv.NewWriter(w)
 	out.Comma = '\t'
 
-	wc.Run(in, out, out)
+	anki.Run(dic, in, out, out)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

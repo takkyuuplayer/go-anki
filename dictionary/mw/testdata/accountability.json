@@ -1,0 +1,160 @@
+[
+  {
+    "meta": {
+      "id": "accountable",
+      "uuid": "cca657c2-87df-4fb2-88f2-545ffeb78a3e",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "3ff678e2-fb42-49ee-afcc-5e9736d94580",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "accountable",
+        "accountability"
+      ],
+      "app-shortdef": {
+        "hw": "accountable",
+        "fl": "adjective",
+        "def": [
+          "{bc} required to explain actions or decisions to someone",
+          "{bc} required to be responsible for something"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "ac*count*able",
+      "prs": [
+        {
+          "ipa": "əˈkaʊntəbəl",
+          "sound": {
+            "audio": "accoun03"
+          }
+        }
+      ]
+    },
+    "fl": "adjective",
+    "lbs": [
+      "not used before a noun"
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}required to explain actions or decisions to someone"
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "usually + {it}to{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "Political leaders need to be {it}accountable to{/it} the people they represent."
+                            },
+                            {
+                              "t": "a powerful businessman who seems to think that he's {it}accountable{/it} [={it}answerable{/it}] {it}to{/it} no one"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}required to be responsible for something "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "If anything goes wrong I will hold you personally {it}accountable{/it}!"
+                      }
+                    ]
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "often + {it}for{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "They hold you {it}accountable for{/it} your mistakes."
+                            },
+                            {
+                              "t": "Each child is {it}accountable{/it} [={it}responsible{/it}] {it}for{/it} his or her own behavior."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "ac*count*abil*i*ty",
+        "prs": [
+          {
+            "ipa": "əˌkæʊntəˈbɪləti",
+            "sound": {
+              "audio": "accoun02"
+            }
+          }
+        ],
+        "fl": "noun",
+        "gram": "noncount",
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "We now have greater {it}accountability{/it} in the department. [=people in the department can now be held more responsible for what happens]"
+              },
+              {
+                "t": "corporate {it}accountability{/it}"
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "required to explain actions or decisions to someone—usually + to",
+      "required to be responsible for something —often + for"
+    ]
+  }
+]

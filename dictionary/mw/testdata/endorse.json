@@ -1,0 +1,248 @@
+[
+  {
+    "meta": {
+      "id": "endorse",
+      "uuid": "ff989140-06f2-474a-b477-a12940ad850a",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "e5ed2e11-ea96-497a-8e19-a22b25180460",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "endorse",
+        "indorse",
+        "endorses",
+        "endorsed",
+        "endorsing",
+        "endorser",
+        "endorsers"
+      ],
+      "app-shortdef": {
+        "hw": "endorse",
+        "fl": "verb",
+        "def": [
+          "{bc} to publicly or officially say that you support or approve of (someone or something)",
+          "{bc} to publicly say that you like or use (a product or service) in exchange for money",
+          "{bc} to write your name on the back of (a check)"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "en*dorse"
+    },
+    "vrs": [
+      {
+        "vl": "also",
+        "va": "in*dorse",
+        "prs": [
+          {
+            "ipa": "ɪnˈdoɚs",
+            "sound": {
+              "audio": "endors01"
+            }
+          }
+        ]
+      }
+    ],
+    "fl": "verb",
+    "ins": [
+      {
+        "ifc": "-dors*es",
+        "if": "en*dors*es"
+      },
+      {
+        "ifc": "-dorsed",
+        "if": "en*dorsed"
+      },
+      {
+        "ifc": "-dors*ing",
+        "if": "en*dors*ing"
+      }
+    ],
+    "gram": "+ obj",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to publicly or officially say that you support or approve of (someone or something) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The newspaper has {it}endorsed{/it} the conservative candidate for mayor."
+                      },
+                      {
+                        "t": "The committee must {it}endorse{/it} [={it}approve{/it}] the decision."
+                      },
+                      {
+                        "t": "We do not {it}endorse{/it} their position."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to publicly say that you like or use (a product or service) in exchange for money "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She {it}endorses{/it} a line of clothing."
+                      },
+                      {
+                        "t": "That brand of sneaker is {it}endorsed{/it} by several basketball stars."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to write your name on the back of (a check) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "You must {it}endorse{/it} the check before you deposit it in the bank."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "sls": [
+                  "British"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to put information about a driving offense on (a person's driver's license)"
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "usually used as {it}(be) endorsed{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "His driving license {it}was endorsed{/it} for speeding."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "en*dors*er",
+        "fl": "noun",
+        "ins": [
+          {
+            "il": "plural",
+            "ifc": "-ers",
+            "if": "en*dors*ers"
+          }
+        ],
+        "gram": "count"
+      }
+    ],
+    "shortdef": [
+      "to publicly or officially say that you support or approve of (someone or something)",
+      "to publicly say that you like or use (a product or service) in exchange for money",
+      "to write your name on the back of (a check)"
+    ]
+  },
+  {
+    "meta": {
+      "id": "indorse",
+      "uuid": "10e68835-4f08-4479-bcd1-5eae059dce32",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "8d3f6cf0-6382-48fa-b30e-fbe34048a8b8",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "indorse",
+        "indorsement",
+        "endorse",
+        "endorsement",
+        "indorsed",
+        "indorsements",
+        "indorses",
+        "indorsing"
+      ],
+      "app-shortdef": null,
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "indorse"
+    },
+    "ahws": [
+      {
+        "hw": "indorsement"
+      }
+    ],
+    "cxs": [
+      {
+        "cxl": "variant spellings of",
+        "cxtis": [
+          {
+            "cxt": "endorse"
+          },
+          {
+            "cxt": "endorsement"
+          }
+        ]
+      }
+    ],
+    "shortdef": []
+  }
+]
