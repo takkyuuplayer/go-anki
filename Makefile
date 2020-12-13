@@ -16,8 +16,8 @@ anki:
 	find ./data -type f | xargs cat | go run cmd/cli/main.go --dictionary=wiktionary > result.csv
 
 test:
-	go vet ./...
-	go test ./...
+	go clean -testcache
+	go test -race -covermode=atomic -coverprofile=coverage.txt ./...
 
 lint: golint gocyclo
 
