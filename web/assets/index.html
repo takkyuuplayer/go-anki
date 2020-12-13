@@ -48,13 +48,13 @@
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">wrap_text</i>
-                  <textarea id="textarea1" name="words" style="min-height: 5em" class="materialize-textarea" v-model="words"></textarea>
-                  <label for="textarea1">Word(s)</label>
+                  <textarea id="textarea1" name="words" style="min-height: 5em; max-height: 10em; overflow-y: scroll;" class="materialize-textarea" v-model="words"></textarea>
+                  <label for="textarea1">Word(s) - Up to five words on demo</label>
                 </div>
               </div>
               <div class="row">
                 <button class="btn waves-effect waves-light"
-                        v-bind:class="{disabled: (dictionary === '' || words.trim().length === 0) }" type="submit" name="action"
+                        v-bind:class="{disabled: (dictionary === '' || words.trim().length === 0 || words.split('\n').length > 5) }" type="submit" name="action"
                   >Download
                   <i class="material-icons right">file_download</i>
                 </button>
