@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/csv"
 	"flag"
 	"io"
@@ -32,7 +33,12 @@ func post(w http.ResponseWriter, r *http.Request) {
 	out := csv.NewWriter(w)
 	out.Comma = '\t'
 
-	anki.Run(dic, in, out, out)
+	errOut := new(bytes.Buffer)
+	errCsv := csv.NewWriter(errOut)
+	errCsv.Comma = '\t'
+	anki.Run(dic, in, out, errCsv)
+
+	w.Write(errOut.Bytes())
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
