@@ -12,7 +12,7 @@ import (
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
-const searchURL = "https://www.dictionaryapi.com/api/v3/references/Learners/json/%s?key=%s"
+const searchURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/%s?key=%s"
 
 // Learners is a client to access MERRIAM-WEBSTER'S LEARNER'S DICTIONARY API
 // https://dictionaryapi.com/products/api-learners-dictionary
