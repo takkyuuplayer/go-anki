@@ -169,8 +169,9 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 		tuple := tuple.([]interface{})
 		switch tuple[0].(string) {
 		case "text":
-			if strings.HasPrefix("{bc}", tuple[0].(string)) {
-				dicSense += format(tuple[1].(string)) + " "
+			txt := strings.Trim(tuple[1].(string), " ")
+			if strings.HasPrefix(txt, "{bc}") {
+				dicSense += format(txt) + "; "
 			}
 		case "vis":
 			for _, example := range tuple[1].([]interface{}) {

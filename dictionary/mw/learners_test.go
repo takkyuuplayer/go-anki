@@ -22,6 +22,7 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Equal(t, "test", result.Entries[0].Headword)
 		assert.Equal(t, "test", result.Entries[1].Headword)
 		assert.Equal(t, "testable", result.Entries[2].Headword)
+		assert.NotEqual(t, "", result.Entries[0].Definitions[0].Sense)
 		assert.Nil(t, err)
 	})
 
