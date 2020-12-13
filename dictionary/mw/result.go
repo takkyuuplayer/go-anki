@@ -162,7 +162,10 @@ func (sections definitionSections) convert() ([]dictionary.Definition, error) {
 			for _, sense := range senses {
 				if sense[0].(string) == "sense" {
 					sense := sense[1].(map[string]interface{})
-					definition, _ := convertDefiningText(sense["dt"])
+					definition, err := convertDefiningText(sense["dt"])
+					if err != nil {
+						return nil, err
+					}
 					definitions = append(definitions, definition)
 				}
 			}
@@ -190,19 +193,26 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 		case "uns":
 			for _, dt2 := range tuple[1].([]interface{}) {
-				res, _ := convertDefiningText(dt2)
+				res, err := convertDefiningText(dt2)
+				if err != nil {
+					return dictionary.Definition{}, err
+				}
 				dicExample = append(dicExample, res.Examples...)
 			}
 		case "snote":
 			if len(dicSenses) == 0 {
 				dicSenses = append(dicSenses, Format(tuple[1].([]interface{})[0].([]interface{})[1].(string)))
 			}
-			res, _ := convertDefiningText(tuple[1].([]interface{})[1:])
+			res, err := convertDefiningText(tuple[1].([]interface{})[1:])
+			if err != nil {
+				return dictionary.Definition{}, err
+			}
 			dicExample = append(dicExample, res.Examples...)
+
 		case "wsgram", "bnw", "ri":
 			// Something todo?
 		default:
-			panic("unknown")
+			return dictionary.Definition{}, fmt.Errorf("unknown type: %s", tuple[0].(string))
 		}
 	}
 

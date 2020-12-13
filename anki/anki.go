@@ -3,6 +3,7 @@ package anki
 import (
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	"io"
 	"strings"
 	"sync"
@@ -20,10 +21,18 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 	wg := &sync.WaitGroup{}
 	scanner := bufio.NewScanner(in)
 	for scanner.Scan() {
+		word := strings.Trim(scanner.Text(), " ")
+		if word == "" {
+			continue
+		}
+
+		fmt.Println("Start ", word)
+
 		wg.Add(1)
 		c <- true
 		go func(word string) {
 			defer func() {
+				fmt.Println("End ", word)
 				<-c
 				wg.Done()
 			}()
@@ -33,7 +42,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {
-				outErr.Write([]string{errorUnknown, word})
+				outErr.Write([]string{errorUnknown, fmt.Sprintf("%s: %s", word, err)})
 				return
 			}
 			result, err := dic.Parse(word, body)
@@ -41,7 +50,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {
-				outErr.Write([]string{errorUnknown, word})
+				outErr.Write([]string{errorUnknown, fmt.Sprintf("%s: %s", word, err)})
 				return
 			}
 			if len(result.Suggestions) > 0 {
@@ -53,7 +62,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				out.Write([]string{card.Front(), back})
 			}
 
-		}(strings.Trim(scanner.Text(), " "))
+		}(word)
 	}
 	wg.Wait()
 

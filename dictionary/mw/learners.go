@@ -72,9 +72,12 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	for _, entry := range entries {
 		var lookedUp []dictionary.Entry
 		if isPhrasalVerb {
-			lookedUp = lookUpForPhrase(searchWord, entry)
+			lookedUp, err = lookUpForPhrase(searchWord, entry)
 		} else {
-			lookedUp = lookUpForWord(searchWord, entry)
+			lookedUp, err = lookUpForWord(searchWord, entry)
+		}
+		if err != nil {
+			return nil, err
 		}
 		if lookedUp != nil {
 			dictEntries = append(dictEntries, lookedUp...)
@@ -92,7 +95,7 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	}, nil
 }
 
-func lookUpForPhrase(searchWord string, entry entry) []dictionary.Entry {
+func lookUpForPhrase(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	var de []dictionary.Entry
 
 	for _, definedOnRun := range entry.Dros {
@@ -100,7 +103,10 @@ func lookUpForPhrase(searchWord string, entry entry) []dictionary.Entry {
 			continue
 		}
 
-		definitions, _ := definedOnRun.Def.convert()
+		definitions, err := definedOnRun.Def.convert()
+		if err != nil {
+			return nil, err
+		}
 		dictEntry := dictionary.Entry{
 			ID:              "mw-" + definedOnRun.Drp,
 			Headword:        definedOnRun.Drp,
@@ -110,10 +116,10 @@ func lookUpForPhrase(searchWord string, entry entry) []dictionary.Entry {
 		de = append(de, dictEntry)
 	}
 
-	return de
+	return de, nil
 }
 
-func lookUpForWord(searchWord string, entry entry) []dictionary.Entry {
+func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	var de []dictionary.Entry
 	var matched bool
 
@@ -121,7 +127,10 @@ func lookUpForWord(searchWord string, entry entry) []dictionary.Entry {
 		matched = true
 	}
 
-	definitions, _ := entry.Def.convert()
+	definitions, err := entry.Def.convert()
+	if err != nil {
+		return nil, err
+	}
 	var pronunciation *dictionary.Pronunciation
 	if len(entry.Hwi.Prs) > 0 {
 		pronunciation = &dictionary.Pronunciation{
@@ -146,7 +155,10 @@ func lookUpForWord(searchWord string, entry entry) []dictionary.Entry {
 
 		var definitions []dictionary.Definition
 		if len(uro.Utxt) > 0 {
-			definition, _ := convertDefiningText(uro.Utxt)
+			definition, err := convertDefiningText(uro.Utxt)
+			if err != nil {
+				return nil, err
+			}
 			definitions = append(definitions, definition)
 		}
 		if len(uro.Prs) > 0 {
@@ -167,7 +179,7 @@ func lookUpForWord(searchWord string, entry entry) []dictionary.Entry {
 	}
 
 	if matched {
-		return de
+		return de, nil
 	}
-	return nil
+	return nil, nil
 }
