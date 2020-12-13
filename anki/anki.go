@@ -11,8 +11,8 @@ import (
 )
 
 const concurrency = 10
-const errorNotFound = "error_not_found"
-const errorGeneral = "error_general"
+const errorNotFound = "Error: Not Found"
+const errorUnknown = "Error: Unknown"
 
 // Run generates anki card tsv file
 func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
@@ -33,7 +33,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {
-				outErr.Write([]string{errorGeneral, word})
+				outErr.Write([]string{errorUnknown, word})
 				return
 			}
 			result, err := dic.Parse(word, body)
@@ -41,7 +41,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {
-				outErr.Write([]string{errorGeneral, word})
+				outErr.Write([]string{errorUnknown, word})
 				return
 			}
 			if len(result.Suggestions) > 0 {
