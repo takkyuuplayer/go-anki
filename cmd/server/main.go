@@ -26,19 +26,22 @@ var dictionaries = map[string]dictionary.Dictionary{
 
 func post(w http.ResponseWriter, r *http.Request) {
 	dic := dictionaries[r.PostFormValue("dictionary")]
-
+	w.Header().Set("Transfer-Encoding", "chunked")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
 	w.Header().Set("Content-Disposition", "attachment; filename=anki.tsv")
+
 	in := strings.NewReader(r.PostFormValue("words"))
 
 	out := csv.NewWriter(w)
 	out.Comma = '\t'
 
-	errOut := new(bytes.Buffer)
-	errCsv := csv.NewWriter(errOut)
-	errCsv.Comma = '\t'
-	anki.Run(dic, in, out, errCsv)
+	outErr := new(bytes.Buffer)
+	outErrCsv := csv.NewWriter(outErr)
+	outErrCsv.Comma = '\t'
 
-	w.Write(errOut.Bytes())
+	anki.Run(dic, in, out, outErrCsv)
+
+	outErr.WriteTo(w)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

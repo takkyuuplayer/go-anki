@@ -5,6 +5,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
+	"log"
 	"strings"
 	"sync"
 
@@ -31,12 +32,10 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 		if errorLimit <= errCount {
 			break
 		}
-
 		wg.Add(1)
-		c <- true
 		go func(word string) {
 			defer func() {
-				<-c
+				c <- true
 				wg.Done()
 			}()
 
@@ -47,6 +46,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				return
 			} else if err != nil {
 				errCount += 1
+				log.Println(word, ": ", err)
 				outErr.Write([]string{errorUnknown, fmt.Sprintf("%s: %s", word, err)})
 				return
 			}
@@ -57,6 +57,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				return
 			} else if err != nil {
 				errCount += 1
+				log.Println(word, ": ", err)
 				outErr.Write([]string{errorUnknown, fmt.Sprintf("%s: %s", word, err)})
 				return
 			}
@@ -71,6 +72,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 				out.Write([]string{card.Front(), back})
 			}
 		}(word)
+		<-c
 	}
 	wg.Wait()
 
