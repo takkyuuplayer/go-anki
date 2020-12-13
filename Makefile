@@ -1,7 +1,6 @@
 .PHONY: test
 
 setup: tools mod generate
-	mkdir -p data
 
 tools:
 	which statik || go get github.com/rakyll/statik
