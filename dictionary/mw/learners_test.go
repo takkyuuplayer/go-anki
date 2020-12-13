@@ -27,6 +27,17 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Nil(t, err)
 	})
 
+	t.Run("Returning for a word having empty definition", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("endorse", load(t, "endorse.json"))
+
+		assert.Len(t, result.Entries, 2)
+		assert.Equal(t, "endorse", result.Entries[0].Headword)
+		assert.Equal(t, "endorser", result.Entries[1].Headword)
+		assert.Len(t, result.Entries[1].Definitions, 0)
+		assert.Nil(t, err)
+	})
+
 	t.Run("Returning for a word under uros", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("accountability", load(t, "accountability.json"))

@@ -119,16 +119,20 @@ func lookUpForWord(searchWord string, entry Entry) []dictionary.Entry {
 	}
 
 	definitions, _ := entry.Def.convert()
+	var pronunciation *dictionary.Pronunciation
+	if len(entry.Hwi.Prs) > 0 {
+		pronunciation = &dictionary.Pronunciation{
+			Notation: "IPA",
+			Accents:  entry.Hwi.Prs.convert(),
+		}
+	}
 	dictEntry := dictionary.Entry{
 		ID:              "mw-" + entry.Meta.ID,
 		Headword:        entry.Hwi.Hw.Clean(),
 		FunctionalLabel: entry.Fl,
-		Pronunciation: dictionary.Pronunciation{
-			Notation: "IPA",
-			Accents:  entry.Hwi.Prs.convert(),
-		},
-		Inflections: entry.Ins.convert(),
-		Definitions: definitions,
+		Pronunciation:   pronunciation,
+		Inflections:     entry.Ins.convert(),
+		Definitions:     definitions,
 	}
 	de = append(de, dictEntry)
 
@@ -137,17 +141,24 @@ func lookUpForWord(searchWord string, entry Entry) []dictionary.Entry {
 			matched = true
 		}
 
-		definition, _ := convertDefiningText(uro.Utxt)
+		var definitions []dictionary.Definition
+		if len(uro.Utxt) > 0 {
+			definition, _ := convertDefiningText(uro.Utxt)
+			definitions = append(definitions, definition)
+		}
+		if len(uro.Prs) > 0 {
+			pronunciation = &dictionary.Pronunciation{
+				Notation: "IPA",
+				Accents:  uro.Prs.convert(),
+			}
+		}
 		dictEntry := dictionary.Entry{
 			ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.Clean(),
 			Headword:        uro.Ure.Clean(),
 			FunctionalLabel: uro.Fl,
-			Pronunciation: dictionary.Pronunciation{
-				Notation: "IPA",
-				Accents:  uro.Prs.convert(),
-			},
-			Inflections: nil,
-			Definitions: []dictionary.Definition{definition},
+			Pronunciation: pronunciation,
+			Inflections: uro.Ins.convert(),
+			Definitions: definitions,
 		}
 		de = append(de, dictEntry)
 	}

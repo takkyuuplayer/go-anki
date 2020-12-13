@@ -1,6 +1,7 @@
 package anki_test
 
 import (
+	"html/template"
 	"testing"
 
 	"github.com/takkyuuplayer/go-anki/anki"
@@ -45,7 +46,7 @@ var testEntry dictionary.Entry = dictionary.Entry{
 	ID:              "test:1",
 	Headword:        "test",
 	FunctionalLabel: "noun",
-	Pronunciation: dictionary.Pronunciation{
+	Pronunciation: &dictionary.Pronunciation{
 		Notation: "IPA",
 		Accents: []dictionary.Accent{
 			{
@@ -64,7 +65,7 @@ var testEntry dictionary.Entry = dictionary.Entry{
 	Definitions: []dictionary.Definition{
 		{
 			Sense: "a set of questions or problems",
-			Examples: []string{
+			Examples: []template.HTML{
 				"She is studying for her math/spelling/history test",
 				"I passed/failed/flunked my biology test",
 			},

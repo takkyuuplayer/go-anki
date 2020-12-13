@@ -22,7 +22,7 @@ type Entry struct {
 	ID              string
 	Headword        string
 	FunctionalLabel string
-	Pronunciation   Pronunciation
+	Pronunciation   *Pronunciation
 	Inflections     []Inflection
 	Definitions     []Definition
 }
@@ -35,7 +35,7 @@ type Definition struct {
 type Inflection struct {
 	FormLabel     string
 	InflectedForm string
-	Pronunciation Pronunciation
+	Pronunciation *Pronunciation
 }
 
 type Pronunciation struct {

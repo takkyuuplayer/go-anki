@@ -27,6 +27,7 @@ type Entry struct {
 		Ure  Hw            `json:"ure"`
 		Prs  Prs           `json:"prs"`
 		Fl   string        `json:"fl"`
+		Ins Ins            `json:"ins"`
 		Gram string        `json:"gram"`
 		Utxt []interface{} `json:"utxt"`
 	} `json:"uros,omitempty"`
@@ -130,13 +131,17 @@ func (ins Ins) convert() []dictionary.Inflection {
 	inflections := make([]dictionary.Inflection, len(ins))
 
 	for idx, in := range ins {
+		var pronunciation *dictionary.Pronunciation
+		if len(in.Prs) > 0 {
+			pronunciation = &dictionary.Pronunciation{
+				Notation: "IPA",
+				Accents: in.Prs.convert(),
+			}
+		}
 		inflection := dictionary.Inflection{
 			FormLabel:     in.Il,
 			InflectedForm: in.If,
-			Pronunciation: dictionary.Pronunciation{
-				Notation: "IPA",
-				Accents:  in.Prs.convert(),
-			},
+			Pronunciation: pronunciation,
 		}
 		inflections[idx] = inflection
 	}
