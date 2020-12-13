@@ -162,7 +162,7 @@ func (sections DefinitionSections) convert() ([]dictionary.Definition, error) {
 }
 
 func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
-	var dicSense string
+	var dicSenses []string
 	var dicExample []string
 
 	for _, tuple := range dt.([]interface{}) {
@@ -171,28 +171,34 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 		case "text":
 			txt := strings.Trim(tuple[1].(string), " ")
 			if strings.HasPrefix(txt, "{bc}") {
-				dicSense += format(txt) + "; "
+				dicSenses = append(dicSenses, Format(txt))
 			}
 		case "vis":
 			for _, example := range tuple[1].([]interface{}) {
-				dicExample = append(dicExample, format(example.(map[string]interface{})["t"].(string)))
+				dicExample = append(dicExample, Format(example.(map[string]interface{})["t"].(string)))
 			}
 		case "uns":
 			for _, dt2 := range tuple[1].([]interface{}) {
 				res, _ := convertDefiningText(dt2)
 				dicExample = append(dicExample, res.Examples...)
 			}
-		case "wsgram", "bnw", "ri", "snote":
+		case "snote":
+			if len(dicSenses) == 0 {
+				dicSenses = append(dicSenses, tuple[1].([]interface{})[0].([]interface{})[1].(string))
+			}
+			res, _ := convertDefiningText(tuple[1].([]interface{})[1:])
+			dicExample = append(dicExample, res.Examples...)
+		case "wsgram", "bnw", "ri":
 			// Something todo?
 		default:
 			panic("unknown")
 		}
 	}
 
-	return dictionary.Definition{Sense: dicSense, Examples: dicExample}, nil
+	return dictionary.Definition{Sense: strings.Join(dicSenses, " / "), Examples: dicExample}, nil
 }
 
-func format(text string) string {
+func Format(text string) string {
 	return text
 }
 
