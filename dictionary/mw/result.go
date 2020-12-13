@@ -56,16 +56,17 @@ type meta struct {
 		Tuuid string `json:"tuuid"`
 		Tsrc  string `json:"tsrc"`
 	} `json:"target,omitempty"`
-	Highlight   string   `json:"highlight,omitempty"`
-	Stems       []string `json:"stems"`
-	AppShortdef struct {
-		Hw  hw       `json:"hw"`
-		Fl  string   `json:"fl"`
-		Def []string `json:"def"`
-	} `json:"app-shortdef"`
-	Offensive bool `json:"offensive"`
+	Highlight   string      `json:"highlight,omitempty"`
+	Stems       []string    `json:"stems"`
+	AppShortdef interface{} `json:"app-shortdef"` // junk.json is returning empty array...
+	Offensive   bool        `json:"offensive"`
 }
 
+type AppShortdef struct {
+	Hw  hw       `json:"hw"`
+	Fl  string   `json:"fl"`
+	Def []string `json:"def"`
+}
 type hwi struct {
 	Hw  hw  `json:"hw"`
 	Prs prs `json:"prs"`
