@@ -6,8 +6,6 @@ import (
 	"github.com/takkyuuplayer/go-anki/dictionary"
 	"io/ioutil"
 	"net/http"
-	"os"
-	"path/filepath"
 	"testing"
 )
 
@@ -32,8 +30,8 @@ func Test_learners_Parse(t *testing.T) {
 		result, err := learners.Parse("accountability", load(t, "accountability.json"))
 
 		assert.Len(t, result.Entries, 2)
-		assert.Equal(t, "ac*count*able", result.Entries[0].Headword)
-		assert.Equal(t, "ac*count*abil*i*ty", result.Entries[1].Headword)
+		assert.Equal(t, "accountable", result.Entries[0].Headword)
+		assert.Equal(t, "accountability", result.Entries[1].Headword)
 		assert.Nil(t, err)
 	})
 
@@ -63,24 +61,6 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Nil(t, result.Entries)
 		assert.Nil(t, err)
 	})
-
-	filepath.Walk("testdata", func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			t.Fatal(err)
-			return err
-		}
-		if info.IsDir() {
-			return nil
-		}
-
-		t.Run(path, func(t *testing.T) {
-			t.Parallel()
-
-			_, err = learners.Parse("dummy", load(t, filepath.Base(path)))
-			assert.Nil(t, err)
-		})
-		return nil
-	})
 }
 
 func load(t *testing.T, testfile string) string {
@@ -100,8 +80,6 @@ func Test_learners_LookUp(t *testing.T) {
 	learners := NewLearners("dummy", &http.Client{})
 
 	t.Run("Returning response body", func(t *testing.T) {
-		t.Parallel()
-
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
@@ -117,8 +95,6 @@ func Test_learners_LookUp(t *testing.T) {
 	})
 
 	t.Run("Returning error when status code != 200", func(t *testing.T) {
-		t.Parallel()
-
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
@@ -135,8 +111,6 @@ func Test_learners_LookUp(t *testing.T) {
 	})
 
 	t.Run("Returning NotFoundError when response is empty array i.e. no suggestions", func(t *testing.T) {
-		t.Parallel()
-
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
