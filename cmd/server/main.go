@@ -19,14 +19,12 @@ import (
 	_ "github.com/takkyuuplayer/go-anki/web/statik"
 )
 
-const Concurrency = 10
-
 var dictionaries = map[string]dictionary.Dictionary{
 	"mw": mw.NewLearners(os.Getenv("MW_LEARNERS_KEY"), &http.Client{}),
 }
 
 func post(w http.ResponseWriter, r *http.Request) {
-	dictionaryApi := dictionaries[r.PostFormValue("dictionary")]
+	dic := dictionaries[r.PostFormValue("dictionary")]
 
 	w.Header().Set("Content-Disposition", "attachment; filename=anki.tsv")
 	in := strings.NewReader(r.PostFormValue("words"))
@@ -34,7 +32,7 @@ func post(w http.ResponseWriter, r *http.Request) {
 	out := csv.NewWriter(w)
 	out.Comma = '\t'
 
-	anki.Run(dictionaryApi, in, out, out)
+	anki.Run(dic, in, out, out)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

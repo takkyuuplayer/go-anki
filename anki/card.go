@@ -8,15 +8,18 @@ import (
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
+// Card is the raw data of anki card
 type Card struct {
 	SearchWord string
 	Entries    []dictionary.Entry
 }
 
+// Front returns the content of front
 func (card Card) Front() string {
 	return card.SearchWord
 }
 
+// Back returns the content of back
 func (card Card) Back() (string, error) {
 	ret := ""
 	for _, entry := range card.Entries {

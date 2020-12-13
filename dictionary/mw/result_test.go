@@ -1,6 +1,9 @@
-package mw
+package mw_test
 
-import "testing"
+import (
+	"github.com/takkyuuplayer/go-anki/dictionary/mw"
+	"testing"
+)
 
 func TestFormat(t *testing.T) {
 	tests := []struct {
@@ -15,7 +18,7 @@ func TestFormat(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.args, func(t *testing.T) {
-			if got := Format(tt.args); got != tt.want {
+			if got := mw.Format(tt.args); got != tt.want {
 				t.Errorf("Format() = %v, want %v", got, tt.want)
 			}
 		})

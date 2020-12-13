@@ -1,6 +1,7 @@
-package mw
+package mw_test
 
 import (
+	"github.com/takkyuuplayer/go-anki/dictionary/mw"
 	"io/ioutil"
 	"net/http"
 	"testing"
@@ -13,7 +14,7 @@ import (
 func Test_learners_Parse(t *testing.T) {
 	t.Parallel()
 
-	learners := NewLearners("", nil)
+	learners := mw.NewLearners("", nil)
 
 	t.Run("Returning for a word", func(t *testing.T) {
 		t.Parallel()
@@ -62,12 +63,12 @@ func Test_learners_Parse(t *testing.T) {
 		})
 	})
 
-	t.Run("Returning NotFoundError for a phrasal verb", func(t *testing.T) {
+	t.Run("Returning ErrNotFound for a phrasal verb", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("put up with", load(t, "put_up_with.json"))
 
 		assert.Nil(t, result)
-		assert.Equal(t, dictionary.NotFoundError, err)
+		assert.Equal(t, dictionary.ErrNotFound, err)
 	})
 
 	t.Run("Returning suggestions", func(t *testing.T) {
@@ -95,19 +96,18 @@ func load(t *testing.T, testfile string) string {
 func Test_learners_LookUp(t *testing.T) {
 	t.Parallel()
 
-	learners := NewLearners("dummy", &http.Client{})
+	learners := mw.NewLearners("dummy", &http.Client{})
 
 	t.Run("Returning response body", func(t *testing.T) {
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
 		resBody := load(t, "test.json")
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
 			httpmock.NewStringResponder(200, resBody),
 		)
 
 		body, err := learners.LookUp("test")
-
 		assert.Equal(t, resBody, body)
 		assert.Nil(t, err)
 	})
@@ -117,7 +117,7 @@ func Test_learners_LookUp(t *testing.T) {
 		defer httpmock.DeactivateAndReset()
 
 		resBody := load(t, "test.json")
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
 			httpmock.NewStringResponder(404, resBody),
 		)
 
@@ -125,20 +125,20 @@ func Test_learners_LookUp(t *testing.T) {
 
 		assert.Equal(t, "", body)
 		assert.NotNil(t, err)
-		assert.NotEqual(t, dictionary.NotFoundError, err)
+		assert.NotEqual(t, dictionary.ErrNotFound, err)
 	})
 
-	t.Run("Returning NotFoundError when response is empty array i.e. no suggestions", func(t *testing.T) {
+	t.Run("Returning ErrNotFound when response is empty array i.e. no suggestions", func(t *testing.T) {
 		httpmock.Activate()
 		defer httpmock.DeactivateAndReset()
 
-		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/learners/json/test?key=dummy",
+		httpmock.RegisterResponder("GET", "https://www.dictionaryapi.com/api/v3/references/Learners/json/test?key=dummy",
 			httpmock.NewStringResponder(200, `[]`),
 		)
 
 		body, err := learners.LookUp("test")
 
 		assert.Equal(t, "", body)
-		assert.Equal(t, dictionary.NotFoundError, err)
+		assert.Equal(t, dictionary.ErrNotFound, err)
 	})
 }

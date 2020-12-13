@@ -14,7 +14,8 @@ const concurrency = 10
 const errorNotFound = "error_not_found"
 const errorGeneral = "error_general"
 
-func Run(dictionaryApi dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
+// Run generates anki card tsv file
+func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 	c := make(chan bool, concurrency)
 	wg := &sync.WaitGroup{}
 	scanner := bufio.NewScanner(in)
@@ -27,16 +28,16 @@ func Run(dictionaryApi dictionary.Dictionary, in io.Reader, out, outErr *csv.Wri
 				wg.Done()
 			}()
 
-			body, err := dictionaryApi.LookUp(word)
-			if err == dictionary.NotFoundError {
+			body, err := dic.LookUp(word)
+			if err == dictionary.ErrNotFound {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {
 				outErr.Write([]string{errorGeneral, word})
 				return
 			}
-			result, err := dictionaryApi.Parse(word, body)
-			if err == dictionary.NotFoundError {
+			result, err := dic.Parse(word, body)
+			if err == dictionary.ErrNotFound {
 				outErr.Write([]string{errorNotFound, word})
 				return
 			} else if err != nil {

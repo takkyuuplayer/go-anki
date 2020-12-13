@@ -9,31 +9,34 @@ import (
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
-const audioUrl = "https://media.merriam-webster.com/audio/prons/en/us/mp3/%s/%s.mp3"
+const audioURL = "https://media.merriam-webster.com/audio/prons/en/us/mp3/%s/%s.mp3"
 
-type Suggestion []string
-type Entries []Entry
+// suggestion suggestive alternative search words
+type suggestion []string
 
-type Entry struct {
-	Meta Meta               `json:"meta"`
-	Hwi  Hwi                `json:"hwi"`
+// entries are the entries of looked up result
+type entries []entry
+
+type entry struct {
+	Meta meta               `json:"meta"`
+	Hwi  hwi                `json:"hwi"`
 	Hom  int                `json:"hom"`
 	Fl   string             `json:"fl"`
 	Lbs  []string           `json:"lbs,omitempty"`
-	Ins  Ins                `json:"ins,omitempty"`
+	Ins  ins                `json:"ins,omitempty"`
 	Gram string             `json:"gram,omitempty"`
-	Def  DefinitionSections `json:"def"`
+	Def  definitionSections `json:"def"`
 	Uros []struct {
-		Ure  Hw            `json:"ure"`
-		Prs  Prs           `json:"prs"`
+		Ure  hw            `json:"ure"`
+		Prs  prs           `json:"prs"`
 		Fl   string        `json:"fl"`
-		Ins  Ins           `json:"ins"`
+		Ins  ins           `json:"ins"`
 		Gram string        `json:"gram"`
 		Utxt []interface{} `json:"utxt"`
 	} `json:"uros,omitempty"`
 	Dros []struct {
 		Drp  string             `json:"drp"`
-		Def  DefinitionSections `json:"def"`
+		Def  definitionSections `json:"def"`
 		Gram string             `json:"gram,omitempty"`
 		Vrs  []struct {
 			Vl string `json:"vl"`
@@ -44,7 +47,7 @@ type Entry struct {
 	Shortdef []string `json:"shortdef"`
 }
 
-type Meta struct {
+type meta struct {
 	ID      string `json:"id"`
 	UUID    string `json:"uuid"`
 	Src     string `json:"src"`
@@ -56,42 +59,43 @@ type Meta struct {
 	Highlight   string   `json:"highlight,omitempty"`
 	Stems       []string `json:"stems"`
 	AppShortdef struct {
-		Hw  Hw       `json:"hw"`
+		Hw  hw       `json:"hw"`
 		Fl  string   `json:"fl"`
 		Def []string `json:"def"`
 	} `json:"app-shortdef"`
 	Offensive bool `json:"offensive"`
 }
 
-type Hwi struct {
-	Hw  Hw  `json:"hw"`
-	Prs Prs `json:"prs"`
+type hwi struct {
+	Hw  hw  `json:"hw"`
+	Prs prs `json:"prs"`
 }
 
-type Prs []struct {
+type prs []struct {
 	Ipa   string `json:"ipa"`
 	Sound struct {
-		Audio Audio `json:"audio"`
+		Audio audio `json:"audio"`
 	} `json:"sound"`
 }
 
-type Hw string
+type hw string
 
-type Audio string
+type audio string
 
-type Ins []struct {
+// ins is Inflections
+type ins []struct {
 	Il  string `json:"il"`
 	If  string `json:"if"`
 	Ifc string `json:"ifc"`
-	Prs Prs    `json:"prs,omitempty"`
+	Prs prs    `json:"prs,omitempty"`
 }
 
-type DefinitionSections []struct {
+type definitionSections []struct {
 	Sls  []string          `json:"sls,omitempty"`
 	Sseq [][][]interface{} `json:"sseq"`
 }
 
-func (prs Prs) convert() []dictionary.Accent {
+func (prs prs) convert() []dictionary.Accent {
 	accents := make([]dictionary.Accent, len(prs))
 
 	for idx, pr := range prs {
@@ -107,7 +111,7 @@ func (prs Prs) convert() []dictionary.Accent {
 }
 
 // https://dictionaryapi.com/products/json#sec-2.prs
-func (audio Audio) convert() template.URL {
+func (audio audio) convert() template.URL {
 	var subDir string
 	if strings.HasPrefix("bix", string(audio)) {
 		subDir = "bix"
@@ -123,11 +127,11 @@ func (audio Audio) convert() template.URL {
 		}
 	}
 
-	url := fmt.Sprintf(audioUrl, subDir, audio)
+	url := fmt.Sprintf(audioURL, subDir, audio)
 	return template.URL(url)
 }
 
-func (ins Ins) convert() []dictionary.Inflection {
+func (ins ins) convert() []dictionary.Inflection {
 	inflections := make([]dictionary.Inflection, len(ins))
 
 	for idx, in := range ins {
@@ -150,7 +154,7 @@ func (ins Ins) convert() []dictionary.Inflection {
 }
 
 // https://dictionaryapi.com/products/json#sec-2.def
-func (sections DefinitionSections) convert() ([]dictionary.Definition, error) {
+func (sections definitionSections) convert() ([]dictionary.Definition, error) {
 	var definitions []dictionary.Definition
 
 	for _, section := range sections {
@@ -213,6 +217,6 @@ func Format(text string) string {
 	return strings.Trim(text, " ")
 }
 
-func (hw Hw) Clean() string {
+func (hw hw) clean() string {
 	return strings.ReplaceAll(string(hw), "*", "")
 }
