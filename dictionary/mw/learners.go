@@ -156,9 +156,9 @@ func lookUpForWord(searchWord string, entry Entry) []dictionary.Entry {
 			ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.Clean(),
 			Headword:        uro.Ure.Clean(),
 			FunctionalLabel: uro.Fl,
-			Pronunciation: pronunciation,
-			Inflections: uro.Ins.convert(),
-			Definitions: definitions,
+			Pronunciation:   pronunciation,
+			Inflections:     uro.Ins.convert(),
+			Definitions:     definitions,
 		}
 		de = append(de, dictEntry)
 	}
