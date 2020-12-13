@@ -94,7 +94,7 @@ func load(t *testing.T, testfile string) string {
 	return string(body)
 }
 
-func Test_learners_Search(t *testing.T) {
+func Test_learners_LookUp(t *testing.T) {
 	t.Parallel()
 
 	learners := NewLearners("dummy", &http.Client{})
@@ -110,7 +110,7 @@ func Test_learners_Search(t *testing.T) {
 			httpmock.NewStringResponder(200, resBody),
 		)
 
-		body, err := learners.Search("test")
+		body, err := learners.LookUp("test")
 
 		assert.Equal(t, resBody, body)
 		assert.Nil(t, err)
@@ -127,7 +127,7 @@ func Test_learners_Search(t *testing.T) {
 			httpmock.NewStringResponder(404, resBody),
 		)
 
-		body, err := learners.Search("test")
+		body, err := learners.LookUp("test")
 
 		assert.Equal(t, "", body)
 		assert.NotNil(t, err)
@@ -144,7 +144,7 @@ func Test_learners_Search(t *testing.T) {
 			httpmock.NewStringResponder(200, `[]`),
 		)
 
-		body, err := learners.Search("test")
+		body, err := learners.LookUp("test")
 
 		assert.Equal(t, "", body)
 		assert.Equal(t, dictionary.NotFoundError, err)

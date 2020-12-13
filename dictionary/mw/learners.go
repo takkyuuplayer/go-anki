@@ -24,7 +24,7 @@ func NewLearners(apiKey string, httpClient *http.Client) *learners {
 	return &learners{apiKey: apiKey, httpClient: httpClient}
 }
 
-func (dic *learners) Search(word string) (string, error) {
+func (dic *learners) LookUp(word string) (string, error) {
 	urlToSearch := fmt.Sprintf(searchUrl, url.PathEscape(word), url.PathEscape(dic.apiKey))
 
 	response, err := dic.httpClient.Get(urlToSearch)
