@@ -10,9 +10,26 @@ jobs:
         with:
           go-version: '1.x'
       - run: env | sort
-
       - run: make
       - run: make lint
       - run: make test
-      - name: Build
-        run: go build cmd/server/main.go
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.x'
+      - run: go build cmd/server/main.go
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "tp-anki"
+          heroku_email: "takkyuuplayer@gmail.com"
+          usedocker: true
