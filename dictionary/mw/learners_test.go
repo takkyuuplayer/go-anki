@@ -1,8 +1,11 @@
 package mw_test
 
 import (
+	"errors"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/takkyuuplayer/go-anki/dictionary/mw"
@@ -80,6 +83,23 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Len(t, result.Suggestions, 16)
 		assert.Nil(t, result.Entries)
 		assert.Nil(t, err)
+	})
+
+	filepath.Walk("testdata", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			t.Fatal()
+			return nil
+		}
+		if info.IsDir() {
+			return nil
+		}
+
+		t.Run(path, func(t *testing.T) {
+			_, err := learners.Parse("dummy", load(t, filepath.Base(path)))
+
+			assert.True(t, err == nil || errors.Is(dictionary.ErrNotFound, err))
+		})
+		return nil
 	})
 }
 

@@ -1,0 +1,100 @@
+[
+  {
+    "meta": {
+      "id": "ordinance",
+      "uuid": "90946924-31ed-4f0d-a6ab-191e8ba2ddcc",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "09cd0473-3e1d-4dc9-b958-14bd23975429",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "ordinance",
+        "ordinances"
+      ],
+      "app-shortdef": {
+        "hw": "ordinance",
+        "fl": "noun",
+        "def": [
+          "{it}US{/it} {bc} a law or regulation made by a city or town government"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "or*di*nance",
+      "prs": [
+        {
+          "ipa": "ˈoɚdənəns",
+          "sound": {
+            "audio": "ordina02"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "ifc": "-nanc*es",
+        "if": "or*di*nanc*es"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sls": [
+                  "US"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a law or regulation made by a city or town government "
+                  ],
+                  [
+                    "wsgram",
+                    "count"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The town has passed a zoning {it}ordinance{/it} limiting construction."
+                      }
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "noncount"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "({it}formal{/it}) Gambling is prohibited by local {it}ordinance{/it}."
+                      }
+                    ]
+                  ],
+                  [
+                    "srefs",
+                    [
+                      "law"
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a law or regulation made by a city or town government"
+    ]
+  }
+]

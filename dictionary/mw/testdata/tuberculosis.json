@@ -1,0 +1,143 @@
+[
+  {
+    "meta": {
+      "id": "tuberculosis",
+      "uuid": "126fc9fc-e5e8-4c81-9464-8969a78960e7",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "9ba2c409-958b-4674-be21-1547023485f1",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "tuberculosis",
+        "tb",
+        "consumption",
+        "tubercular",
+        "tuberculous"
+      ],
+      "app-shortdef": {
+        "hw": "tuberculosis",
+        "fl": "noun",
+        "def": [
+          "{it}medical{/it} {bc} a serious disease that mainly affects the lungs"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "tu*ber*cu*lo*sis",
+      "prs": [
+        {
+          "ipa": "tʊˌbɚkjəˈloʊsəs",
+          "pun": ",",
+          "sound": {
+            "audio": "tuberc07"
+          }
+        },
+        {
+          "l": "British",
+          "ipa": "tjʊˌbəːkjəˈləʊsəs"
+        }
+      ]
+    },
+    "fl": "noun",
+    "gram": "noncount",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sls": [
+                  "medical"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a serious disease that mainly affects the lungs "
+                  ],
+                  [
+                    "ca",
+                    {
+                      "intro": "called also",
+                      "cats": [
+                        {
+                          "cat": "TB"
+                        },
+                        {
+                          "psl": "({it}old-fashioned{/it}) ",
+                          "cat": "consumption"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "tu*ber*cu*lar",
+        "prs": [
+          {
+            "ipa": "tʊˈbɚkjəlɚ",
+            "pun": ",",
+            "sound": {
+              "audio": "tuberc02"
+            }
+          },
+          {
+            "l": "British",
+            "ipa": "tjʊˈbəːkjələ"
+          }
+        ],
+        "fl": "adjective",
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "a {it}tubercular{/it} infection/cough"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "ure": "tu*ber*cu*lous",
+        "prs": [
+          {
+            "ipa": "tʊˈbɚkjələs",
+            "pun": ",",
+            "sound": {
+              "audio": "tuberc09"
+            }
+          },
+          {
+            "l": "British",
+            "ipa": "tjʊˈbəːkjələs"
+          }
+        ],
+        "fl": "adjective",
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "a {it}tuberculous{/it} patient"
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a serious disease that mainly affects the lungs —called also TB, consumption"
+    ]
+  }
+]

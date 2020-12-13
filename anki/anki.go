@@ -26,13 +26,10 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 			continue
 		}
 
-		fmt.Println("Start ", word)
-
 		wg.Add(1)
 		c <- true
 		go func(word string) {
 			defer func() {
-				fmt.Println("End ", word)
 				<-c
 				wg.Done()
 			}()

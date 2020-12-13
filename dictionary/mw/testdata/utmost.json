@@ -1,0 +1,2747 @@
+[
+  {
+    "meta": {
+      "id": "utmost:1",
+      "uuid": "3dd905a9-e08b-4bc0-a2be-cecca66340fb",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "abc2bbdf-6fc2-4956-9d2b-4e261e5c6612",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "utmost"
+      ],
+      "app-shortdef": {
+        "hw": "utmost:1",
+        "fl": "adjective",
+        "def": [
+          "{bc} greatest or highest in degree, number, or amount",
+          "{it}formal{/it} {bc} farthest or most distant"
+        ]
+      },
+      "offensive": false
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "ut*most",
+      "prs": [
+        {
+          "ipa": "ˈʌtˌmoʊst",
+          "sound": {
+            "audio": "utmost01"
+          }
+        }
+      ]
+    },
+    "fl": "adjective",
+    "lbs": [
+      "always used before a noun"
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}greatest or highest in degree, number, or amount "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "This is a matter of the {it}utmost{/it} importance/urgency. [=this is an extremely important/urgent matter]"
+                      },
+                      {
+                        "t": "I have the {it}utmost{/it} [={it}greatest{/it}] respect for the teachers here."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "sls": [
+                  "formal"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}farthest or most distant "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "the {it}utmost{/it} limit"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "greatest or highest in degree, number, or amount",
+      "farthest or most distant"
+    ]
+  },
+  {
+    "meta": {
+      "id": "utmost:2",
+      "uuid": "03a6641e-0b7a-4c86-8bc0-ad224de75ae6",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "9887d010-1c05-44ba-90b1-dc351934f15e",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "utmost",
+        "utmosts",
+        "did our utmost",
+        "to the utmost"
+      ],
+      "app-shortdef": {
+        "hw": "utmost:2",
+        "fl": "noun",
+        "def": [
+          "{bc} the highest point or degree that can be reached"
+        ]
+      },
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "utmost",
+      "altprs": [
+        {
+          "ipa": "ˈʌtˌmoʊst"
+        }
+      ]
+    },
+    "fl": "noun",
+    "gram": "singular",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the highest point or degree that can be reached "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "This new system represents the {it}utmost{/it} in modern technology."
+                      },
+                      {
+                        "t": "It's designed to provide the {it}utmost{/it} in comfort."
+                      },
+                      {
+                        "t": "We {phrase}did our utmost{/phrase} to help. [=we did all that we could do to help]"
+                      },
+                      {
+                        "t": "We had to push ourselves {phrase}to the utmost{/phrase} to finish the job in time."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "the highest point or degree that can be reached"
+    ]
+  },
+  {
+    "meta": {
+      "id": "do:1",
+      "uuid": "a5be1bb8-47a9-467a-a751-c285f8a7ae85",
+      "src": "learners",
+      "section": "alpha",
+      "highlight": "yes",
+      "stems": [
+        "do",
+        "did",
+        "did for",
+        "did with",
+        "do a number on",
+        "do away with",
+        "do by",
+        "do for",
+        "do it",
+        "do justice",
+        "do proud",
+        "do the trick",
+        "do with",
+        "doable",
+        "does",
+        "does for",
+        "does with",
+        "doing",
+        "doing for",
+        "doing with",
+        "done",
+        "done for",
+        "done with",
+        "to do",
+        "be to do with",
+        "do battle",
+        "do down",
+        "do good",
+        "do in",
+        "do out of",
+        "do over",
+        "do someone proud",
+        "do up",
+        "do well",
+        "do without",
+        "do your bit",
+        "easy does it",
+        "have to do with",
+        "how do you do?",
+        "make do",
+        "nothing doing",
+        "done to",
+        "done something to/with",
+        "done something to",
+        "done something with",
+        "do something",
+        "do something about",
+        "all we can do",
+        "do anything",
+        "doing anything",
+        "not doing anything",
+        "what have i done with",
+        "can't do anything with",
+        "cant do anything with",
+        "nothing to do",
+        "do as you're told",
+        "do as youre told",
+        "do for a living",
+        "how are you doing?",
+        "how you doing?",
+        "do you (some) good",
+        "do you good",
+        "do you some good",
+        "do him (any) harm",
+        "do him any harm",
+        "do him harm",
+        "doesn't do much for",
+        "doesnt do much for",
+        "does nothing for you",
+        "did my best",
+        "did my utmost",
+        "did all that i could",
+        "did everything i could",
+        "do dinner",
+        "doing time",
+        "done my time",
+        "will do",
+        "will/would do",
+        "would do",
+        "that will do (it)",
+        "that will do",
+        "that will do it",
+        "that should do (it)",
+        "that should do",
+        "that should do it",
+        "that does it",
+        "doesn't do",
+        "doesnt do",
+        "won't/wouldn't do",
+        "won't do",
+        "wouldn't do",
+        "wont/wouldnt do",
+        "wont do",
+        "wouldnt do",
+        "what's doing",
+        "whats doing",
+        "what is something/someone doing…?",
+        "what is someone doing…?",
+        "what is something doing…?",
+        "what is someone doing with (something)?",
+        "what is someone doing with ?",
+        "what is someone doing with something?",
+        "what do you think you're doing with",
+        "what do you think youre doing with",
+        "did pretty well by",
+        "do himself in",
+        "did herself up",
+        "would do well",
+        "did well",
+        "did well to escape, survive",
+        "could (really) do with",
+        "could do with",
+        "could really do with",
+        "can/could do without",
+        "can do without",
+        "could do without",
+        "it has something to do with",
+        "it's got something to do with",
+        "its got something to do with",
+        "it has nothing to do with",
+        "it's got everything to do with",
+        "its got everything to do with",
+        "had nothing to do with",
+        "didn't have anything to do with",
+        "didnt have anything to do with",
+        "had something to do with",
+        "have anything to do with",
+        "want nothing to do with"
+      ],
+      "app-shortdef": {
+        "hw": "do:1",
+        "fl": "verb",
+        "def": [
+          "{bc} to perform (an action or activity)",
+          "used with {it}what{/it} to ask or talk about a person's job",
+          "{bc} to finish working on (something)"
+        ]
+      },
+      "offensive": true
+    },
+    "hom": 1,
+    "hwi": {
+      "hw": "do",
+      "prs": [
+        {
+          "ipa": "ˈduː",
+          "sound": {
+            "audio": "do000001"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "if": "does",
+        "prs": [
+          {
+            "ipa": "ˈdʌz",
+            "sound": {
+              "audio": "do000005"
+            }
+          }
+        ]
+      },
+      {
+        "if": "did",
+        "prs": [
+          {
+            "ipa": "ˈdɪd",
+            "sound": {
+              "audio": "do000002"
+            }
+          }
+        ]
+      },
+      {
+        "if": "done",
+        "prs": [
+          {
+            "ipa": "ˈdʌn",
+            "sound": {
+              "audio": "done0001"
+            }
+          }
+        ]
+      },
+      {
+        "if": "do*ing",
+        "prs": [
+          {
+            "ipa": "ˈduːwɪŋ",
+            "sound": {
+              "audio": "doing001"
+            }
+          }
+        ]
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to perform (an action or activity) "
+                  ],
+                  [
+                    "wsgram",
+                    "+ obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "We should {it}do{/it} something special to celebrate your birthday."
+                      },
+                      {
+                        "t": "This crime was {it}done{/it} deliberately."
+                      },
+                      {
+                        "t": "I have to {it}do{/it} some chores this afternoon."
+                      },
+                      {
+                        "t": "Tell me what to {it}do{/it} and I'll {it}do{/it} it."
+                      },
+                      {
+                        "t": "I'm obliged to {it}do{/it} my duty."
+                      },
+                      {
+                        "t": "He {it}does{/it} his work without complaining."
+                      },
+                      {
+                        "t": "I {it}do{/it} the ironing on Wednesdays and the cooking on Thursdays. [=I iron on Wednesdays and cook on Thursdays]"
+                      },
+                      {
+                        "t": "I {it}did{/it} a favor for him. = I {it}did{/it} him a favor."
+                      },
+                      {
+                        "t": "{ldquo}What do you {it}do{/it} with this lever? = What does this lever {it}do{/it}?{rdquo} {ldquo}It operates the pump.{rdquo}"
+                      },
+                      {
+                        "t": "He {it}did{/it} a lot for us."
+                      },
+                      {
+                        "t": "What can I {it}do{/it} to help you? = What can I {phrase}do for{/phrase} you? [=how can/may I help you?]"
+                      },
+                      {
+                        "t": "What have I {phrase}done to{/phrase} you to make you so angry?"
+                      },
+                      {
+                        "t": "Have you {phrase}done something to/with{/phrase} this room? [=have you changed this room in some way?] It looks different."
+                      },
+                      {
+                        "t": "My knee is sore. I must have {phrase}done something to{/phrase} it [=I must have hurt it] when I fell."
+                      },
+                      {
+                        "t": "Don't just stand there: {phrase}do something{/phrase}! [=take some sort of action to stop what is happening]"
+                      },
+                      {
+                        "t": "We need to {phrase}do something about{/phrase} this problem. [=we need to take some action to correct this problem]"
+                      },
+                      {
+                        "t": "{phrase}All we can do{/phrase} is hope for the best. [=there is no other action we can take except to hope for the best]"
+                      },
+                      {
+                        "t": "I didn't {it}do{/it} it! = I didn't {phrase}do anything{/phrase}! [=I didn't do what you said I did]"
+                      },
+                      {
+                        "t": "Are you {phrase}doing anything{/phrase} right now? [=are you busy right now?]"
+                      },
+                      {
+                        "t": "If you're {phrase}not doing anything{/phrase} this evening [=if you're not busy this evening], why not come over for dinner?"
+                      },
+                      {
+                        "t": "{ldquo}What are you {it}doing{/it} this weekend?{rdquo} {ldquo}I'm just relaxing at home.{rdquo}"
+                      },
+                      {
+                        "t": "What is the stock market {it}doing{/it} now: rising or falling?"
+                      },
+                      {
+                        "t": "{phrase}What have I done with{/phrase} my keys? [=where did I put my keys?]"
+                      },
+                      {
+                        "t": "My hair is a mess. I {phrase}can't do anything with{/phrase} it."
+                      },
+                      {
+                        "t": "There's {phrase}nothing to do{/phrase} in this town on a Saturday night!"
+                      }
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "no obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "{it}Do{/it} as I say, not as I {it}do{/it}. [=do the things that I say you should do, not the things that I do myself]"
+                      },
+                      {
+                        "t": "Shut up and {phrase}do as you're told{/phrase}! [=do what I tell you to do]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used with {it}what{/it} to ask or talk about a person's job "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{ldquo}What does your husband {it}do{/it}?{rdquo} {ldquo}He's a writer.{rdquo}"
+                            },
+                            {
+                              "t": "She's a lawyer. I'm not sure what her husband {it}does{/it}."
+                            },
+                            {
+                              "t": "What does she {phrase}do for a living{/phrase}? [=what is her job?]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to finish working on (something) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "His mother won't let him watch television until he has {it}done{/it} his homework."
+                      },
+                      {
+                        "t": "I've only {it}done{/it} three of the walls so far—I'll paint the last one tomorrow."
+                      }
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}compare {dxt|done:2||1}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "sgram": "no obj",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used to describe the success or progress of someone or something "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{ldquo}How is she {it}doing{/it} in school?{rdquo} {ldquo}She {it}did{/it} badly/poorly at first, but now she's {it}doing{/it} much better.{rdquo}"
+                            },
+                            {
+                              "t": "She {it}does{/it} well in math but badly in history."
+                            },
+                            {
+                              "t": "The company is {it}doing{/it} well."
+                            },
+                            {
+                              "t": "How is the stock market {it}doing{/it} these days?"
+                            },
+                            {
+                              "t": "He started out poor, worked hard, {it}did{/it} very well (for himself) in business [=was very successful in business], and died rich."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "{phrase}How are you doing?{/phrase} or (very informally) {phrase}How you doing?{/phrase} is used as a greeting."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{ldquo}Hi, Dave. {it}How are you doing{/it}?{rdquo} {ldquo}I'm fine, thanks. How are you?{rdquo}"
+                          }
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "4",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used to describe the effect that something has "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "You've been working too hard. A few days off will {phrase}do you (some) good{/phrase}. [=a few days off will be good for you]"
+                            },
+                            {
+                              "t": "We didn't mean to {phrase}do him (any) harm{/phrase}. [=to harm him]"
+                            },
+                            {
+                              "t": "Criticism can {it}do{/it} people a lot of harm/damage; praise can {it}do{/it} people a lot of good."
+                            },
+                            {
+                              "t": "The new design {phrase}doesn't do much for{/phrase} me. [=I don't like the new design very much]"
+                            },
+                            {
+                              "t": "That hat {phrase}does nothing for you{/phrase}. [=that hat does not look good on you]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "5",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used to describe the amount of effort someone makes"
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "+ obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She {it}did{/it} nothing to help us. [=she did not try to help us at all]"
+                      },
+                      {
+                        "t": "I {phrase}did my best{/phrase}. = I {phrase}did my utmost{/phrase}. = I {phrase}did all that I could{/phrase}. = I {phrase}did everything I could{/phrase}."
+                      }
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "no obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I {it}did{/it} as well as I could."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sen",
+              {
+                "sn": "6",
+                "sgram": "+ obj"
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to create or produce (something) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a writer who is {it}doing{/it} a new biography on Abraham Lincoln"
+                      },
+                      {
+                        "t": "a painter who has {it}done{/it} some beautiful landscapes"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to perform in or be the producer or director of (a movie, play, etc.) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "an actress who has {it}done{/it} several hit movies"
+                      },
+                      {
+                        "t": "a director who is {it}doing{/it} a play on Broadway"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sen",
+              {
+                "sn": "7",
+                "sgram": "+ obj"
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to play (a role or character) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "an actor who {it}did{/it} Hamlet on Broadway"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to pretend to be (someone, such as a famous person) {bc}to copy the speech and appearance of (someone) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a comedian who {it}does{/it} a great George Bush [=a comedian who does a very good and entertaining imitation of George Bush]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "c",
+                "sls": [
+                  "informal"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to behave like (someone) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I wish he'd {it}do{/it} a Houdini and disappear. [=I wish he'd go away]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sen",
+              {
+                "sn": "8",
+                "sgram": "+ obj"
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to wash or clean (something) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "It's your turn to {it}do{/it} [={it}wash{/it}] the laundry."
+                      },
+                      {
+                        "t": "The woman we hired to clean our house doesn't {it}do{/it} windows."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to decorate (a place) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "They {it}did{/it} the bedroom in blue and the living room in green."
+                      }
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}see also {dxt|do over||2 (below)}{/dx}"
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "c",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to make (someone's face, hair, etc.) more attractive by putting on makeup, etc. "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She wanted to {it}do{/it} her face before the party."
+                      },
+                      {
+                        "t": "She had her hair {it}done{/it} [={it}styled{/it}] at the beauty parlor."
+                      },
+                      {
+                        "t": "She was {it}doing{/it} her fingernails/nails."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "d",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to put on (makeup) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "It took her a few minutes to {it}do{/it} her makeup."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "9",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to cook or prepare (food) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I like my steak {it}done{/it} rare."
+                      },
+                      {
+                        "t": "I'll {it}do{/it} the salad while you {it}do{/it} the pasta."
+                      }
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}compare {dxt|done:2||2}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "10",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to make or sell (a product) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "This is the company's most popular computer, but they also {it}do{/it} a less expensive model."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "11",
+                "sgram": "+ obj",
+                "sls": [
+                  "chiefly US",
+                  "informal"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to participate in (an activity) with other people "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "We should {phrase}do dinner{/phrase} some time. [=we should have dinner together some time]"
+                      },
+                      {
+                        "t": "{it}do{/it} a meeting [=have a meeting]"
+                      },
+                      {
+                        "t": "We should {it}do{/it} a movie [=go to a movie] this weekend."
+                      }
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}see also {it}do lunch{/it} at {dxt|lunch:1||}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "12",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to go to (a place) when traveling "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a group of tourists who are {it}doing{/it} [={it}visiting{/it}] 12 countries in 30 days"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sen",
+              {
+                "sn": "13",
+                "sgram": "+ obj"
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to move or travel (a distance) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "We {it}did{/it} [={it}traveled{/it}] 500 miles yesterday."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to move at (a speed) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "They were {it}doing{/it} [={it}going{/it}, {it}driving{/it}] 85 on the turnpike."
+                      },
+                      {
+                        "t": "That plane can {it}do{/it} [={it}go{/it}] 1,400 mph!"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "14",
+                "sgram": "+ obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be in a place for (a period of time) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "He {it}did{/it} [={it}spent{/it}] two years in college before he dropped out."
+                      }
+                    ]
+                  ]
+                ],
+                "sdsense": {
+                  "sd": "especially",
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}to be in a prison for (a period of time) "
+                    ],
+                    [
+                      "vis",
+                      [
+                        {
+                          "t": "He {it}did{/it} [={it}served{/it}] five years (in prison) for robbery."
+                        },
+                        {
+                          "t": "He has been {phrase}doing time{/phrase} in a federal penitentiary."
+                        }
+                      ]
+                    ],
+                    [
+                      "uns",
+                      [
+                        [
+                          [
+                            "text",
+                            "sometimes used figuratively "
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "I've {phrase}done my time{/phrase} at that terrible job, and now it's time to move on."
+                              }
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "15 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be enough {bc}to be adequate "
+                  ],
+                  [
+                    "wsgram",
+                    "no obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "I don't need any more cake, thank you. One piece {phrase}will do{/phrase}. [=one piece is enough]"
+                      },
+                      {
+                        "t": "I'd prefer to use glue, but tape {phrase}will/would do{/phrase}."
+                      }
+                    ]
+                  ],
+                  [
+                    "wsgram",
+                    "+ obj"
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "({it}informal{/it}) One piece of cake {it}will do{/it} me. [=one piece of cake is enough for me]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "Phrases like {phrase}that will do (it){/phrase} and {phrase}that should do (it){/phrase} are used in informal speech to tell someone that you do not want or need anything more."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{ldquo}Would you like anything else?{rdquo} {ldquo}No, {it}that'll do it{/it}.{rdquo} = {ldquo}No, {it}that should do it{/it}.{rdquo}"
+                          }
+                        ]
+                      ],
+                      [
+                        "t",
+                        "{it}That will do it{/it} and {it}that should do it{/it} are also used to say that you have finished doing something or are about to finish doing something."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I just have one more letter to sign and {it}that should do it{/it}. [=and then I'll be finished]"
+                          }
+                        ]
+                      ],
+                      [
+                        "t",
+                        "{it}That will do{/it} is also sometimes used to tell someone (such as a child) to stop doing or saying something that is bothering you or making you angry."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{it}That will do{/it} [={it}that's enough{/it}], young man: one more word out of you and you're grounded!"
+                          }
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "c",
+                "dt": [
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "The phrase {phrase}that does it{/phrase} is used to say that you have finished doing something."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I just need to sign one more letter…There, {it}that does it{/it}."
+                          }
+                        ]
+                      ],
+                      [
+                        "t",
+                        "{it}That does it{/it} is also used in angry speech to say that you will not accept or allow something anymore."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{ldquo}They say we'll have to wait another hour.{rdquo} {ldquo}{it}That does it{/it}! We're leaving right now!{rdquo}"
+                          }
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "16",
+                "sgram": "no obj",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to be proper"
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used in negative statements "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "It {phrase}doesn't do{/phrase} for a doctor to become too friendly with his patients. = It {phrase}won't/wouldn't do{/phrase} for a doctor to become too friendly with his patients. [=a doctor should not become too friendly with his patients]"
+                            },
+                            {
+                              "t": "Such behavior will never {it}do{/it}! [=such behavior should not be allowed]"
+                            },
+                            {
+                              "t": "We should leave soon. It won't {it}do{/it} to be late."
+                            },
+                            {
+                              "t": "This is a formal occasion, so jeans simply won't {it}do{/it}. [=jeans are not appropriate]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "In U.S. English, this sense of {it}do{/it} has a somewhat formal or old-fashioned quality."
+                      ]
+                    ]
+                  ],
+                  [
+                    "text",
+                    "{dx}compare {dxt|done:2||3}{/dx}"
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "17",
+                "sgram": "+ obj",
+                "sls": [
+                  "informal"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to use (illegal drugs) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "He says that he doesn't {it}do{/it} drugs anymore."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sen",
+              {
+                "sn": "18",
+                "sgram": "no obj",
+                "sls": [
+                  "informal"
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to happen "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Is there anything {it}doing{/it} tomorrow?"
+                      },
+                      {
+                        "t": "There is nothing {it}doing{/it} around here."
+                      },
+                      {
+                        "t": "Let's find out {phrase}what's doing{/phrase} downtown."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "snote",
+                    [
+                      [
+                        "t",
+                        "People ask {phrase}what is something/someone doing…?{/phrase} when they are surprised or upset about where someone or something is."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{it}What are all my clothes doing{/it} (lying/scattered) on the floor? [=why are all my clothes on the floor?]"
+                          },
+                          {
+                            "t": "{it}What were you doing{/it} (standing) outside in the rain? [=why were you outside in the rain?]"
+                          }
+                        ]
+                      ],
+                      [
+                        "t",
+                        "People ask {phrase}what is someone doing with (something)?{/phrase} when they are surprised or upset because someone has something."
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{it}What are you doing with{/it} my notebook? = {phrase}What do you think you're doing with{/phrase} my notebook? [=why do you have my notebook?]"
+                          }
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "19",
+                "sgram": "+ obj",
+                "sls": [
+                  "informal + offensive"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to have sex with (someone)"
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "be to do with",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|have to do with||(below)}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do a number on",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|number:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do away with",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "phrasev": [
+                      {
+                        "pva": "do away with (someone)"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to kill (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She's accused of hiring a hit man to {it}do away with{/it} [={it}murder, do in{/it}] her husband."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "phrasev": [
+                      {
+                        "pva": "do away with (something)"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to cause the end of (something) {bc}to get rid of (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "The struggling company had to {it}do away with{/it} a number of jobs."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do battle",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|battle:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do by",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sphrasev": {
+                      "phrs": [
+                        {
+                          "pva": "do by (someone)"
+                        }
+                      ]
+                    },
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to deal with or treat (someone) well or badly "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She feels that they {it}did{/it} poorly/badly {it}by{/it} her. [=that they treated her poorly/badly]"
+                          },
+                          {
+                            "t": "They {phrase}did pretty well by{/phrase} me when I retired. [=they treated me pretty well when I retired]"
+                          }
+                        ]
+                      ],
+                      [
+                        "text",
+                        "{dx}see also {it}hard done by{/it} at {dxt|hard:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do down",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sphrasev": {
+                      "phrs": [
+                        {
+                          "pva": "do (someone) down"
+                        }
+                      ]
+                    },
+                    "sls": [
+                      "British",
+                      "informal"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to talk about (someone) in an insulting or critical way "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She thinks that if she {it}does{/it} everybody else {it}down{/it}, people will think more highly of her."
+                          },
+                          {
+                            "t": "Stop {it}doing{/it} yourself {it}down{/it}: you've got a lot to offer!"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do for",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sphrasev": {
+              "phrs": [
+                {
+                  "pva": "do for (someone)"
+                }
+              ]
+            },
+            "sls": [
+              "British",
+              "informal"
+            ],
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to cause the death or ruin of (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "All that hard work nearly {it}did for{/it} him. [=nearly killed him]"
+                          }
+                        ]
+                      ],
+                      [
+                        "text",
+                        "{dx}see also {it}done for{/it} at {dxt|done:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to do the cleaning and cooking for (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "Mrs. Jones {it}does for{/it} the vicar now his wife's passed on."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do good",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|good:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do in",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sphrasev": {
+              "phrs": [
+                {
+                  "pva": "do (someone) in"
+                }
+              ]
+            },
+            "sls": [
+              "informal"
+            ],
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1 a",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to kill (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "They threatened to {it}do{/it} him {it}in{/it} if he didn't pay the money he owed them."
+                          },
+                          {
+                            "t": "He's been so depressed lately that his friends are afraid he might {phrase}do himself in{/phrase}. [=he might kill himself]"
+                          }
+                        ]
+                      ],
+                      [
+                        "text",
+                        "{bc}to cause the death of (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "He struggled with lung disease for many years, but it was a heart attack that finally {it}did{/it} him {it}in{/it}."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "b",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to cause the failure of (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "His inability to attract Southern voters is what finally {it}did{/it} him {it}in{/it} as a presidential candidate. [=he failed because he was unable to attract Southern voters]"
+                          },
+                          {
+                            "t": "a businessman who was {it}done in{/it} by greed"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to make (someone) very tired "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "Working in the garden all day really {it}did{/it} me {it}in{/it}. = After working in the garden all day, I was/felt {it}done in{/it}. [={it}exhausted{/it}]"
+                          }
+                        ]
+                      ],
+                      [
+                        "text",
+                        "{dx}see also {it}done in{/it} at {dxt|done:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do it",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sls": [
+                      "informal"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to have sex "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "They've kissed—but have they actually {it}done it{/it}?"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do justice",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|justice||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do out of",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sphrasev": {
+                      "phrs": [
+                        {
+                          "pva": "do (someone) out of (something)"
+                        }
+                      ]
+                    },
+                    "sls": [
+                      "informal"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to unfairly prevent (someone) from getting or having (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I've been {it}done out of{/it} what was rightfully mine!"
+                          },
+                          {
+                            "t": "They {it}did{/it} [={it}cheated{/it}] him {it}out of{/it} his inheritance."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do over",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "phrasev": [
+                      {
+                        "pva": "do (something) over"
+                      }
+                    ],
+                    "sls": [
+                      "US"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to do (something) again "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I made a mistake when I measured the window and I had to {it}do{/it} it {it}over{/it} (again)."
+                          },
+                          {
+                            "t": "If I had to {it}do{/it} it (all) {it}over{/it} again, I would have stayed in college."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "phrasev": [
+                      {
+                        "pva": "do (something) over"
+                      },
+                      {
+                        "pvl": "or",
+                        "pva": "do over (something)"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to decorate or change a room, house, etc., so that it looks very different "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "We're planning to {it}do over{/it} the kitchen next year."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "phrasev": [
+                      {
+                        "pva": "do (someone) over"
+                      },
+                      {
+                        "pvl": "or",
+                        "pva": "do over (someone)"
+                      }
+                    ],
+                    "sls": [
+                      "British",
+                      "informal"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to attack and beat (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "He got {it}done over{/it} by a gang of teenagers."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do someone proud",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|proud||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do the trick",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|trick:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do up",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sen",
+                  {
+                    "sn": "1",
+                    "phrasev": [
+                      {
+                        "pva": "do up (something)"
+                      },
+                      {
+                        "pvl": "or",
+                        "pva": "do (something) up"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "a",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to decorate (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "They {it}did up{/it} the room in bright colors for the party. = The room was all {it}done up{/it} in bright colors for the party."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "b",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to adjust (something, such as your hair) in a particular way "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She {it}did up{/it} her hair in a ponytail."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "c",
+                    "sls": [
+                      "chiefly British"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to wrap (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "packages {it}done up{/it} [={it}wrapped up{/it}] in paper and ribbon"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "d",
+                    "sls": [
+                      "chiefly British"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to repair (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "{it}do up{/it} [={it}fix up{/it}] old furniture"
+                          },
+                          {
+                            "t": "{it}do up{/it} an old house"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "phrasev": [
+                      {
+                        "pva": "do (someone) up"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to dress (someone) up {bc}to put attractive clothes, makeup, etc., on (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She really {phrase}did herself up{/phrase} for the party. = She was all {it}done up{/it} for the party."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "phrasev": [
+                      {
+                        "pva": "do up"
+                      },
+                      {
+                        "pvl": "or",
+                        "pva": "do (something) up"
+                      },
+                      {
+                        "pvl": "or",
+                        "pva": "do up (something)"
+                      }
+                    ],
+                    "sls": [
+                      "of clothing"
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to be fastened or to fasten (something) with buttons, a zipper, etc. "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "a dress that {it}does up{/it} at the back = a dress that is {it}done up{/it} at the back"
+                          },
+                          {
+                            "t": "She {it}did up{/it} her dress."
+                          },
+                          {
+                            "t": "buttons that {it}do up{/it} easily = buttons that you can {it}do up{/it} easily [=buttons that can be easily buttoned]"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do well",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "snote",
+                        [
+                          [
+                            "t",
+                            "If you {phrase}would do well{/phrase} to do something, you should do it."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "You {it}would do well{/it} to avoid him right now. [=you should avoid him right now]"
+                              }
+                            ]
+                          ],
+                          [
+                            "t",
+                            "If you {phrase}did well{/phrase} to do something, you were correct to do it."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "You {it}did well to avoid{/it} him when he was in a bad mood."
+                              }
+                            ]
+                          ],
+                          [
+                            "t",
+                            "If you {phrase}did well to escape, survive{/phrase}, etc., you were lucky to escape, survive, etc."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "When the tornado hit, they {it}did well to escape{/it} uninjured."
+                              }
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do with",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sphrasev": {
+                      "phrs": [
+                        {
+                          "pva": "do with (something)"
+                        }
+                      ]
+                    },
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to be helped by having (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "I {phrase}could (really) do with{/phrase} a cup of hot coffee right now! [=I could use a cup of coffee; I would like/appreciate a cup of coffee]"
+                          },
+                          {
+                            "t": "I {it}could do with{/it} a little less criticism right now, if you don't mind!"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do without",
+        "gram": "phrasal verb",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sphrasev": {
+                      "phrs": [
+                        {
+                          "pva": "do without"
+                        },
+                        {
+                          "pvl": "or",
+                          "pva": "do without (something or someone)"
+                        }
+                      ]
+                    },
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to not have (something) {bc}to live, work, etc., without having (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "If you can't afford a new car, you'll just have to {it}do without{/it} (one)."
+                          },
+                          {
+                            "t": "I don't know how we ever {it}did without{/it} computers."
+                          },
+                          {
+                            "t": "I'd like to get a new car, but I can {it}do without{/it} it for now."
+                          }
+                        ]
+                      ],
+                      [
+                        "snote",
+                        [
+                          [
+                            "t",
+                            "The phrase {phrase}can/could do without{/phrase} is often used to say that you do not like or approve of something."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "I enjoy traveling, but I {it}can do without{/it} having to wait around in crowded airports. [=I don't like having to wait around]"
+                              },
+                              {
+                                "t": "He was late again. That's the kind of selfish behavior I {it}could do without{/it}."
+                              }
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "do your bit",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|bit:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "easy does it",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|easy:2||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "have to do with",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sen",
+                  {
+                    "sn": "1",
+                    "vrs": [
+                      {
+                        "vl": "or chiefly British",
+                        "va": "be to do with"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "a",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to relate to (something) {bc}to be about (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "The problem {it}has to do with{/it} fishing rights. = ({it}chiefly Brit{/it}) The problem {it}is to do with{/it} fishing rights."
+                          },
+                          {
+                            "t": "{ldquo}What does her husband do?{rdquo} {ldquo}I think {phrase}it has something to do with{/phrase} computers.{rdquo} = {ldquo}I think {phrase}it's got something to do with{/phrase} computers.{rdquo} [=it involves computers in some way]"
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "b",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to relate to or involve (someone) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "That's your problem: {phrase}it has nothing to do with{/phrase} me! = ({it}chiefly Brit{/it}) {it}It's nothing to do with{/it} me! [=it doesn't involve me in any way; it's not my problem]"
+                          },
+                          {
+                            "t": "You're wrong. {phrase}It's got everything to do with{/phrase} you: you're legally responsible for what went wrong."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to be involved in or in some way responsible for (something) "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "He claims that he {phrase}had nothing to do with{/phrase} the accident. = He claims that he {phrase}didn't have anything to do with{/phrase} the accident. [=that he was not involved in the accident]"
+                          },
+                          {
+                            "t": "He claims he wasn't involved, but I know he {phrase}had something to do with{/phrase} it."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "3",
+                    "dt": [
+                      [
+                        "snote",
+                        [
+                          [
+                            "t",
+                            "If you do not want to {phrase}have anything to do with{/phrase} someone or if you {phrase}want nothing to do with{/phrase} someone, you do not want to be involved with that person in any way."
+                          ],
+                          [
+                            "vis",
+                            [
+                              {
+                                "t": "She thinks he's a liar and she refuses to {it}have anything to do with{/it} him. [=she refuses to talk to him, to see him, etc.]"
+                              },
+                              {
+                                "t": "After the way he's treated me, I {it}want nothing (further) to do{/it} with him. = I {it}don't want (to have) anything (further) to do{/it} with him."
+                              }
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "how do you do?",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|how:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "make do",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|make:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "drp": "nothing doing",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{dx}see {dxt|nothing:1||}{/dx}"
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "dxnls": [
+      "compare {dxt|do:2||}"
+    ],
+    "shortdef": [
+      "to perform (an action or activity)",
+      "—used with what to ask or talk about a person's job",
+      "to finish working on (something)"
+    ]
+  }
+]

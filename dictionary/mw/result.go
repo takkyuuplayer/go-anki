@@ -182,7 +182,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 	for _, tuple := range dt.([]interface{}) {
 		tuple := tuple.([]interface{})
 		switch tuple[0].(string) {
-		case "text":
+		case "text", "t":
 			txt := strings.Trim(tuple[1].(string), " ")
 			if strings.HasPrefix(txt, "{bc}") {
 				dicSenses = append(dicSenses, Format(txt))
@@ -209,7 +209,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 			dicExample = append(dicExample, res.Examples...)
 
-		case "wsgram", "bnw", "ri":
+		case "wsgram", "bnw", "ri", "srefs", "ca":
 			// Something todo?
 		default:
 			return dictionary.Definition{}, fmt.Errorf("unknown type: %s", tuple[0].(string))

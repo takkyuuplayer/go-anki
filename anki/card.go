@@ -2,7 +2,6 @@ package anki
 
 import (
 	"bytes"
-	"log"
 	"strings"
 
 	"github.com/takkyuuplayer/go-anki/dictionary"
@@ -25,7 +24,7 @@ func (card Card) Back() (string, error) {
 	for _, entry := range card.Entries {
 		content, err := ankiCard(&entry)
 		if err != nil {
-			log.Fatalf("execution failed: %s", err)
+			return "", err
 		} else {
 			ret += " " + content
 		}
@@ -39,7 +38,6 @@ func ankiCard(entry *dictionary.Entry) (string, error) {
 	buf := bytes.NewBufferString("")
 
 	if err := tmpl.Lookup("entry").Execute(buf, entry); err != nil {
-		log.Fatalf("execution failed: %s", err)
 		return "", err
 	}
 

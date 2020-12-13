@@ -1,0 +1,108 @@
+[
+  {
+    "meta": {
+      "id": "larva",
+      "uuid": "b460bb80-081e-4604-98fc-ae5b2b0e3560",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "cda77aad-ee4a-46e2-909d-d099b1abb7e8",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "larva",
+        "larvae",
+        "larval"
+      ],
+      "app-shortdef": {
+        "hw": "larva",
+        "fl": "noun",
+        "def": [
+          "{bc} a very young form of an insect that looks like a worm"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "lar*va",
+      "prs": [
+        {
+          "ipa": "ˈlɑɚvə",
+          "sound": {
+            "audio": "larva001"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "lar*vae",
+        "prs": [
+          {
+            "ipa": "ˈlɑɚˌviː",
+            "sound": {
+              "audio": "larva003"
+            }
+          }
+        ]
+      }
+    ],
+    "gram": "count",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a very young form of an insect that looks like a worm "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The {it}larva{/it} of a butterfly is called a caterpillar."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "lar*val",
+        "prs": [
+          {
+            "ipa": "ˈlɑɚvəl",
+            "sound": {
+              "audio": "larva002"
+            }
+          }
+        ],
+        "fl": "adjective",
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "the {it}larval{/it} stage of an insect"
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "a very young form of an insect that looks like a worm"
+    ]
+  }
+]
