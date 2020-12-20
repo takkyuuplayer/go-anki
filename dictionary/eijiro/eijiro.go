@@ -98,12 +98,15 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 
 				if strings.HasPrefix(pronunciationText, "《") {
 					for _, pronunciation := range strings.Split(pronunciationText, "《") {
+						if pronunciation == "" {
+							continue
+						}
 						functionLabel := string([]rune(pronunciation)[0:1])
 						pronunciation = string([]rune(pronunciation)[2:])
 
 						for idx := attrRootIdx; idx < len(dictEntries); idx++ {
 							if strings.Contains(dictEntries[idx].FunctionalLabel, functionLabel) {
-								dictEntries[attrRootIdx].Pronunciation = parsePronunciation(pronunciationText)
+								dictEntries[idx].Pronunciation = parsePronunciation(pronunciation)
 							}
 						}
 					}
@@ -183,9 +186,9 @@ func parsePronunciation(text string) *dictionary.Pronunciation {
 		if strings.HasPrefix(accent, "[") {
 			label := text[strings.Index(accent, "[")+1 : strings.LastIndex(accent, "]")]
 			spelling := text[strings.LastIndex(accent, "]")+1:]
-			accents = append(accents, dictionary.Accent{AccentLabel: label, Spelling: strings.TrimRight(spelling, "、")})
+			accents = append(accents, dictionary.Accent{AccentLabel: label, Spelling: strings.TrimSpace(strings.TrimRight(spelling, "、"))})
 		} else {
-			accents = append(accents, dictionary.Accent{AccentLabel: "-", Spelling: strings.TrimRight(accent, "、")})
+			accents = append(accents, dictionary.Accent{AccentLabel: "-", Spelling: strings.TrimSpace(strings.TrimRight(accent, "、"))})
 		}
 	}
 	return &dictionary.Pronunciation{Notation: "IPA", Accents: accents}
