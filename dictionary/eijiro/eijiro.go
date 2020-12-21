@@ -150,26 +150,16 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 			}
 		case "ol":
 			var definitions []dictionary.Definition
-			for li := node.FirstChild; li != nil; li = li.NextSibling {
-				sense := ""
-				var examples []template.HTML = nil
-				inExampleNode := false
-				for node2 := li.FirstChild; node2 != nil; node2 = node2.NextSibling {
-					switch node2.Data {
-					case "span":
-						if node2.Attr[0].Val != "kana" {
-							sense += node2.FirstChild.Data
-						}
-					case "br":
-						inExampleNode = true
-					default:
-						if inExampleNode {
-							examples = append(examples, template.HTML(strings.TrimLeft(node2.Data, "・")))
-						} else {
-							sense += node2.Data
-						}
-					}
+			if node.FirstChild.Data == "li" {
+				for li := node.FirstChild; li != nil; li = li.NextSibling {
+					sense, examples := parseDefinition(li.FirstChild)
+					definitions = append(definitions, dictionary.Definition{
+						Sense:    template.HTML(sense),
+						Examples: examples,
+					})
 				}
+			} else {
+				sense, examples := parseDefinition(node.FirstChild)
 				definitions = append(definitions, dictionary.Definition{
 					Sense:    template.HTML(sense),
 					Examples: examples,
@@ -183,6 +173,29 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 	}
 
 	return &dictionary.Result{SearchWord: word, Entries: dictEntries}, nil
+}
+
+func parseDefinition(first *html.Node) (string, []template.HTML) {
+	sense := ""
+	var examples []template.HTML = nil
+	inExampleNode := false
+	for node2 := first; node2 != nil; node2 = node2.NextSibling {
+		switch node2.Data {
+		case "span":
+			if node2.Attr[0].Val != "kana" {
+				sense += node2.FirstChild.Data
+			}
+		case "br":
+			inExampleNode = true
+		default:
+			if inExampleNode {
+				examples = append(examples, template.HTML(strings.TrimLeft(node2.Data, "・")))
+			} else {
+				sense += node2.Data
+			}
+		}
+	}
+	return sense, examples
 }
 
 func parsePronunciation(text string) *dictionary.Pronunciation {

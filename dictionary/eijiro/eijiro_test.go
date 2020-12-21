@@ -45,6 +45,11 @@ func TestEijiro_Parse(t *testing.T) {
 		assert.Equal(t, dictionary.Inflection{InflectedForm: "testing"}, result.Entries[1].Inflections[1])
 		assert.Equal(t, dictionary.Inflection{InflectedForm: "tested"}, result.Entries[1].Inflections[2])
 
+		assert.Len(t, result.Entries[3].Definitions, 1)
+		assert.Equal(t,
+			dictionary.Definition{Sense: "《動物》〔貝や甲殻類などの〕（外）殻", Examples: nil},
+			result.Entries[3].Definitions[0])
+
 		assert.Nil(t, err)
 	})
 
