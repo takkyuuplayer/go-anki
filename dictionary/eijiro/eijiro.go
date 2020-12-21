@@ -53,8 +53,16 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 	}
 
 	definitions := cascadia.Query(doc, cascadia.MustCompile("#resultsList > ul > li:nth-child(1)"))
-	if err != nil {
-		return nil, dictionary.ErrNotFound
+	if definitions == nil {
+		ret := dictionary.Result{SearchWord: word}
+		suggestions := cascadia.QueryAll(doc, cascadia.MustCompile("#sas_word > span > a"))
+
+		if len(suggestions) > 0 {
+			for _, suggestion := range suggestions {
+				ret.Suggestions = append(ret.Suggestions, text(suggestion))
+			}
+		}
+		return &ret, dictionary.ErrNotFound
 	}
 
 	headword := text(cascadia.Query(definitions, cascadia.MustCompile("span.midashi > h2 > span")))

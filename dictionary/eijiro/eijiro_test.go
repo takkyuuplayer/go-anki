@@ -101,6 +101,24 @@ func TestEijiro_Parse(t *testing.T) {
 
 		assert.Nil(t, err)
 	})
+	t.Run("Returning suggestion", func(t *testing.T) {
+		t.Parallel()
+
+		result, err := dic.Parse("testera", load(t, "testera.html"))
+
+		assert.Len(t, result.Entries, 0)
+		assert.Equal(t, []string{"tester", "tessera"}, result.Suggestions)
+		assert.Equal(t, dictionary.ErrNotFound, err)
+	})
+	t.Run("Returning nothing", func(t *testing.T) {
+		t.Parallel()
+
+		result, err := dic.Parse("nothingfound", load(t, "nothingfound.html"))
+
+		assert.Len(t, result.Entries, 0)
+		assert.Len(t, result.Suggestions, 0)
+		assert.Equal(t, dictionary.ErrNotFound, err)
+	})
 }
 
 func load(t *testing.T, testfile string) string {
