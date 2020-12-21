@@ -83,6 +83,24 @@ func TestEijiro_Parse(t *testing.T) {
 		assert.Len(t, result.Entries[0].Definitions[0].Examples, 5)
 		assert.Nil(t, err)
 	})
+	t.Run("Returning for multi attr word", func(t *testing.T) {
+		t.Parallel()
+
+		result, err := dic.Parse("desert", load(t, "desert.html"))
+
+		assert.Len(t, result.Entries, 5)
+
+		assert.Len(t, result.Entries[0].Inflections, 1)
+		assert.Equal(t, "dézərt", result.Entries[0].Pronunciation.Accents[0].Spelling)
+
+		assert.Len(t, result.Entries[2].Inflections, 3)
+		assert.Equal(t, "dizə́ːrt", result.Entries[2].Pronunciation.Accents[0].Spelling)
+
+		assert.Len(t, result.Entries[4].Inflections, 1)
+		assert.Equal(t, "dizə́ːrt", result.Entries[4].Pronunciation.Accents[0].Spelling)
+
+		assert.Nil(t, err)
+	})
 }
 
 func load(t *testing.T, testfile string) string {

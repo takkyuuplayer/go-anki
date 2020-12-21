@@ -87,68 +87,22 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 				dictEntries = append(dictEntries, dictEntry)
 				dictEntry = dictionary.Entry{}
 
-				var pronunciationText, inflectionTest string
-				for node2 := node.FirstChild; node2 != nil; node2 = node2.NextSibling {
-					if node2.Data == "span" && node2.Attr[0].Val == "pron" {
-						pronunciationText = text(node2)
-					} else if node2.Data == "span" && text(node2) == "【変化】" {
-						inflectionTest = text(node2.NextSibling)
-					}
-				}
-
-				if strings.HasPrefix(pronunciationText, "《") {
-					for _, pronunciation := range strings.Split(pronunciationText, "《") {
-						if pronunciation == "" {
-							continue
-						}
-						functionLabel := string([]rune(pronunciation)[0:1])
-						pronunciation = string([]rune(pronunciation)[2:])
-
-						for idx := attrRootIdx; idx < len(dictEntries); idx++ {
-							if strings.Contains(dictEntries[idx].FunctionalLabel, functionLabel) {
-								dictEntries[idx].Pronunciation = parsePronunciation(pronunciation)
-							}
-						}
-					}
-				} else {
-					dictEntries[attrRootIdx].Pronunciation = parsePronunciation(pronunciationText)
-				}
-
-				if strings.HasPrefix(inflectionTest, "《") {
-					for _, inflection := range strings.Split(inflectionTest, "《") {
-						if inflection == "" {
-							continue
-						}
-						functionLabel := string([]rune(inflection)[0:1])
-						inflection = string([]rune(inflection)[2:])
-
-						for idx := attrRootIdx; idx < len(dictEntries); idx++ {
-							if strings.Contains(dictEntries[idx].FunctionalLabel, functionLabel) {
-								infs := strings.Split(inflection, "｜")
-								for _, inf := range infs {
-									dictEntries[idx].Inflections = append(
-										dictEntries[idx].Inflections,
-										dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
-									)
-								}
-							} else if dictEntries[idx].FunctionalLabel == "名" && functionLabel == "複" {
-								infs := strings.Split(inflection, "｜")
-								for _, inf := range infs {
-									dictEntries[idx].Inflections = append(
-										dictEntries[idx].Inflections,
-										dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
-									)
-								}
-							}
-						}
-					}
-				} else {
-					dictEntries[attrRootIdx].Pronunciation = parsePronunciation(pronunciationText)
-				}
+				parseAttr(node, attrRootIdx, dictEntries)
 
 				attrRootIdx = -1
 			}
 		case "ol":
+			attr := cascadia.Query(node, cascadia.MustCompile("li > span.attr"))
+			if attr != nil {
+				dictEntries = append(dictEntries, dictEntry)
+				dictEntry = dictionary.Entry{}
+
+				parseAttr(attr, attrRootIdx, dictEntries)
+
+				attrRootIdx = -1
+				continue
+			}
+
 			var definitions []dictionary.Definition
 			if node.FirstChild.Data == "li" {
 				for li := node.FirstChild; li != nil; li = li.NextSibling {
@@ -173,6 +127,67 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 	}
 
 	return &dictionary.Result{SearchWord: word, Entries: dictEntries}, nil
+}
+
+func parseAttr(node *html.Node, attrRootIdx int, dictEntries []dictionary.Entry) {
+	var pronunciationText, inflectionTest string
+	for node2 := node.FirstChild; node2 != nil; node2 = node2.NextSibling {
+		if node2.Data == "span" && node2.Attr[0].Val == "pron" {
+			pronunciationText = text(node2)
+		} else if node2.Data == "span" && text(node2) == "【変化】" {
+			inflectionTest = text(node2.NextSibling)
+		}
+	}
+
+	if strings.HasPrefix(pronunciationText, "《") {
+		for _, pronunciation := range strings.Split(pronunciationText, "《") {
+			if pronunciation == "" {
+				continue
+			}
+			functionLabel := string([]rune(pronunciation)[0:1])
+			pronunciation = string([]rune(pronunciation)[2:])
+
+			for idx := attrRootIdx; idx < len(dictEntries); idx++ {
+				if strings.Contains(dictEntries[idx].FunctionalLabel, functionLabel) {
+					dictEntries[idx].Pronunciation = parsePronunciation(pronunciation)
+				}
+			}
+		}
+	} else {
+		dictEntries[attrRootIdx].Pronunciation = parsePronunciation(pronunciationText)
+	}
+
+	if strings.HasPrefix(inflectionTest, "《") {
+		for _, inflection := range strings.Split(inflectionTest, "《") {
+			if inflection == "" {
+				continue
+			}
+			functionLabel := string([]rune(inflection)[0:1])
+			inflection = string([]rune(inflection)[2:])
+
+			for idx := attrRootIdx; idx < len(dictEntries); idx++ {
+				if strings.Contains(dictEntries[idx].FunctionalLabel, functionLabel) {
+					infs := strings.Split(inflection, "｜")
+					for _, inf := range infs {
+						dictEntries[idx].Inflections = append(
+							dictEntries[idx].Inflections,
+							dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
+						)
+					}
+				} else if dictEntries[idx].FunctionalLabel == "名" && functionLabel == "複" {
+					infs := strings.Split(inflection, "｜")
+					for _, inf := range infs {
+						dictEntries[idx].Inflections = append(
+							dictEntries[idx].Inflections,
+							dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
+						)
+					}
+				}
+			}
+		}
+	} else {
+		dictEntries[attrRootIdx].Pronunciation = parsePronunciation(pronunciationText)
+	}
 }
 
 func parseDefinition(first *html.Node) (string, []template.HTML) {
