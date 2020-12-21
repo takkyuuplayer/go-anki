@@ -66,6 +66,18 @@ func TestEijiro_Parse(t *testing.T) {
 
 		assert.Nil(t, err)
 	})
+
+	t.Run("Returning for phrasal verb", func(t *testing.T) {
+		t.Parallel()
+
+		result, err := dic.Parse("put up with", load(t, "put_up_with.html"))
+
+		assert.Len(t, result.Entries, 1)
+		assert.Len(t, result.Entries[0].Definitions, 2)
+		assert.Equal(t, template.HTML("～に耐える、〔じっと〕～に我慢する◆【語源】put up（しまう、隠す）から。"), result.Entries[0].Definitions[0].Sense)
+		assert.Len(t, result.Entries[0].Definitions[0].Examples, 5)
+		assert.Nil(t, err)
+	})
 }
 
 func load(t *testing.T, testfile string) string {

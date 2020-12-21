@@ -57,8 +57,7 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 		return nil, dictionary.ErrNotFound
 	}
 
-	headword := cascadia.Query(definitions, cascadia.MustCompile("span.midashi > h2 > span")).
-		FirstChild.Data
+	headword := text(cascadia.Query(definitions, cascadia.MustCompile("span.midashi > h2 > span")))
 	if headword == "" {
 		return nil, dictionary.ErrNotFound
 	}
@@ -86,6 +85,7 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 				}
 			case "attr":
 				dictEntries = append(dictEntries, dictEntry)
+				dictEntry = dictionary.Entry{}
 
 				var pronunciationText, inflectionTest string
 				for node2 := node.FirstChild; node2 != nil; node2 = node2.NextSibling {
@@ -156,7 +156,10 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 				inExampleNode := false
 				for node2 := li.FirstChild; node2 != nil; node2 = node2.NextSibling {
 					switch node2.Data {
-					case "span": // Nothing to do
+					case "span":
+						if node2.Attr[0].Val != "kana" {
+							sense += node2.FirstChild.Data
+						}
 					case "br":
 						inExampleNode = true
 					default:
@@ -174,6 +177,9 @@ func (dic *Eijiro) Parse(word, body string) (*dictionary.Result, error) {
 			}
 			dictEntry.Definitions = definitions
 		}
+	}
+	if dictEntry.ID != "" {
+		dictEntries = append(dictEntries, dictEntry)
 	}
 
 	return &dictionary.Result{SearchWord: word, Entries: dictEntries}, nil
@@ -197,11 +203,11 @@ func parsePronunciation(text string) *dictionary.Pronunciation {
 func text(node *html.Node) string {
 	s := ""
 	if node.Type == html.TextNode {
-		s += node.Data
+		s += " " + node.Data
 	} else {
 		for child := node.FirstChild; child != nil; child = child.NextSibling {
-			s += text(child)
+			s += " " + text(child)
 		}
 	}
-	return s
+	return strings.TrimSpace(s)
 }
