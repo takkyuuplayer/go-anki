@@ -53,6 +53,15 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Nil(t, err)
 	})
 
+	t.Run("Returning in original form", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("muddies", load(t, "muddies.json"))
+
+		assert.Len(t, result.Entries, 1)
+		assert.Equal(t, "muddy", result.Entries[0].Headword)
+		assert.Nil(t, err)
+	})
+
 	t.Run("Returning for a phrasal verb", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("go through", load(t, "go_through.json"))
