@@ -220,7 +220,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 	return dictionary.Definition{Sense: template.HTML(strings.Join(dicSenses, " / ")), Examples: dicExample}, nil
 }
 
-var formatter = regexp.MustCompile("{.+}(.+)?{/.+}")
+var formatter = regexp.MustCompile("{.+?}(.*?){/.+?}")
 
 // Format markup text with html
 func Format(text string) string {
