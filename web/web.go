@@ -1,3 +1,3 @@
 package web
 
-//go:generate statik -src assets -f
+//go:generate go run github.com/rakyll/statik -src assets -f

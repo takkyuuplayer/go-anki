@@ -1,5 +1,7 @@
 package anki
 
+//go:generate go run github.com/rakyll/statik -src assets -f
+
 import (
 	"html/template"
 	"io/ioutil"
@@ -8,8 +10,6 @@ import (
 	// https://github.com/rakyll/statik#usage
 	_ "github.com/takkyuuplayer/go-anki/anki/statik"
 )
-
-//go:generate statik -src assets -f
 
 var tmpl = *template.New("anki")
 
