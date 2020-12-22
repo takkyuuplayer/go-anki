@@ -126,6 +126,11 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	if entry.Hwi.Hw.clean() == searchWord {
 		matched = true
 	}
+	for _, in := range entry.Ins {
+		if clean(in.If) == searchWord {
+			matched = true
+		}
+	}
 
 	definitions, err := entry.Def.convert()
 	if err != nil {

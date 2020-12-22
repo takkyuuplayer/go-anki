@@ -230,5 +230,9 @@ func Format(text string) string {
 }
 
 func (hw hw) clean() string {
-	return strings.ReplaceAll(string(hw), "*", "")
+	return clean(string(hw))
+}
+
+func clean(s string) string {
+	return strings.ReplaceAll(s, "*", "")
 }

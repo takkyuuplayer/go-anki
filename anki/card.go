@@ -15,7 +15,7 @@ type Card struct {
 
 // Front returns the content of front
 func (card Card) Front() string {
-	return card.SearchWord
+	return card.Entries[0].Headword
 }
 
 // Back returns the content of back
