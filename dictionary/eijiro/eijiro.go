@@ -232,12 +232,13 @@ func parseDefinition(first *html.Node) (string, []template.HTML) {
 }
 
 func parsePronunciation(text string) *dictionary.Pronunciation {
-	//[US] ə́rli ｜ [UK] ə́ːli、
+	// [US] wə́rd ｜ [UK] wə́ːd、
 	var accents []dictionary.Accent
 	for _, accent := range strings.Split(text, "｜") {
+		accent = strings.TrimSpace(accent)
 		if strings.HasPrefix(accent, "[") {
-			label := text[strings.Index(accent, "[")+1 : strings.LastIndex(accent, "]")]
-			spelling := text[strings.LastIndex(accent, "]")+1:]
+			label := accent[strings.Index(accent, "[")+1 : strings.LastIndex(accent, "]")]
+			spelling := accent[strings.LastIndex(accent, "]")+1:]
 			accents = append(accents, dictionary.Accent{AccentLabel: label, Spelling: strings.TrimSpace(strings.TrimRight(spelling, "、"))})
 		} else {
 			accents = append(accents, dictionary.Accent{AccentLabel: "-", Spelling: strings.TrimSpace(strings.TrimRight(accent, "、"))})

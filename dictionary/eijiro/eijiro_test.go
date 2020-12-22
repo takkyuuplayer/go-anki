@@ -119,6 +119,17 @@ func TestEijiro_Parse(t *testing.T) {
 		assert.Len(t, result.Suggestions, 0)
 		assert.Equal(t, dictionary.ErrNotFound, err)
 	})
+
+	t.Run("Returning multiple pronunciation", func(t *testing.T) {
+		t.Parallel()
+
+		result, err := dic.Parse("word", load(t, "word.html"))
+
+		assert.Len(t, result.Entries, 3)
+		assert.Equal(t, dictionary.Accent{AccentLabel: "US", Spelling: "wə́rd"}, result.Entries[0].Pronunciation.Accents[0])
+		assert.Equal(t, dictionary.Accent{AccentLabel: "UK", Spelling: "wə́ːd"}, result.Entries[0].Pronunciation.Accents[1])
+		assert.Nil(t, err)
+	})
 }
 
 func load(t *testing.T, testfile string) string {
