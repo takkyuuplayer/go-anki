@@ -189,7 +189,7 @@ func parseAttr(node *html.Node, attrRootIdx int, dictEntries []dictionary.Entry)
 					for _, inf := range infs {
 						dictEntries[idx].Inflections = append(
 							dictEntries[idx].Inflections,
-							dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
+							dictionary.Inflection{InflectedForm: clean(inf)},
 						)
 					}
 				} else if dictEntries[idx].FunctionalLabel == "名" && functionLabel == "複" {
@@ -197,7 +197,7 @@ func parseAttr(node *html.Node, attrRootIdx int, dictEntries []dictionary.Entry)
 					for _, inf := range infs {
 						dictEntries[idx].Inflections = append(
 							dictEntries[idx].Inflections,
-							dictionary.Inflection{InflectedForm: strings.TrimSpace(inf)},
+							dictionary.Inflection{InflectedForm: clean(inf)},
 						)
 					}
 				}
@@ -222,7 +222,7 @@ func parseDefinition(first *html.Node) (string, []template.HTML) {
 			inExampleNode = true
 		default:
 			if inExampleNode {
-				examples = append(examples, template.HTML(strings.TrimLeft(node2.Data, "・")))
+				examples = append(examples, template.HTML(clean(node2.Data)))
 			} else {
 				sense += node2.Data
 			}
@@ -235,13 +235,13 @@ func parsePronunciation(text string) *dictionary.Pronunciation {
 	// [US] wə́rd ｜ [UK] wə́ːd、
 	var accents []dictionary.Accent
 	for _, accent := range strings.Split(text, "｜") {
-		accent = strings.TrimSpace(accent)
+		accent = clean(accent)
 		if strings.HasPrefix(accent, "[") {
 			label := accent[strings.Index(accent, "[")+1 : strings.LastIndex(accent, "]")]
 			spelling := accent[strings.LastIndex(accent, "]")+1:]
-			accents = append(accents, dictionary.Accent{AccentLabel: label, Spelling: strings.TrimSpace(strings.TrimRight(spelling, "、"))})
+			accents = append(accents, dictionary.Accent{AccentLabel: label, Spelling: clean(spelling)})
 		} else {
-			accents = append(accents, dictionary.Accent{AccentLabel: "-", Spelling: strings.TrimSpace(strings.TrimRight(accent, "、"))})
+			accents = append(accents, dictionary.Accent{AccentLabel: "-", Spelling: clean(accent)})
 		}
 	}
 	return &dictionary.Pronunciation{Notation: "IPA", Accents: accents}
@@ -256,5 +256,9 @@ func text(node *html.Node) string {
 			s += " " + text(child)
 		}
 	}
-	return strings.TrimSpace(s)
+	return clean(s)
+}
+
+func clean(dirty string) string {
+	return strings.TrimSpace(strings.Trim(dirty, "、・"))
 }
