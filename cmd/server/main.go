@@ -10,6 +10,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/takkyuuplayer/go-anki/dictionary/eijiro"
+
 	"github.com/takkyuuplayer/go-anki/anki"
 	"github.com/takkyuuplayer/go-anki/dictionary"
 
@@ -21,7 +23,8 @@ import (
 )
 
 var dictionaries = map[string]dictionary.Dictionary{
-	"mw": mw.NewLearners(os.Getenv("MW_LEARNERS_KEY"), &http.Client{}),
+	"mw":     mw.NewLearners(os.Getenv("MW_LEARNERS_KEY"), http.DefaultClient),
+	"eijiro": eijiro.NewEijiro(http.DefaultClient),
 }
 
 func post(w http.ResponseWriter, r *http.Request) {

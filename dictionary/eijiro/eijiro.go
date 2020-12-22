@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
+	"time"
 
 	"github.com/andybalholm/cascadia"
 
@@ -25,7 +27,15 @@ func NewEijiro(httpClient *http.Client) *Eijiro {
 	return &Eijiro{httpClient: httpClient}
 }
 
+var mu sync.Mutex
+
 func (dic *Eijiro) LookUp(word string) (string, error) {
+	mu.Lock()
+	defer func() {
+		time.Sleep(2 * time.Second)
+		mu.Unlock()
+	}()
+
 	urlToSearch := fmt.Sprintf(searchURL, url.QueryEscape(word))
 
 	response, err := dic.httpClient.Get(urlToSearch)
