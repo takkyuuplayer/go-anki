@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"sync"
 
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
@@ -17,13 +18,11 @@ const errorLimit = 10
 
 // Run generates anki card tsv file
 func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
+	var wg sync.WaitGroup
+	var mu sync.Mutex
 	scanner := bufio.NewScanner(in)
 	unkownErrCount := 0
-	type wordResult struct {
-		out []string
-		err error
-	}
-	c := make(chan wordResult, concurrency)
+	c := make(chan bool, concurrency)
 
 	for scanner.Scan() {
 		word := strings.Trim(scanner.Text(), " ")
@@ -34,7 +33,14 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 			break
 		}
 
+		wg.Add(1)
+		c <- true
 		go func(word string) {
+			defer func() {
+				<-c
+				wg.Done()
+			}()
+
 			res, err := RunWord(dic, word)
 			if err == dictionary.ErrNotFound {
 				if unkownErrCount > 0 {
@@ -47,16 +53,19 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 					unkownErrCount -= 1
 				}
 			}
-			c <- wordResult{res, err}
-		}(word)
 
-		res := <-c
-		if res.err == nil {
-			out.Write(res.out)
-		} else {
-			outErr.Write(res.out)
-		}
+			mu.Lock()
+			defer mu.Unlock()
+
+			if err == nil {
+				out.Write(res)
+			} else {
+				outErr.Write(res)
+			}
+		}(word)
 	}
+	wg.Wait()
+
 	if unkownErrCount >= errorLimit {
 		outErr.Write([]string{errorUnknown, "Stopped because of too many unknown errors"})
 	}
@@ -79,7 +88,7 @@ func RunWord(dic dictionary.Dictionary, word string) ([]string, error) {
 		return []string{errorUnknown, fmt.Sprintf("%s: %s", word, err)}, err
 	}
 	if len(result.Suggestions) > 0 {
-		return []string{errorNotFound, word}, err
+		return []string{errorNotFound, word}, dictionary.ErrNotFound
 	}
 
 	card := Card{SearchWord: word, Entries: result.Entries}
