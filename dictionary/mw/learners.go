@@ -181,6 +181,7 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 				Accents:  uro.Prs.convert(),
 			}
 		}
+
 		dictEntry := dictionary.Entry{
 			ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.clean(),
 			Headword:        uro.Ure.clean(),
