@@ -1,0 +1,151 @@
+[
+  {
+    "meta": {
+      "id": "strata",
+      "uuid": "0fdc578e-beda-4ce6-9119-3bf392a1cd56",
+      "src": "learners",
+      "section": "alpha",
+      "stems": [
+        "strata"
+      ],
+      "app-shortdef": null,
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "strata"
+    },
+    "cxs": [
+      {
+        "cxl": "plural of",
+        "cxtis": [
+          {
+            "cxt": "stratum"
+          }
+        ]
+      }
+    ],
+    "shortdef": []
+  },
+  {
+    "meta": {
+      "id": "stratum",
+      "uuid": "4c14a971-1ffb-4cfd-bc43-2d30a49603ba",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "115c9cc0-8653-4f6e-8401-b80dab68c6d1",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "stratum",
+        "strata"
+      ],
+      "app-shortdef": {
+        "hw": "stratum",
+        "fl": "noun",
+        "def": [
+          "{bc} one of usually many layers of a substance (such as rock)",
+          "{bc} a level of society made up of people of the same rank or position"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "stra*tum",
+      "prs": [
+        {
+          "ipa": "ˈstreɪtəm",
+          "pun": ",",
+          "sound": {
+            "audio": "stratu02"
+          }
+        },
+        {
+          "l": "British",
+          "ipa": "ˈstrɑːtəm",
+          "sound": {
+            "audio": "stratu01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "if": "stra*ta",
+        "prs": [
+          {
+            "ipa": "ˈstreɪtə",
+            "pun": ",",
+            "sound": {
+              "audio": "stratu03"
+            }
+          },
+          {
+            "l": "British",
+            "ipa": "ˈstrɑːtə"
+          }
+        ]
+      }
+    ],
+    "gram": "count",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}one of usually many layers of a substance (such as rock) "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a rock {it}stratum{/it}"
+                      },
+                      {
+                        "t": "a {it}stratum{/it} of earth"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a level of society made up of people of the same rank or position "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Drug abuse is a problem in every {it}stratum{/it} of society. = Drug abuse is a problem in all social {it}strata{/it}."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "one of usually many layers of a substance (such as rock)",
+      "a level of society made up of people of the same rank or position"
+    ]
+  }
+]

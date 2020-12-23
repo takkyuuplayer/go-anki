@@ -62,6 +62,19 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Nil(t, err)
 	})
 
+	t.Run("Returning stratum for strata", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("strata", load(t, "strata.json"))
+
+		assert.Len(t, result.Entries, 1)
+		assert.Equal(t, "stratum", result.Entries[0].Headword)
+		assert.Len(t, result.Entries[0].Definitions, 2)
+		assert.Len(t, result.Entries[0].Pronunciation.Accents, 2)
+		assert.Equal(t, "US", result.Entries[0].Pronunciation.Accents[0].AccentLabel)
+		assert.Equal(t, "British", result.Entries[0].Pronunciation.Accents[1].AccentLabel)
+		assert.Nil(t, err)
+	})
+
 	t.Run("Returning for a phrasal verb", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("go through", load(t, "go_through.json"))
