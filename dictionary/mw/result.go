@@ -74,6 +74,7 @@ type hwi struct {
 
 type prs []struct {
 	Ipa   string `json:"ipa"`
+	Label string `json:"l"`
 	Sound struct {
 		Audio audio `json:"audio"`
 	} `json:"sound"`
@@ -100,8 +101,12 @@ func (prs prs) convert() []dictionary.Accent {
 	accents := make([]dictionary.Accent, len(prs))
 
 	for idx, pr := range prs {
+		label := "US"
+		if pr.Label != "" {
+			label = pr.Label
+		}
 		accent := dictionary.Accent{
-			AccentLabel: "US",
+			AccentLabel: label,
 			Spelling:    pr.Ipa,
 			Audio:       pr.Sound.Audio.convert(),
 		}
@@ -145,7 +150,7 @@ func (ins ins) convert() []dictionary.Inflection {
 		}
 		inflection := dictionary.Inflection{
 			FormLabel:     in.Il,
-			InflectedForm: in.If,
+			InflectedForm: clean(in.If),
 			Pronunciation: pronunciation,
 		}
 		inflections[idx] = inflection

@@ -5,6 +5,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
+	"log"
 	"strings"
 	"sync"
 
@@ -92,6 +93,10 @@ func RunWord(dic dictionary.Dictionary, word string) ([]string, error) {
 	}
 
 	card := Card{SearchWord: word, Entries: result.Entries}
-	back, _ := card.Back()
+	back, err := card.Back()
+	if err != nil {
+		log.Println(err)
+		return []string{errorUnknown, fmt.Sprintf("%s: %s", word, err)}, err
+	}
 	return []string{card.Front(), back}, nil
 }

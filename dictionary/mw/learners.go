@@ -120,6 +120,10 @@ func lookUpForPhrase(searchWord string, entry entry) ([]dictionary.Entry, error)
 }
 
 func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
+	if len(entry.Shortdef) == 0 {
+		return nil, nil
+	}
+
 	var de []dictionary.Entry
 	var matched bool
 
@@ -128,6 +132,11 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	}
 	for _, in := range entry.Ins {
 		if clean(in.If) == searchWord {
+			matched = true
+		}
+	}
+	for _, stem := range entry.Meta.Stems {
+		if clean(stem) == searchWord {
 			matched = true
 		}
 	}
