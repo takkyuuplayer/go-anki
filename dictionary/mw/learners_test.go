@@ -25,7 +25,7 @@ func Test_learners_Parse(t *testing.T) {
 		result, err := learners.Parse("test", load(t, "test.json"))
 
 		assert.Len(t, result.Entries, 3)
-		assert.Equal(t, "test", result.Dictionary)
+		assert.Equal(t, "Merriam-Webster's Learner's Dictionary", result.Dictionary)
 		assert.Equal(t, "test", result.Entries[0].Headword)
 		assert.Equal(t, "test", result.Entries[1].Headword)
 		assert.Equal(t, "testable", result.Entries[2].Headword)
