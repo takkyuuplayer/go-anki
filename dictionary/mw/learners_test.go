@@ -25,6 +25,7 @@ func Test_learners_Parse(t *testing.T) {
 		result, err := learners.Parse("test", load(t, "test.json"))
 
 		assert.Len(t, result.Entries, 3)
+		assert.Equal(t, "Merriam-Webster's Learner's Dictionary", result.Dictionary)
 		assert.Equal(t, "test", result.Entries[0].Headword)
 		assert.Equal(t, "test", result.Entries[1].Headword)
 		assert.Equal(t, "testable", result.Entries[2].Headword)
@@ -101,7 +102,7 @@ func Test_learners_Parse(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("furnitura", load(t, "furnitura.json"))
 
-		assert.Equal(t, "furnitura", result.SearchWord)
+		assert.Equal(t, "Merriam-Webster's Learner's Dictionary", result.Dictionary)
 		assert.Len(t, result.Suggestions, 16)
 		assert.Nil(t, result.Entries)
 		assert.Nil(t, err)
