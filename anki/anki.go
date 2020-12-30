@@ -92,7 +92,7 @@ func RunWord(dic dictionary.Dictionary, word string) ([]string, error) {
 		return []string{errorNotFound, word}, dictionary.ErrNotFound
 	}
 
-	card := Card{SearchWord: word, Entries: result.Entries}
+	card := Card{SearchWord: word, Result: result}
 	back, err := card.Back()
 	if err != nil {
 		log.Println(err)

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -12,7 +13,9 @@ import (
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
 
+const dictionaryName = "Merriam-Webster's Learner's Dictionary"
 const searchURL = "https://www.dictionaryapi.com/api/v3/references/learners/json/%s?key=%s"
+const webURL = "https://learnersdictionary.com/definition/%s"
 
 // Learners is a client to access MERRIAM-WEBSTER'S LEARNER'S DICTIONARY API
 // https://dictionaryapi.com/products/api-learners-dictionary
@@ -57,7 +60,12 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	var suggestion suggestion
 	err := json.Unmarshal([]byte(body), &suggestion)
 	if err == nil {
-		return &dictionary.Result{SearchWord: searchWord, Entries: nil, Suggestions: suggestion}, nil
+		return &dictionary.Result{
+			Dictionary:  dictionaryName,
+			Entries:     nil,
+			Suggestions: suggestion,
+			WebUrl:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
+		}, nil
 	}
 
 	var entries entries
@@ -89,9 +97,10 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	}
 
 	return &dictionary.Result{
-		SearchWord:  searchWord,
+		Dictionary:  dictionaryName,
 		Entries:     dictEntries,
 		Suggestions: nil,
+		WebUrl:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
 	}, nil
 }
 

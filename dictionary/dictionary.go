@@ -10,7 +10,8 @@ var ErrNotFound = errors.New("Not Found")
 
 // Result is the looked up result
 type Result struct {
-	SearchWord  string
+	Dictionary  string
+	WebUrl      template.URL
 	Entries     []Entry
 	Suggestions []string
 }

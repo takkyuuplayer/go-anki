@@ -2,6 +2,8 @@ package anki
 
 import (
 	"bytes"
+	"fmt"
+	"html"
 	"strings"
 
 	"github.com/takkyuuplayer/go-anki/dictionary"
@@ -10,18 +12,18 @@ import (
 // Card is the raw data of anki card
 type Card struct {
 	SearchWord string
-	Entries    []dictionary.Entry
+	Result     *dictionary.Result
 }
 
 // Front returns the content of front
 func (card Card) Front() string {
-	return card.Entries[0].Headword
+	return card.Result.Entries[0].Headword
 }
 
 // Back returns the content of back
 func (card Card) Back() (string, error) {
 	ret := ""
-	for _, entry := range card.Entries {
+	for _, entry := range card.Result.Entries {
 		content, err := ankiCard(&entry)
 		if err != nil {
 			return "", err
@@ -29,6 +31,11 @@ func (card Card) Back() (string, error) {
 			ret += " " + content
 		}
 	}
+	ret += fmt.Sprintf(`<hr><a href="%s">%s - %s</a>`,
+		card.Result.WebUrl,
+		html.EscapeString(card.SearchWord),
+		html.EscapeString(card.Result.Dictionary),
+	)
 	ret = strings.TrimSpace(strings.Join(strings.Fields(ret), " "))
 
 	return ret, nil
