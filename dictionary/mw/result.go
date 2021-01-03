@@ -227,12 +227,24 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 	return dictionary.Definition{Sense: template.HTML(strings.Join(dicSenses, " / ")), Examples: dicExample}, nil
 }
 
-var formatter = regexp.MustCompile("{.+?}(.*?){/.+?}")
+var boldFormatter = regexp.MustCompile("{b}(.*?){/b}")
+var infFormatter = regexp.MustCompile("{inf}(.*?){/inf}")
+var itFormatter = regexp.MustCompile("{it}(.*?){/it}")
+var scFormatter = regexp.MustCompile("{sc}(.*?){/sc}")
+var supFormatter = regexp.MustCompile("{sup}(.*?){/sup}")
+var remainingFormatter = regexp.MustCompile("{.+?}(.*?){/.+?}")
 
 // Format markup text with html
 func Format(text string) string {
-	text = strings.ReplaceAll(text, "{bc}", "")
-	text = formatter.ReplaceAllString(text, "<i>$1</i>")
+	text = strings.ReplaceAll(text, "{bc}", "<b>:</b> ")
+	text = strings.ReplaceAll(text, "{ldquo}", "&ldquo;")
+	text = strings.ReplaceAll(text, "{rdquo}", "&rdquo;")
+	text = boldFormatter.ReplaceAllString(text, "<b>$1</b>")
+	text = infFormatter.ReplaceAllString(text, "<sub>$1</sub>")
+	text = itFormatter.ReplaceAllString(text, "<i>$1</i>")
+	text = scFormatter.ReplaceAllString(text, `<span style="font-variant: small-caps;">$1</span>`)
+	text = supFormatter.ReplaceAllString(text, "<sup>$1</sup>")
+	text = remainingFormatter.ReplaceAllString(text, "<i>$1</i>")
 	return strings.Trim(text, " ")
 }
 
