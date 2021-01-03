@@ -1,0 +1,120 @@
+[
+  {
+    "meta": {
+      "id": "deathbed",
+      "uuid": "2d336b9c-3816-4002-8457-fe23aa67b55a",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "62b82e5b-73e3-404d-b884-477abbdc1c05",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "deathbed",
+        "deathbeds",
+        "on your deathbed"
+      ],
+      "app-shortdef": {
+        "hw": "deathbed",
+        "fl": "noun",
+        "def": [
+          "{bc} in the bed that you will soon die in"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "death*bed",
+      "prs": [
+        {
+          "ipa": "ˈdɛθˌbɛd",
+          "sound": {
+            "audio": "deathb01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "ifc": "-beds",
+        "if": "death*beds"
+      }
+    ],
+    "uros": [
+      {
+        "ure": "deathbed",
+        "fl": "adjective",
+        "lbs": [
+          "always used before a noun"
+        ],
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "a {it}deathbed{/it} confession [=a confession made just before someone dies]"
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "on your deathbed",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}in the bed that you will soon die in "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "She made a startling confession {it}on her deathbed{/it}. [=just before she died]"
+                          }
+                        ]
+                      ],
+                      [
+                        "uns",
+                        [
+                          [
+                            [
+                              "text",
+                              "often used figuratively to say that someone is very close to dying or very sick "
+                            ],
+                            [
+                              "vis",
+                              [
+                                {
+                                  "t": "She's convinced that the old man is {it}on his deathbed{/it}, but he looks healthy enough to me."
+                                },
+                                {
+                                  "t": "I was so sick with the flu—practically {it}on my deathbed{/it}."
+                                }
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "shortdef": []
+  }
+]

@@ -215,7 +215,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 			dicExample = append(dicExample, res.Examples...)
 
-		case "wsgram", "bnw", "ri", "srefs", "ca":
+		case "wsgram", "bnw", "ri", "srefs", "ca", "urefs":
 			// Something todo?
 		default:
 			return dictionary.Definition{}, fmt.Errorf("unknown type: %s", tuple[0].(string))

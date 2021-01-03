@@ -129,7 +129,7 @@ func lookUpForPhrase(searchWord string, entry entry) ([]dictionary.Entry, error)
 }
 
 func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
-	if len(entry.Shortdef) == 0 {
+	if len(entry.Shortdef) == 0 && entry.Meta.AppShortdef == nil {
 		return nil, nil
 	}
 
@@ -154,6 +154,7 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	var pronunciation *dictionary.Pronunciation
 	if len(entry.Hwi.Prs) > 0 {
 		pronunciation = &dictionary.Pronunciation{
@@ -161,15 +162,18 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 			Accents:  entry.Hwi.Prs.convert(),
 		}
 	}
-	dictEntry := dictionary.Entry{
-		ID:              "mw-" + entry.Meta.ID,
-		Headword:        entry.Hwi.Hw.clean(),
-		FunctionalLabel: entry.Fl,
-		Pronunciation:   pronunciation,
-		Inflections:     entry.Ins.convert(),
-		Definitions:     definitions,
+	if definitions != nil {
+		dictEntry := dictionary.Entry{
+			ID:              "mw-" + entry.Meta.ID,
+			Headword:        entry.Hwi.Hw.clean(),
+			FunctionalLabel: entry.Fl,
+			Pronunciation:   pronunciation,
+			Inflections:     entry.Ins.convert(),
+			Definitions:     definitions,
+		}
+		de = append(de, dictEntry)
+
 	}
-	de = append(de, dictEntry)
 
 	for _, uro := range entry.Uros {
 		if uro.Ure.clean() == searchWord {
