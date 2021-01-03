@@ -1,0 +1,296 @@
+[
+  {
+    "meta": {
+      "id": "under way",
+      "uuid": "3bb74748-cf14-4977-9726-2a92459eff86",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "498c04df-f750-4d4b-91fd-0242c6c59f4c",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "under way",
+        "way",
+        "underway"
+      ],
+      "app-shortdef": {
+        "hw": "under way",
+        "fl": "adverb",
+        "def": [
+          "{bc} in or into motion",
+          "{bc} happening now"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "under way"
+    },
+    "vrs": [
+      {
+        "vl": "or",
+        "va": "un*der*way",
+        "prs": [
+          {
+            "ipa": "ˌʌndɚˌweɪ",
+            "sound": {
+              "audio": "underw02"
+            }
+          }
+        ]
+      }
+    ],
+    "fl": "adverb",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}in or into motion "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The train has had to stop briefly, but it should be {it}under way{/it} again soon."
+                      },
+                      {
+                        "t": "The ship finally got {it}under way{/it}. [=began sailing]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}happening now "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "Preparations for their arrival are already {it}under way{/it}."
+                      },
+                      {
+                        "t": "A search is {it}under way{/it}. [={it}in progress{/it}]"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "in or into motion",
+      "happening now"
+    ]
+  },
+  {
+    "meta": {
+      "id": "preparation",
+      "uuid": "7d0a3f3d-401d-47bf-8acf-82a905eb1e2e",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "25e22dd2-4569-424f-8a56-92d14a0684c2",
+        "tsrc": "collegiate"
+      },
+      "highlight": "yes",
+      "stems": [
+        "preparation",
+        "preparations",
+        "in preparation",
+        "in preparation for",
+        "making preparations",
+        "preparations are under way"
+      ],
+      "app-shortdef": {
+        "hw": "preparation",
+        "fl": "noun",
+        "def": [
+          "{bc} the activity or process of making something ready or of becoming ready for something",
+          "{b}{it}preparations{/it}{/b} {bc} things that are done to make something ready or to become ready for something",
+          "{bc} a substance (such as a cream or lotion) that you use as medicine or to improve your appearance"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "prep*a*ra*tion",
+      "prs": [
+        {
+          "ipa": "ˌprɛpəˈreɪʃən",
+          "sound": {
+            "audio": "prepar01"
+          }
+        }
+      ]
+    },
+    "fl": "noun",
+    "ins": [
+      {
+        "il": "plural",
+        "ifc": "-tions",
+        "if": "prep*a*ra*tions"
+      }
+    ],
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1",
+                "sgram": "noncount",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}the activity or process of making something ready or of becoming ready for something "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The festival involves a lot of {it}preparation{/it}."
+                      },
+                      {
+                        "t": "food/meal {it}preparation{/it}"
+                      },
+                      {
+                        "t": "To complete this recipe, plan on about 30 minutes of {it}preparation{/it} and 40 minutes of baking."
+                      },
+                      {
+                        "t": "Plans for the next edition are already {phrase}in preparation{/phrase}. [=are already being prepared/made]"
+                      }
+                    ]
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "often + {it}for{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "Her {it}preparation for{/it} the role included training in karate."
+                            },
+                            {
+                              "t": "The boxer exercised daily {phrase}in preparation for{/phrase} the fight. [=to prepare for the fight]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "bnote": "preparations",
+                "sgram": "plural",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}things that are done to make something ready or to become ready for something "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "The staff is {phrase}making preparations{/phrase} to move to another building. [=the staff is doing things to become ready to move to another building]"
+                      },
+                      {
+                        "t": "{phrase}Preparations are under way{/phrase} [=things are being done to become ready] for the move to the new building."
+                      }
+                    ]
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "often + {it}for{/it} "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{it}Preparations for{/it} the parade are almost completed."
+                            },
+                            {
+                              "t": "They are busy with {it}preparations for{/it} their wedding."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "sgram": "count",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}a substance (such as a cream or lotion) that you use as medicine or to improve your appearance "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "a vitamin E {it}preparation{/it}"
+                      },
+                      {
+                        "t": "skin care {it}preparations{/it}"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "the activity or process of making something ready or of becoming ready for something —often + for",
+      "things that are done to make something ready or to become ready for something —often + for",
+      "a substance (such as a cream or lotion) that you use as medicine or to improve your appearance"
+    ]
+  }
+]

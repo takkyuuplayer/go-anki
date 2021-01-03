@@ -124,13 +124,8 @@ func Test_learners_Parse(t *testing.T) {
 		result, err := learners.Parse("under way", load(t, "under_way.json"))
 
 		assert.Len(t, result.Entries, 1)
-		assert.Equal(t, "go through", result.Entries[0].Headword)
+		assert.Equal(t, "under way", result.Entries[0].Headword)
 		assert.Nil(t, err)
-
-		t.Run("Returning from snote", func(t *testing.T) {
-			assert.NotEqual(t, "", result.Entries[0].Definitions[6].Sense)
-			assert.Len(t, result.Entries[0].Definitions[6].Examples, 3)
-		})
 	})
 
 	filepath.Walk("testdata", func(path string, info os.FileInfo, err error) error {

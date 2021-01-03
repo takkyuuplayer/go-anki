@@ -74,20 +74,11 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 		return nil, fmt.Errorf("unknown structure: %v", err)
 	}
 
-	isPhrasalVerb := len(strings.Fields(searchWord)) > 1
-
 	var dictEntries []dictionary.Entry
 	for _, entry := range entries {
-		var lookedUp []dictionary.Entry
-		if isPhrasalVerb {
-			lookedUp, err = lookUpForPhrase(searchWord, entry)
-		} else {
-			lookedUp, err = lookUpForWord(searchWord, entry)
-		}
-		if err != nil {
+		if lookedUp, err := lookUpForWord(searchWord, entry); err != nil {
 			return nil, err
-		}
-		if lookedUp != nil {
+		} else if lookedUp != nil {
 			dictEntries = append(dictEntries, lookedUp...)
 		}
 	}
@@ -104,30 +95,6 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	}, nil
 }
 
-func lookUpForPhrase(searchWord string, entry entry) ([]dictionary.Entry, error) {
-	var de []dictionary.Entry
-
-	for _, definedOnRun := range entry.Dros {
-		if definedOnRun.Drp != searchWord {
-			continue
-		}
-
-		definitions, err := definedOnRun.Def.convert()
-		if err != nil {
-			return nil, err
-		}
-		dictEntry := dictionary.Entry{
-			ID:              "mw-" + definedOnRun.Drp,
-			Headword:        definedOnRun.Drp,
-			FunctionalLabel: definedOnRun.Gram,
-			Definitions:     definitions,
-		}
-		de = append(de, dictEntry)
-	}
-
-	return de, nil
-}
-
 func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	if len(entry.Shortdef) == 0 && entry.Meta.AppShortdef == nil {
 		return nil, nil
@@ -136,7 +103,7 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	var de []dictionary.Entry
 	var matched bool
 
-	if entry.Hwi.Hw.clean() == searchWord {
+	if clean(entry.Hwi.Hw) == searchWord {
 		matched = true
 	}
 	for _, in := range entry.Ins {
@@ -144,15 +111,13 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 			matched = true
 		}
 	}
+
+	isPhrase := len(strings.Fields(searchWord)) > 1
+
 	for _, stem := range entry.Meta.Stems {
-		if clean(stem) == searchWord {
+		if !isPhrase && clean(stem) == searchWord {
 			matched = true
 		}
-	}
-
-	definitions, err := entry.Def.convert()
-	if err != nil {
-		return nil, err
 	}
 
 	var pronunciation *dictionary.Pronunciation
@@ -162,21 +127,28 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 			Accents:  entry.Hwi.Prs.convert(),
 		}
 	}
-	if definitions != nil {
-		dictEntry := dictionary.Entry{
-			ID:              "mw-" + entry.Meta.ID,
-			Headword:        entry.Hwi.Hw.clean(),
-			FunctionalLabel: entry.Fl,
-			Pronunciation:   pronunciation,
-			Inflections:     entry.Ins.convert(),
-			Definitions:     definitions,
-		}
-		de = append(de, dictEntry)
 
+	if matched {
+		definitions, err := entry.Def.convert()
+		if err != nil {
+			return nil, err
+		}
+
+		if definitions != nil {
+			dictEntry := dictionary.Entry{
+				ID:              "mw-" + entry.Meta.ID,
+				Headword:        clean(entry.Hwi.Hw),
+				FunctionalLabel: entry.Fl,
+				Pronunciation:   pronunciation,
+				Inflections:     entry.Ins.convert(),
+				Definitions:     definitions,
+			}
+			de = append(de, dictEntry)
+		}
 	}
 
 	for _, uro := range entry.Uros {
-		if uro.Ure.clean() == searchWord {
+		if clean(uro.Ure) == searchWord {
 			matched = true
 		}
 
@@ -196,11 +168,30 @@ func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
 		}
 
 		dictEntry := dictionary.Entry{
-			ID:              "mw-" + entry.Meta.ID + "-" + uro.Ure.clean(),
-			Headword:        uro.Ure.clean(),
+			ID:              "mw-" + entry.Meta.ID + "-" + clean(uro.Ure),
+			Headword:        clean(uro.Ure),
 			FunctionalLabel: uro.Fl,
 			Pronunciation:   pronunciation,
 			Inflections:     uro.Ins.convert(),
+			Definitions:     definitions,
+		}
+		de = append(de, dictEntry)
+	}
+
+	for _, definedOnRun := range entry.Dros {
+		if definedOnRun.Drp != searchWord {
+			continue
+		}
+		matched = true
+
+		definitions, err := definedOnRun.Def.convert()
+		if err != nil {
+			return nil, err
+		}
+		dictEntry := dictionary.Entry{
+			ID:              "mw-" + definedOnRun.Drp,
+			Headword:        definedOnRun.Drp,
+			FunctionalLabel: definedOnRun.Gram,
 			Definitions:     definitions,
 		}
 		de = append(de, dictEntry)

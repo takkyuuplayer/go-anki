@@ -1,1 +1,180 @@
-[{"meta":{"id":"muddy:2","uuid":"c4ba1ede-b736-4ea5-9b9b-7550f17cd4bd","src":"learners","section":"alpha","target":{"tuuid":"b01b12b6-f7b8-4e5b-b761-dcc655a70efd","tsrc":"collegiate"},"stems":["muddy","muddied","muddies","muddy the waters","muddying"],"app-shortdef":{"hw":"muddy:2","fl":"verb","def":["{bc} to make (something) muddy: such as","{bc} to cover (something) with mud","{bc} to make (a color) cloudy or dull"]},"offensive":false},"hom":2,"hwi":{"hw":"muddy","altprs":[{"ipa":"\u02c8m\u028cdi"}]},"fl":"verb","ins":[{"ifc":"-dies","if":"muddies"},{"ifc":"-died","if":"muddied"},{"ifc":"-dy*ing","if":"muddy*ing"}],"gram":"+ obj","def":[{"sseq":[[["bs",{"sense":{"dt":[["text","{bc}to make (something) muddy: such as"]]}}],["sense",{"sn":"a","dt":[["text","{bc}to cover (something) with mud "],["vis",[{"t":"His shoes were {it}muddied{\/it}."},{"t":"The flooding {it}muddied{\/it} the roads."}]]]}],["sense",{"sn":"b","dt":[["text","{bc}to make (a color) cloudy or dull "],["vis",[{"t":"She {it}muddied{\/it} the color by adding some brown."}]]]}],["sense",{"sn":"c","dt":[["text","{bc}to cause (something) to become unclear or confused "],["vis",[{"t":"{it}muddying{\/it} the line between fact and fiction"},{"t":"The debate further {it}muddied{\/it} the issues."}]]]}]]]}],"dros":[{"drp":"muddy the waters","def":[{"sseq":[[["sense",{"dt":[["text","{bc}to make something more complicated or difficult to understand "],["vis",[{"t":"The latest study {it}muddies the waters{\/it} by suggesting an alternate explanation."}]]]}]]]}]}],"shortdef":["to make (something) muddy: such as","to cover (something) with mud","to make (a color) cloudy or dull"]}]
+[
+  {
+    "meta": {
+      "id": "muddy:2",
+      "uuid": "c4ba1ede-b736-4ea5-9b9b-7550f17cd4bd",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "b01b12b6-f7b8-4e5b-b761-dcc655a70efd",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "muddy",
+        "muddied",
+        "muddies",
+        "muddy the waters",
+        "muddying"
+      ],
+      "app-shortdef": {
+        "hw": "muddy:2",
+        "fl": "verb",
+        "def": [
+          "{bc} to make (something) muddy: such as",
+          "{bc} to cover (something) with mud",
+          "{bc} to make (a color) cloudy or dull"
+        ]
+      },
+      "offensive": false
+    },
+    "hom": 2,
+    "hwi": {
+      "hw": "muddy",
+      "altprs": [
+        {
+          "ipa": "ˈmʌdi"
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "ifc": "-dies",
+        "if": "muddies"
+      },
+      {
+        "ifc": "-died",
+        "if": "muddied"
+      },
+      {
+        "ifc": "-dy*ing",
+        "if": "muddy*ing"
+      }
+    ],
+    "gram": "+ obj",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "bs",
+              {
+                "sense": {
+                  "dt": [
+                    [
+                      "text",
+                      "{bc}to make (something) muddy: such as"
+                    ]
+                  ]
+                }
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to cover (something) with mud "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "His shoes were {it}muddied{/it}."
+                      },
+                      {
+                        "t": "The flooding {it}muddied{/it} the roads."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to make (a color) cloudy or dull "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "She {it}muddied{/it} the color by adding some brown."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "c",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to cause (something) to become unclear or confused "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "{it}muddying{/it} the line between fact and fiction"
+                      },
+                      {
+                        "t": "The debate further {it}muddied{/it} the issues."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "muddy the waters",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}to make something more complicated or difficult to understand "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "The latest study {it}muddies the waters{/it} by suggesting an alternate explanation."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "shortdef": [
+      "to make (something) muddy: such as",
+      "to cover (something) with mud",
+      "to make (a color) cloudy or dull"
+    ]
+  }
+]

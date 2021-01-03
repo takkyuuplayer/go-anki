@@ -27,7 +27,7 @@ type entry struct {
 	Gram string             `json:"gram,omitempty"`
 	Def  definitionSections `json:"def"`
 	Uros []struct {
-		Ure  hw            `json:"ure"`
+		Ure  string        `json:"ure"`
 		Prs  prs           `json:"prs"`
 		Fl   string        `json:"fl"`
 		Ins  ins           `json:"ins"`
@@ -63,13 +63,13 @@ type meta struct {
 }
 
 type AppShortdef struct {
-	Hw  hw       `json:"hw"`
+	Hw  string   `json:"hw"`
 	Fl  string   `json:"fl"`
 	Def []string `json:"def"`
 }
 type hwi struct {
-	Hw  hw  `json:"hw"`
-	Prs prs `json:"prs"`
+	Hw  string `json:"hw"`
+	Prs prs    `json:"prs"`
 }
 
 type prs []struct {
@@ -79,8 +79,6 @@ type prs []struct {
 		Audio audio `json:"audio"`
 	} `json:"sound"`
 }
-
-type hw string
 
 type audio string
 
@@ -232,10 +230,6 @@ func Format(text string) string {
 	text = strings.ReplaceAll(text, "{bc}", "")
 	text = formatter.ReplaceAllString(text, "<i>$1</i>")
 	return strings.Trim(text, " ")
-}
-
-func (hw hw) clean() string {
-	return clean(string(hw))
 }
 
 func clean(s string) string {
