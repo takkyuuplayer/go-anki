@@ -32,7 +32,7 @@ func (card Card) Back() (string, error) {
 		}
 	}
 	ret += fmt.Sprintf(`<hr><a href="%s">%s - %s</a>`,
-		card.Result.WebUrl,
+		card.Result.WebURL,
 		html.EscapeString(card.SearchWord),
 		html.EscapeString(card.Result.Dictionary),
 	)

@@ -64,7 +64,7 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 			Dictionary:  dictionaryName,
 			Entries:     nil,
 			Suggestions: suggestion,
-			WebUrl:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
+			WebURL:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
 		}, nil
 	}
 
@@ -91,7 +91,7 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 		Dictionary:  dictionaryName,
 		Entries:     dictEntries,
 		Suggestions: nil,
-		WebUrl:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
+		WebURL:      template.URL(fmt.Sprintf(webURL, url.PathEscape(searchWord))),
 	}, nil
 }
 
@@ -101,24 +101,6 @@ func parseEntry(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	}
 
 	var de []dictionary.Entry
-	var matched bool
-
-	if clean(entry.Hwi.Hw) == searchWord {
-		matched = true
-	}
-	for _, in := range entry.Ins {
-		if clean(in.If) == searchWord {
-			matched = true
-		}
-	}
-
-	isPhrase := len(strings.Fields(searchWord)) > 1
-
-	for _, stem := range entry.Meta.Stems {
-		if !isPhrase && clean(stem) == searchWord {
-			matched = true
-		}
-	}
 
 	var pronunciation *dictionary.Pronunciation
 	if len(entry.Hwi.Prs) > 0 {
@@ -128,7 +110,7 @@ func parseEntry(searchWord string, entry entry) ([]dictionary.Entry, error) {
 		}
 	}
 
-	if matched {
+	if isEntryDefMatches(searchWord, entry) {
 		definitions, err := entry.Def.convert()
 		if err != nil {
 			return nil, err
@@ -145,44 +127,39 @@ func parseEntry(searchWord string, entry entry) ([]dictionary.Entry, error) {
 			}
 			de = append(de, dictEntry)
 		}
-	}
 
-	for _, uro := range entry.Uros {
-		if clean(uro.Ure) == searchWord {
-			matched = true
-		}
-
-		var definitions []dictionary.Definition
-		if len(uro.Utxt) > 0 {
-			definition, err := convertDefiningText(uro.Utxt)
-			if err != nil {
-				return nil, err
+		for _, uro := range entry.Uros {
+			var definitions []dictionary.Definition
+			if len(uro.Utxt) > 0 {
+				definition, err := convertDefiningText(uro.Utxt)
+				if err != nil {
+					return nil, err
+				}
+				definitions = append(definitions, definition)
 			}
-			definitions = append(definitions, definition)
-		}
-		if len(uro.Prs) > 0 {
-			pronunciation = &dictionary.Pronunciation{
-				Notation: "IPA",
-				Accents:  uro.Prs.convert(),
+			if len(uro.Prs) > 0 {
+				pronunciation = &dictionary.Pronunciation{
+					Notation: "IPA",
+					Accents:  uro.Prs.convert(),
+				}
 			}
-		}
 
-		dictEntry := dictionary.Entry{
-			ID:              "mw-" + entry.Meta.ID + "-" + clean(uro.Ure),
-			Headword:        clean(uro.Ure),
-			FunctionalLabel: uro.Fl,
-			Pronunciation:   pronunciation,
-			Inflections:     uro.Ins.convert(),
-			Definitions:     definitions,
+			dictEntry := dictionary.Entry{
+				ID:              "mw-" + entry.Meta.ID + "-" + clean(uro.Ure),
+				Headword:        clean(uro.Ure),
+				FunctionalLabel: uro.Fl,
+				Pronunciation:   pronunciation,
+				Inflections:     uro.Ins.convert(),
+				Definitions:     definitions,
+			}
+			de = append(de, dictEntry)
 		}
-		de = append(de, dictEntry)
 	}
 
 	for _, definedOnRun := range entry.Dros {
 		if definedOnRun.Drp != searchWord {
 			continue
 		}
-		matched = true
 
 		definitions, err := definedOnRun.Def.convert()
 		if err != nil {
@@ -197,8 +174,28 @@ func parseEntry(searchWord string, entry entry) ([]dictionary.Entry, error) {
 		de = append(de, dictEntry)
 	}
 
-	if matched {
-		return de, nil
+	return de, nil
+}
+
+func isEntryDefMatches(searchWord string, entry entry) bool {
+	if clean(entry.Hwi.Hw) == searchWord {
+		return true
 	}
-	return nil, nil
+	for _, in := range entry.Ins {
+		if clean(in.If) == searchWord {
+			return true
+		}
+	}
+
+	if isPhrase := len(strings.Fields(searchWord)) > 1; isPhrase {
+		return false
+	}
+
+	for _, stem := range entry.Meta.Stems {
+		if clean(stem) == searchWord {
+			return true
+		}
+	}
+
+	return false
 }

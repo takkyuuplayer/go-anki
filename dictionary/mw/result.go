@@ -26,6 +26,8 @@ type entry struct {
 	Ins  ins                `json:"ins,omitempty"`
 	Gram string             `json:"gram,omitempty"`
 	Def  definitionSections `json:"def"`
+	// Uros is derived from or related to the headword
+	// https://dictionaryapi.com/products/json#sec-2.uros
 	Uros []struct {
 		Ure  string        `json:"ure"`
 		Prs  prs           `json:"prs"`
@@ -34,6 +36,8 @@ type entry struct {
 		Gram string        `json:"gram"`
 		Utxt []interface{} `json:"utxt"`
 	} `json:"uros,omitempty"`
+	// Dros is an expression or phrasal verb
+	// https://dictionaryapi.com/products/json#sec-2.dros
 	Dros []struct {
 		Drp  string             `json:"drp"`
 		Def  definitionSections `json:"def"`
