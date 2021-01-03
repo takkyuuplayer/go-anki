@@ -76,7 +76,7 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 
 	var dictEntries []dictionary.Entry
 	for _, entry := range entries {
-		if lookedUp, err := lookUpForWord(searchWord, entry); err != nil {
+		if lookedUp, err := parseEntry(searchWord, entry); err != nil {
 			return nil, err
 		} else if lookedUp != nil {
 			dictEntries = append(dictEntries, lookedUp...)
@@ -95,7 +95,7 @@ func (dic *Learners) Parse(searchWord, body string) (*dictionary.Result, error) 
 	}, nil
 }
 
-func lookUpForWord(searchWord string, entry entry) ([]dictionary.Entry, error) {
+func parseEntry(searchWord string, entry entry) ([]dictionary.Entry, error) {
 	if len(entry.Shortdef) == 0 && entry.Meta.AppShortdef == nil {
 		return nil, nil
 	}
