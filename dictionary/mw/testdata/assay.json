@@ -1,0 +1,458 @@
+[
+  {
+    "meta": {
+      "id": "assay",
+      "uuid": "c562a275-5a78-4cf0-9428-4ebf849a3870",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "b9d95eb6-df6b-48f0-8917-74c63ab1dd4e",
+        "tsrc": "collegiate"
+      },
+      "stems": [
+        "assay",
+        "assays",
+        "assayed",
+        "assaying"
+      ],
+      "app-shortdef": {
+        "hw": "assay",
+        "fl": "verb",
+        "def": [
+          "{it}technical{/it} {bc} to test something (such as a metal or drug) to find out what it contains"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "as*say",
+      "prs": [
+        {
+          "ipa": "æˈseɪ",
+          "sound": {
+            "audio": "assay002"
+          }
+        }
+      ]
+    },
+    "fl": "verb",
+    "ins": [
+      {
+        "ifc": "-says",
+        "if": "as*says"
+      },
+      {
+        "ifc": "-sayed",
+        "if": "as*sayed"
+      },
+      {
+        "ifc": "-say*ing",
+        "if": "as*say*ing"
+      }
+    ],
+    "gram": "+ obj",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sls": [
+                  "technical"
+                ],
+                "dt": [
+                  [
+                    "text",
+                    "{bc}to test something (such as a metal or drug) to find out what it contains "
+                  ],
+                  [
+                    "vis",
+                    [
+                      {
+                        "t": "They {it}assayed{/it} the gold to determine its purity."
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "uros": [
+      {
+        "ure": "as*say",
+        "prs": [
+          {
+            "ipa": "ˈæˌseɪ",
+            "sound": {
+              "audio": "assay001"
+            }
+          }
+        ],
+        "fl": "noun",
+        "ins": [
+          {
+            "il": "plural",
+            "ifc": "-says",
+            "if": "as*says"
+          }
+        ],
+        "gram": "count",
+        "utxt": [
+          [
+            "vis",
+            [
+              {
+                "t": "a gold {it}assay{/it}"
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "shortdef": [
+      "to test something (such as a metal or drug) to find out what it contains"
+    ]
+  },
+  {
+    "meta": {
+      "id": "who",
+      "uuid": "5f4d6034-894d-4ba5-b6c6-ba9bfc4e56c8",
+      "src": "learners",
+      "section": "alpha",
+      "target": {
+        "tuuid": "1f50c585-2a45-4209-bb60-5fbc3fe951e1",
+        "tsrc": "collegiate"
+      },
+      "highlight": "yes",
+      "stems": [
+        "who",
+        "as who",
+        "as who should say",
+        "who is who",
+        "who was who",
+        "who's who",
+        "whos who"
+      ],
+      "app-shortdef": {
+        "hw": "who",
+        "fl": "pronoun",
+        "def": [
+          "{bc} what or which person or people",
+          "used to question a person's character or authority",
+          "used after a noun or pronoun to show which group of people you are talking about"
+        ]
+      },
+      "offensive": false
+    },
+    "hwi": {
+      "hw": "who",
+      "prs": [
+        {
+          "ipa": "ˈhuː",
+          "sound": {
+            "audio": "who00001"
+          }
+        }
+      ]
+    },
+    "fl": "pronoun",
+    "def": [
+      {
+        "sseq": [
+          [
+            [
+              "sense",
+              {
+                "sn": "1 a",
+                "dt": [
+                  [
+                    "text",
+                    "{bc}what or which person or people"
+                  ],
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used when you do not know the name or identity of a person or group of people that you are talking about or asking about "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{it}Who{/it} will be the next president?"
+                            },
+                            {
+                              "t": "{it}Who{/it} is standing next to you in this photo?"
+                            },
+                            {
+                              "t": "I didn't know {it}who{/it} he was."
+                            },
+                            {
+                              "t": "Find out {it}who{/it} they are."
+                            },
+                            {
+                              "t": "I wonder {it}who{/it} else signed up."
+                            },
+                            {
+                              "t": "{it}Who{/it} should walk in [=who do you think walked in] when we least expected it? My parents!"
+                            },
+                            {
+                              "t": "She isn't sure {it}who{/it} she talked to."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "b",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used to question a person's character or authority "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "{it}Who{/it} are they to tell us what to do? [=what makes them think they can tell us what to do?]"
+                            },
+                            {
+                              "t": "{it}Who{/it} do you think you are? [=what gives you the right to say or do this?]"
+                            },
+                            {
+                              "t": "{it}Who{/it} do you think you're talking to? [=what gives you the right to speak to me in this (rude) manner?]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ],
+            [
+              "sense",
+              {
+                "sn": "c",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used in questions that are meant to say that no one would or would not do something, know something, etc. "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "They may come or not. {it}Who{/it} cares? [=no one cares; I don't care]"
+                            },
+                            {
+                              "t": "Of course I would love to win a million dollars. {it}Who{/it} wouldn't? [=anyone would]"
+                            },
+                            {
+                              "t": "{ldquo}Are they coming?{rdquo} {ldquo}{it}Who{/it} knows?{rdquo} [=no one knows; I don't know]"
+                            },
+                            {
+                              "t": "{it}Who{/it} are we kidding? [=we aren't kidding/fooling anyone]"
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "urefs",
+                    [
+                      "whom"
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "2",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used after a noun or pronoun to show which group of people you are talking about "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "Subscribers {it}who{/it} are interested in joining the discussion group should contact the secretary."
+                            },
+                            {
+                              "t": "The people {it}who{/it} conducted the study were extremely professional."
+                            },
+                            {
+                              "t": "Someone {it}who{/it} handles stress well will be more suited for the job."
+                            },
+                            {
+                              "t": "I have a friend {it}who{/it} my parents don't like."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              "sense",
+              {
+                "sn": "3",
+                "dt": [
+                  [
+                    "uns",
+                    [
+                      [
+                        [
+                          "text",
+                          "used to introduce an additional statement about someone who has already been mentioned "
+                        ],
+                        [
+                          "vis",
+                          [
+                            {
+                              "t": "His patient, {it}who{/it} was a well-known television personality, suffered a minor stroke."
+                            },
+                            {
+                              "t": "The former president of the company, {it}who{/it} is retired now, is credited with expanding and improving the product line."
+                            },
+                            {
+                              "t": "Her uncle, {it}who{/it} she's very fond of, lives next door."
+                            }
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            ]
+          ]
+        ]
+      }
+    ],
+    "dros": [
+      {
+        "drp": "who's who",
+        "def": [
+          {
+            "sseq": [
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "1",
+                    "vrs": [
+                      {
+                        "vl": "or",
+                        "va": "who is who"
+                      }
+                    ],
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}information about the people who make up a group "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "We had lived in this town long enough to know {it}who was who{/it}. [=to know the names of the different people, what they did, etc.]"
+                          },
+                          {
+                            "t": "I'm still learning {it}who's who{/it} around the office."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              [
+                [
+                  "sense",
+                  {
+                    "sn": "2 a",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}a list of the names of the important and well-known people in a particular field "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "The guest list reads like a {it}who's who{/it} of the publishing industry."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "sense",
+                  {
+                    "sn": "b",
+                    "dt": [
+                      [
+                        "text",
+                        "{bc}the important and well-known people in a particular field "
+                      ],
+                      [
+                        "vis",
+                        [
+                          {
+                            "t": "The convention was attended by a {it}who's who{/it} of the publishing industry."
+                          }
+                        ]
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "shortdef": [
+      "what or which person or people—used when you do not know the name or identity of a person or group of people that you are talking about or asking about",
+      "—used to question a person's character or authority",
+      "—used in questions that are meant to say that no one would or would not do something, know something, etc."
+    ]
+  }
+]

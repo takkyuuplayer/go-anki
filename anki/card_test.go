@@ -21,7 +21,7 @@ func TestCard_Back(t *testing.T) {
 				SearchWord: "test",
 				Result: &dictionary.Result{
 					Dictionary: "ExampleDict",
-					WebUrl:     "https://example.com",
+					WebURL:     "https://example.com",
 					Entries: []dictionary.Entry{
 						testEntry,
 						testEntry,

@@ -26,14 +26,18 @@ type entry struct {
 	Ins  ins                `json:"ins,omitempty"`
 	Gram string             `json:"gram,omitempty"`
 	Def  definitionSections `json:"def"`
+	// Uros is derived from or related to the headword
+	// https://dictionaryapi.com/products/json#sec-2.uros
 	Uros []struct {
-		Ure  hw            `json:"ure"`
+		Ure  string        `json:"ure"`
 		Prs  prs           `json:"prs"`
 		Fl   string        `json:"fl"`
 		Ins  ins           `json:"ins"`
 		Gram string        `json:"gram"`
 		Utxt []interface{} `json:"utxt"`
 	} `json:"uros,omitempty"`
+	// Dros is an expression or phrasal verb
+	// https://dictionaryapi.com/products/json#sec-2.dros
 	Dros []struct {
 		Drp  string             `json:"drp"`
 		Def  definitionSections `json:"def"`
@@ -63,13 +67,13 @@ type meta struct {
 }
 
 type AppShortdef struct {
-	Hw  hw       `json:"hw"`
+	Hw  string   `json:"hw"`
 	Fl  string   `json:"fl"`
 	Def []string `json:"def"`
 }
 type hwi struct {
-	Hw  hw  `json:"hw"`
-	Prs prs `json:"prs"`
+	Hw  string `json:"hw"`
+	Prs prs    `json:"prs"`
 }
 
 type prs []struct {
@@ -79,8 +83,6 @@ type prs []struct {
 		Audio audio `json:"audio"`
 	} `json:"sound"`
 }
-
-type hw string
 
 type audio string
 
@@ -215,7 +217,7 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 			}
 			dicExample = append(dicExample, res.Examples...)
 
-		case "wsgram", "bnw", "ri", "srefs", "ca":
+		case "wsgram", "bnw", "ri", "srefs", "ca", "urefs":
 			// Something todo?
 		default:
 			return dictionary.Definition{}, fmt.Errorf("unknown type: %s", tuple[0].(string))
@@ -225,17 +227,25 @@ func convertDefiningText(dt interface{}) (dictionary.Definition, error) {
 	return dictionary.Definition{Sense: template.HTML(strings.Join(dicSenses, " / ")), Examples: dicExample}, nil
 }
 
-var formatter = regexp.MustCompile("{.+?}(.*?){/.+?}")
+var boldFormatter = regexp.MustCompile("{b}(.*?){/b}")
+var infFormatter = regexp.MustCompile("{inf}(.*?){/inf}")
+var itFormatter = regexp.MustCompile("{it}(.*?){/it}")
+var scFormatter = regexp.MustCompile("{sc}(.*?){/sc}")
+var supFormatter = regexp.MustCompile("{sup}(.*?){/sup}")
+var remainingFormatter = regexp.MustCompile("{.+?}(.*?){/.+?}")
 
 // Format markup text with html
 func Format(text string) string {
-	text = strings.ReplaceAll(text, "{bc}", "")
-	text = formatter.ReplaceAllString(text, "<i>$1</i>")
+	text = strings.ReplaceAll(text, "{bc}", "<b>:</b> ")
+	text = strings.ReplaceAll(text, "{ldquo}", "&ldquo;")
+	text = strings.ReplaceAll(text, "{rdquo}", "&rdquo;")
+	text = boldFormatter.ReplaceAllString(text, "<b>$1</b>")
+	text = infFormatter.ReplaceAllString(text, "<sub>$1</sub>")
+	text = itFormatter.ReplaceAllString(text, "<i>$1</i>")
+	text = scFormatter.ReplaceAllString(text, `<span style="font-variant: small-caps;">$1</span>`)
+	text = supFormatter.ReplaceAllString(text, "<sup>$1</sup>")
+	text = remainingFormatter.ReplaceAllString(text, "<i>$1</i>")
 	return strings.Trim(text, " ")
-}
-
-func (hw hw) clean() string {
-	return clean(string(hw))
 }
 
 func clean(s string) string {

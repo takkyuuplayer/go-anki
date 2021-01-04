@@ -11,7 +11,7 @@ var ErrNotFound = errors.New("Not Found")
 // Result is the looked up result
 type Result struct {
 	Dictionary  string
-	WebUrl      template.URL
+	WebURL      template.URL
 	Entries     []Entry
 	Suggestions []string
 }

@@ -33,6 +33,17 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Nil(t, err)
 	})
 
+	t.Run("Returning for a word: deathbed", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("deathbed", load(t, "deathbed.json"))
+
+		assert.Len(t, result.Entries, 1)
+		assert.Equal(t, "Merriam-Webster's Learner's Dictionary", result.Dictionary)
+		assert.Equal(t, "deathbed", result.Entries[0].Headword)
+		assert.Len(t, result.Entries[0].Pronunciation.Accents, 1)
+		assert.Nil(t, err)
+	})
+
 	t.Run("Returning for a word having empty definition", func(t *testing.T) {
 		t.Parallel()
 		result, err := learners.Parse("endorse", load(t, "endorse.json"))
@@ -105,6 +116,15 @@ func Test_learners_Parse(t *testing.T) {
 		assert.Equal(t, "Merriam-Webster's Learner's Dictionary", result.Dictionary)
 		assert.Len(t, result.Suggestions, 16)
 		assert.Nil(t, result.Entries)
+		assert.Nil(t, err)
+	})
+
+	t.Run("Returning for a idiom", func(t *testing.T) {
+		t.Parallel()
+		result, err := learners.Parse("under way", load(t, "under_way.json"))
+
+		assert.Len(t, result.Entries, 1)
+		assert.Equal(t, "under way", result.Entries[0].Headword)
 		assert.Nil(t, err)
 	})
 
