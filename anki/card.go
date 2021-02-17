@@ -6,8 +6,19 @@ import (
 	"html"
 	"strings"
 
+	_ "embed"
+	"html/template"
+
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
+
+//go:embed assets/entry.html.tmpl
+var entry string
+var tmpl = *template.New("anki")
+
+func init() {
+	template.Must(tmpl.New("entry").Parse(entry))
+}
 
 // Card is the raw data of anki card
 type Card struct {

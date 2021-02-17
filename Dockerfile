@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1.16
 
 COPY . /go/src/github.com/takkyuuplayer/go-anki
 WORKDIR /go/src/github.com/takkyuuplayer/go-anki

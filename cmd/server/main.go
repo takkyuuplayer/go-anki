@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	_ "embed"
 	"encoding/csv"
 	"flag"
 	"io"
@@ -12,17 +13,15 @@ import (
 
 	"github.com/takkyuuplayer/go-anki/anki"
 	"github.com/takkyuuplayer/go-anki/dictionary"
-
-	"github.com/rakyll/statik/fs"
 	"github.com/takkyuuplayer/go-anki/dictionary/mw"
-
-	// https://github.com/rakyll/statik#usage
-	_ "github.com/takkyuuplayer/go-anki/web/statik"
 )
 
 var dictionaries = map[string]dictionary.Dictionary{
 	"mw": mw.NewLearners(os.Getenv("MW_LEARNERS_KEY"), &http.Client{}),
 }
+
+//go:embed index.html
+var index string
 
 func post(w http.ResponseWriter, r *http.Request) {
 	dic := dictionaries[r.PostFormValue("dictionary")]
@@ -50,16 +49,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	statikFS, err := fs.New()
-	if err != nil {
-		log.Fatal(err)
-	}
-	res, err := statikFS.Open("/index.html")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	io.Copy(w, res)
+	io.Copy(w, strings.NewReader(index))
 }
 
 func main() {
