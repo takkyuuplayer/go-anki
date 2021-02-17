@@ -22,7 +22,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 	var wg sync.WaitGroup
 	var mu sync.Mutex
 	scanner := bufio.NewScanner(in)
-	unkownErrCount := 0
+	unknownErrCount := 0
 	c := make(chan bool, concurrency)
 
 	for scanner.Scan() {
@@ -30,7 +30,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 		if word == "" {
 			continue
 		}
-		if errorLimit <= unkownErrCount {
+		if errorLimit <= unknownErrCount {
 			break
 		}
 
@@ -44,14 +44,14 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 
 			res, err := RunWord(dic, word)
 			if err == dictionary.ErrNotFound {
-				if unkownErrCount > 0 {
-					unkownErrCount -= 1
+				if unknownErrCount > 0 {
+					unknownErrCount = unknownErrCount - 1
 				}
 			} else if err != nil {
-				unkownErrCount += 1
+				unknownErrCount = unknownErrCount + 1
 			} else {
-				if unkownErrCount > 0 {
-					unkownErrCount -= 1
+				if unknownErrCount > 0 {
+					unknownErrCount = unknownErrCount - 1
 				}
 			}
 
@@ -67,7 +67,7 @@ func Run(dic dictionary.Dictionary, in io.Reader, out, outErr *csv.Writer) {
 	}
 	wg.Wait()
 
-	if unkownErrCount >= errorLimit {
+	if unknownErrCount >= errorLimit {
 		outErr.Write([]string{errorUnknown, "Stopped because of too many unknown errors"})
 	}
 	out.Flush()

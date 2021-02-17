@@ -38,9 +38,8 @@ func (card Card) Back() (string, error) {
 		content, err := ankiCard(&entry)
 		if err != nil {
 			return "", err
-		} else {
-			ret += " " + content
 		}
+		ret += " " + content
 	}
 	ret += fmt.Sprintf(`<hr><a href="%s">%s - %s</a>`,
 		card.Result.WebURL,
