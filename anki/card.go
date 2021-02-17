@@ -6,8 +6,19 @@ import (
 	"html"
 	"strings"
 
+	_ "embed"
+	"html/template"
+
 	"github.com/takkyuuplayer/go-anki/dictionary"
 )
+
+//go:embed assets/entry.html.tmpl
+var entry string
+var tmpl = *template.New("anki")
+
+func init() {
+	template.Must(tmpl.New("entry").Parse(entry))
+}
 
 // Card is the raw data of anki card
 type Card struct {
@@ -27,9 +38,8 @@ func (card Card) Back() (string, error) {
 		content, err := ankiCard(&entry)
 		if err != nil {
 			return "", err
-		} else {
-			ret += " " + content
 		}
+		ret += " " + content
 	}
 	ret += fmt.Sprintf(`<hr><a href="%s">%s - %s</a>`,
 		card.Result.WebURL,

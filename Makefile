@@ -1,9 +1,6 @@
 .PHONY: test
 
-setup: tools mod generate
-
-tools:
-	which statik || go get github.com/rakyll/statik
+setup: mod generate
 
 mod:
 	go mod download
